@@ -1,0 +1,78 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXFileReference section */
+		63A9671B1C18D7A000027729 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		63A9671C1C18D7A000027729 /* main.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
+		63A9671D1C18D7F300027729 /* avr_compiler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = avr_compiler.h; sourceTree = "<group>"; };
+		63A9671E1C18D82D00027729 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		63DEC9BB1C18C5B2000B88BE = {
+			isa = PBXGroup;
+			children = (
+				63A9671E1C18D82D00027729 /* Makefile */,
+				63A9671D1C18D7F300027729 /* avr_compiler.h */,
+				63A9671B1C18D7A000027729 /* main.c */,
+				63A9671C1C18D7A000027729 /* main.h */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXProject section */
+		63DEC9BC1C18C5B2000B88BE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+			};
+			buildConfigurationList = 63DEC9BF1C18C5B2000B88BE /* Build configuration list for PBXProject "AOS1" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 63DEC9BB1C18C5B2000B88BE;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		63DEC9C01C18C5B2000B88BE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Debug;
+		};
+		63DEC9C11C18C5B2000B88BE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		63DEC9BF1C18C5B2000B88BE /* Build configuration list for PBXProject "AOS1" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				63DEC9C01C18C5B2000B88BE /* Debug */,
+				63DEC9C11C18C5B2000B88BE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 63DEC9BC1C18C5B2000B88BE /* Project object */;
+}
