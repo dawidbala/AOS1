@@ -23,7 +23,7 @@ int main(void){
     
     while(1) {
         
-        lcd_string("Siemano     ");
+        lcd_string("AOS 1 0.1.0     ");
         _delay_ms(500);
     }
 
