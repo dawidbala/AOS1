@@ -82,5 +82,5 @@ void lcd_init() {
     
     _delay_us(200);
     
-    
 }
+

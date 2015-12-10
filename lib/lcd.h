@@ -18,6 +18,7 @@
 #define LCD_D5		PC2
 #define LCD_D6		PC1
 #define LCD_D7		PC0
+#define LED         PC7
 
 inline void lcd_half( uint8_t data );
 void lcd_byte( uint8_t byte );
@@ -27,5 +28,6 @@ void lcd_string( char * string );
 void lcd_init();
 void lcd_cls();
 void lcd_locate( uint8_t x, uint8_t y);
+void led(void);
 
 #endif /* LCD_H_ */

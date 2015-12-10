@@ -6,7 +6,7 @@
 //
 
 
-#include "avr_compiler.h"
+#include "lib/avr_compiler.h"
 #include <avr/io.h>
 #include <util/delay.h>
 #include "lib/lcd.c"
@@ -23,8 +23,9 @@ int main(void){
     
     while(1) {
         
-        lcd_string("AOS 1 0.1.0     ");
+        lcd_string("AOS 1 0.1.1");
+        PORTC ^= (1<<PC7);
         _delay_ms(500);
-    }
+       }
 
 }
