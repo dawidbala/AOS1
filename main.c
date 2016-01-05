@@ -18,6 +18,8 @@
 
 
 int main(void){
+    DDRC|=(1<<PC7);
+
     
     lcd_init();
     

@@ -1,6 +1,6 @@
-main.o: main.c avr_compiler.h lib/lcd.c lib/lcd.h
+main.o: main.c lib/avr_compiler.h lib/lcd.c lib/lcd.h
 
-avr_compiler.h:
+lib/avr_compiler.h:
 
 lib/lcd.c:
 
