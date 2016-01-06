@@ -42,9 +42,9 @@
 		63DEC9BC1C18C5B2000B88BE /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0720;
 			};
-			buildConfigurationList = 63DEC9BF1C18C5B2000B88BE /* Build configuration list for PBXProject "AOS1" */;
+			buildConfigurationList = 63DEC9BF1C18C5B2000B88BE /* Build configuration list for PBXProject "AOS1 (1)" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -63,6 +63,8 @@
 		63DEC9C01C18C5B2000B88BE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				ONLY_ACTIVE_ARCH = YES;
 			};
 			name = Debug;
 		};
@@ -75,7 +77,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		63DEC9BF1C18C5B2000B88BE /* Build configuration list for PBXProject "AOS1" */ = {
+		63DEC9BF1C18C5B2000B88BE /* Build configuration list for PBXProject "AOS1 (1)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				63DEC9C01C18C5B2000B88BE /* Debug */,

@@ -9,16 +9,18 @@
 #include <util/delay.h>
 
 #define LCD_PORT	PORTC
-
 #define LCD_DDR		DDRC
 
+
+#define LED         PC7
+#define BUZ         PC6
 #define LCD_RS		PC5
 #define LCD_E		PC4
 #define LCD_D4		PC3
 #define LCD_D5		PC2
 #define LCD_D6		PC1
 #define LCD_D7		PC0
-#define LED         PC7
+
 
 inline void lcd_half( uint8_t data );
 void lcd_byte( uint8_t byte );
@@ -29,5 +31,6 @@ void lcd_init();
 void lcd_cls();
 void lcd_locate( uint8_t x, uint8_t y);
 void led(void);
+
 
 #endif /* LCD_H_ */

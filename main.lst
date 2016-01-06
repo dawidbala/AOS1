@@ -51,8 +51,8 @@
   26 0004 9295      		swap r25
   27 0006 9F70      		andi r25,lo8(15)
   28               	.LVL1:
-  29               	.LBB12:
-  30               	.LBB13:
+  29               	.LBB10:
+  30               	.LBB11:
    8:lib/lcd.c     ****     if( data & (1<<0)) LCD_PORT |= (1<<LCD_D4);
   31               		.loc 1 8 0
   32 0008 90FF      		sbrs r25,0
@@ -98,8 +98,8 @@
   65               		.loc 1 18 0
   66 002e A898      		cbi 0x15,0
   67               	.L9:
-  68               	.LBE13:
-  69               	.LBE12:
+  68               	.LBE11:
+  69               	.LBE10:
   27:lib/lcd.c     ****     LCD_PORT &= ~(1<<LCD_E);
   70               		.loc 1 27 0
   71 0030 AC98      		cbi 0x15,4
@@ -109,8 +109,8 @@
   72               		.loc 1 30 0
   73 0032 AC9A      		sbi 0x15,4
   74               	.LVL3:
-  75               	.LBB14:
-  76               	.LBB15:
+  75               	.LBB12:
+  76               	.LBB13:
    8:lib/lcd.c     ****     if( data & (1<<0)) LCD_PORT |= (1<<LCD_D4);
   77               		.loc 1 8 0
   78 0034 80FF      		sbrs r24,0
@@ -155,15 +155,15 @@
  110               		.loc 1 18 0
  111 005a A898      		cbi 0x15,0
  112               	.L17:
- 113               	.LBE15:
- 114               	.LBE14:
+ 113               	.LBE13:
+ 114               	.LBE12:
   31:lib/lcd.c     ****     lcd_half( byte );
   32:lib/lcd.c     ****     LCD_PORT &= ~(1<<LCD_E);
  115               		.loc 1 32 0
  116 005c AC98      		cbi 0x15,4
  117               	.LVL4:
- 118               	.LBB16:
- 119               	.LBB17:
+ 118               	.LBB14:
+ 119               	.LBB15:
  120               		.file 2 "/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h"
    1:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h **** /* Copyright (c) 2002, Marek Michalkiewicz
    2:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h ****    Copyright (c) 2004,2005,2007 Joerg Wunsch
@@ -419,8 +419,8 @@
  127 0066 00C0      		rjmp .
  128 0068 0000      		nop
  129 006a 0895      		ret
- 130               	.LBE17:
- 131               	.LBE16:
+ 130               	.LBE15:
+ 131               	.LBE14:
  132               		.cfi_endproc
  133               	.LFE12:
  135               	.global	lcd_cmd
@@ -607,8 +607,8 @@
  278               		.loc 1 81 0
  279 00b6 0E94 0000 		call lcd_cls
  280               	.LVL23:
- 281               	.LBB18:
- 282               	.LBB19:
+ 281               	.LBB16:
+ 282               	.LBB17:
  283               		.loc 2 245 0
  284 00ba 8FE1      		ldi r24,lo8(799)
  285 00bc 93E0      		ldi r25,hi8(799)
@@ -617,20 +617,15 @@
  288 00c2 00C0      		rjmp .
  289 00c4 0000      		nop
  290 00c6 0895      		ret
- 291               	.LBE19:
- 292               	.LBE18:
+ 291               	.LBE17:
+ 292               	.LBE16:
  293               		.cfi_endproc
  294               	.LFE18:
- 296               		.section	.rodata.str1.1,"aMS",@progbits,1
- 297               	.LC0:
- 298 0000 414F 5320 		.string	"AOS 1 0.1.1"
- 298      3120 302E 
- 298      312E 3100 
- 299               		.section	.text.startup,"ax",@progbits
- 300               	.global	main
- 302               	main:
- 303               	.LFB19:
- 304               		.file 3 "main.c"
+ 296               		.section	.text.startup,"ax",@progbits
+ 297               	.global	main
+ 299               	main:
+ 300               	.LFB19:
+ 301               		.file 3 "main.c"
    1:main.c        **** //
    2:main.c        **** //  main.c
    3:main.c        **** //  AOS1
@@ -643,81 +638,77 @@
   10:main.c        **** #include <avr/io.h>
   11:main.c        **** #include <util/delay.h>
   12:main.c        **** #include "lib/lcd.c"
-  13:main.c        **** 
+  13:main.c        **** #include "lib/lcd.h"
   14:main.c        **** 
-  15:main.c        **** //#define ledPin_bm   (1 << 0)
-  16:main.c        **** //#define ledPort     PORTC
-  17:main.c        **** //#define ledDDR      DDRC
-  18:main.c        **** 
+  15:main.c        **** 
+  16:main.c        **** //#define ledPin_bm   (1 << 0)
+  17:main.c        **** //#define ledPort     PORTC
+  18:main.c        **** //#define ledDDR      DDRC
   19:main.c        **** 
-  20:main.c        **** int main(void){
- 305               		.loc 3 20 0
- 306               		.cfi_startproc
- 307               	/* prologue: function */
- 308               	/* frame size = 0 */
- 309               	/* stack size = 0 */
- 310               	.L__stack_usage = 0
-  21:main.c        ****     DDRC|=(1<<PC7);
- 311               		.loc 3 21 0
- 312 0000 A79A      		sbi 0x14,7
-  22:main.c        **** 
-  23:main.c        ****     
-  24:main.c        ****     lcd_init();
+  20:main.c        **** 
+  21:main.c        **** int main(void){
+ 302               		.loc 3 21 0
+ 303               		.cfi_startproc
+ 304               	/* prologue: function */
+ 305               	/* frame size = 0 */
+ 306               	/* stack size = 0 */
+ 307               	.L__stack_usage = 0
+  22:main.c        ****     DDRD = 0;
+ 308               		.loc 3 22 0
+ 309 0000 11BA      		out 0x11,__zero_reg__
+  23:main.c        ****     PORTD = 1;
+ 310               		.loc 3 23 0
+ 311 0002 81E0      		ldi r24,lo8(1)
+ 312 0004 82BB      		out 0x12,r24
+  24:main.c        ****     DDRC|=(1<<7);
  313               		.loc 3 24 0
- 314 0002 0E94 0000 		call lcd_init
- 315               	.LVL24:
- 316               	.L29:
-  25:main.c        ****     
-  26:main.c        ****     while(1) {
-  27:main.c        ****         
-  28:main.c        ****         lcd_string("AOS 1 0.1.1");
- 317               		.loc 3 28 0 discriminator 1
- 318 0006 80E0      		ldi r24,lo8(.LC0)
- 319 0008 90E0      		ldi r25,hi8(.LC0)
- 320 000a 0E94 0000 		call lcd_string
- 321               	.LVL25:
-  29:main.c        ****         PORTC ^= (1<<PC7);
- 322               		.loc 3 29 0 discriminator 1
- 323 000e 85B3      		in r24,0x15
- 324 0010 8058      		subi r24,lo8(-(-128))
- 325 0012 85BB      		out 0x15,r24
- 326               	.LVL26:
- 327               	.LBB20:
- 328               	.LBB21:
- 163:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h **** 	__builtin_avr_delay_cycles(__ticks_dc);
- 329               		.loc 2 163 0 discriminator 1
- 330 0014 2FEF      		ldi r18,lo8(1599999)
- 331 0016 89E6      		ldi r24,hi8(1599999)
- 332 0018 98E1      		ldi r25,hlo8(1599999)
- 333 001a 2150      		1: subi r18,1
- 334 001c 8040      		sbci r24,0
- 335 001e 9040      		sbci r25,0
- 336 0020 01F4      		brne 1b
- 337 0022 00C0      		rjmp .
- 338 0024 0000      		nop
- 339 0026 00C0      		rjmp .L29
- 340               	.LBE21:
- 341               	.LBE20:
- 342               		.cfi_endproc
- 343               	.LFE19:
- 345               		.text
- 346               	.Letext0:
- 347               		.file 4 "/usr/local/CrossPack-AVR-20131216/avr/include/stdint.h"
+ 314 0006 A79A      		sbi 0x14,7
+ 315               	.L29:
+  25:main.c        **** 
+  26:main.c        ****   while(1) {
+  27:main.c        ****       
+  28:main.c        ****       
+  29:main.c        ****       if (PIND != 0xFF)
+ 316               		.loc 3 29 0
+ 317 0008 80B3      		in r24,0x10
+ 318 000a 8F3F      		cpi r24,lo8(-1)
+ 319 000c 01F0      		breq .L30
+  30:main.c        ****           
+  31:main.c        ****       {
+  32:main.c        ****          PORTC ^= (0<<LED);
+ 320               		.loc 3 32 0
+ 321 000e 85B3      		in r24,0x15
+ 322 0010 00C0      		rjmp .L32
+ 323               	.L30:
+  33:main.c        ****       }
+  34:main.c        ****       else
+  35:main.c        ****       {
+  36:main.c        ****         PORTC ^= (1<<LED);
+ 324               		.loc 3 36 0
+ 325 0012 85B3      		in r24,0x15
+ 326 0014 8058      		subi r24,lo8(-(-128))
+ 327               	.L32:
+ 328 0016 85BB      		out 0x15,r24
+ 329 0018 00C0      		rjmp .L29
+ 330               		.cfi_endproc
+ 331               	.LFE19:
+ 333               		.text
+ 334               	.Letext0:
+ 335               		.file 4 "/usr/local/CrossPack-AVR-20131216/avr/include/stdint.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccmoCmwX.s:2      *ABS*:0000003e __SP_H__
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccmoCmwX.s:3      *ABS*:0000003d __SP_L__
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccmoCmwX.s:4      *ABS*:0000003f __SREG__
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccmoCmwX.s:5      *ABS*:00000000 __tmp_reg__
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccmoCmwX.s:6      *ABS*:00000001 __zero_reg__
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccmoCmwX.s:12     .text:00000000 lcd_byte
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccmoCmwX.s:137    .text:0000006c lcd_cmd
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccmoCmwX.s:156    .text:00000072 lcd_data
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccmoCmwX.s:175    .text:00000078 lcd_string
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccmoCmwX.s:218    .text:00000090 lcd_cls
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccmoCmwX.s:235    .text:00000096 lcd_locate
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccmoCmwX.s:250    .text:00000098 lcd_init
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccmoCmwX.s:302    .text.startup:00000000 main
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccpMiGwh.s:2      *ABS*:0000003e __SP_H__
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccpMiGwh.s:3      *ABS*:0000003d __SP_L__
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccpMiGwh.s:4      *ABS*:0000003f __SREG__
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccpMiGwh.s:5      *ABS*:00000000 __tmp_reg__
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccpMiGwh.s:6      *ABS*:00000001 __zero_reg__
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccpMiGwh.s:12     .text:00000000 lcd_byte
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccpMiGwh.s:137    .text:0000006c lcd_cmd
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccpMiGwh.s:156    .text:00000072 lcd_data
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccpMiGwh.s:175    .text:00000078 lcd_string
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccpMiGwh.s:218    .text:00000090 lcd_cls
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccpMiGwh.s:235    .text:00000096 lcd_locate
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccpMiGwh.s:250    .text:00000098 lcd_init
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccpMiGwh.s:299    .text.startup:00000000 main
 
-UNDEFINED SYMBOLS
-__do_copy_data
+NO UNDEFINED SYMBOLS
