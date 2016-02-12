@@ -3,27 +3,27 @@ main.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .text         00000152  00000000  00000000  00000074  2**1
+  0 .text         00000162  00000000  00000000  00000074  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  1 .data         00000000  00800060  00000152  000001c6  2**0
+  1 .data         00000000  00800060  00000162  000001d6  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  2 .comment      00000011  00000000  00000000  000001c6  2**0
+  2 .comment      00000011  00000000  00000000  000001d6  2**0
                   CONTENTS, READONLY
-  3 .debug_aranges 00000048  00000000  00000000  000001d8  2**3
+  3 .debug_aranges 00000048  00000000  00000000  000001e8  2**3
                   CONTENTS, READONLY, DEBUGGING
-  4 .debug_info   000003ff  00000000  00000000  00000220  2**0
+  4 .debug_info   0000047a  00000000  00000000  00000230  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_abbrev 000001b7  00000000  00000000  0000061f  2**0
+  5 .debug_abbrev 000001c6  00000000  00000000  000006aa  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_line   00000175  00000000  00000000  000007d6  2**0
+  6 .debug_line   0000017f  00000000  00000000  00000870  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_frame  000000a0  00000000  00000000  0000094c  2**2
+  7 .debug_frame  000000a0  00000000  00000000  000009f0  2**2
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_str    0000018c  00000000  00000000  000009ec  2**0
+  8 .debug_str    000001a6  00000000  00000000  00000a90  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_loc    0000015b  00000000  00000000  00000b78  2**0
+  9 .debug_loc    0000015b  00000000  00000000  00000c36  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_ranges 00000018  00000000  00000000  00000cd3  2**0
+ 10 .debug_ranges 00000018  00000000  00000000  00000d91  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -59,7 +59,7 @@ Disassembly of section .text:
   5c:	de bf       	out	0x3e, r29	; 62
   5e:	cd bf       	out	0x3d, r28	; 61
   60:	0e 94 9a 00 	call	0x134	; 0x134 <main>
-  64:	0c 94 a7 00 	jmp	0x14e	; 0x14e <_exit>
+  64:	0c 94 af 00 	jmp	0x15e	; 0x15e <_exit>
 
 00000068 <__bad_interrupt>:
   68:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -268,42 +268,57 @@ void lcd_init() {
  132:	08 95       	ret
 
 00000134 <main>:
-//#define ledPort     PORTC
 //#define ledDDR      DDRC
 
 
-int main(void){
-    DDRD = 0;
+int main(void)
+{
+    DDRD = 0x00;
  134:	11 ba       	out	0x11, r1	; 17
-    PORTD = 1;
- 136:	81 e0       	ldi	r24, 0x01	; 1
+    PORTD = 0xff;
+ 136:	8f ef       	ldi	r24, 0xFF	; 255
  138:	82 bb       	out	0x12, r24	; 18
-    DDRC|=(1<<7);
+    DDRC |= (1<<LED);
  13a:	a7 9a       	sbi	0x14, 7	; 20
+    PORTC |= (1<<LED);
+ 13c:	af 9a       	sbi	0x15, 7	; 21
+        else
+            {
+                prev_state = 1;
+            }*/
+        
+        if (PIND == 0x7F)
+ 13e:	80 b3       	in	r24, 0x10	; 16
+ 140:	8f 37       	cpi	r24, 0x7F	; 127
+ 142:	11 f4       	brne	.+4      	; 0x148 <main+0x14>
+        {
+            PORTC &= (~(1<<7));
+ 144:	af 98       	cbi	0x15, 7	; 21
+ 146:	04 c0       	rjmp	.+8      	; 0x150 <main+0x1c>
+        }
+        else if (PIND == 0xBF)
+ 148:	80 b3       	in	r24, 0x10	; 16
+ 14a:	8f 3b       	cpi	r24, 0xBF	; 191
+ 14c:	09 f4       	brne	.+2      	; 0x150 <main+0x1c>
+        {
+            PORTC |= (1<<7);
+ 14e:	af 9a       	sbi	0x15, 7	; 21
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
 
-  while(1) {
-      
-      
-      if (PIND != 0xFF)
- 13c:	80 b3       	in	r24, 0x10	; 16
- 13e:	8f 3f       	cpi	r24, 0xFF	; 255
- 140:	11 f0       	breq	.+4      	; 0x146 <main+0x12>
-          
-      {
-         PORTC ^= (0<<LED);
- 142:	85 b3       	in	r24, 0x15	; 21
- 144:	02 c0       	rjmp	.+4      	; 0x14a <main+0x16>
-      }
-      else
-      {
-        PORTC ^= (1<<LED);
- 146:	85 b3       	in	r24, 0x15	; 21
- 148:	80 58       	subi	r24, 0x80	; 128
- 14a:	85 bb       	out	0x15, r24	; 21
- 14c:	f7 cf       	rjmp	.-18     	; 0x13c <main+0x8>
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 150:	8f e9       	ldi	r24, 0x9F	; 159
+ 152:	9f e0       	ldi	r25, 0x0F	; 15
+ 154:	01 97       	sbiw	r24, 0x01	; 1
+ 156:	f1 f7       	brne	.-4      	; 0x154 <main+0x20>
+ 158:	00 c0       	rjmp	.+0      	; 0x15a <main+0x26>
+ 15a:	00 00       	nop
+ 15c:	f0 cf       	rjmp	.-32     	; 0x13e <main+0xa>
 
-0000014e <_exit>:
- 14e:	f8 94       	cli
+0000015e <_exit>:
+ 15e:	f8 94       	cli
 
-00000150 <__stop_program>:
- 150:	ff cf       	rjmp	.-2      	; 0x150 <__stop_program>
+00000160 <__stop_program>:
+ 160:	ff cf       	rjmp	.-2      	; 0x160 <__stop_program>

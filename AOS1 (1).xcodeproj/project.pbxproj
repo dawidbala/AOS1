@@ -13,6 +13,7 @@
 		63A9671B1C18D7A000027729 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		63A9671C1C18D7A000027729 /* main.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
 		63A9671E1C18D82D00027729 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		6FC9EC7E1C3E08CF0050063E /* avr_compiler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = avr_compiler.h; path = lib/avr_compiler.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -21,6 +22,7 @@
 			children = (
 				6323C0D81C191448001A21E6 /* lcd.h */,
 				6323C0D91C191448001A21E6 /* lcd.c */,
+				6FC9EC7E1C3E08CF0050063E /* avr_compiler.h */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
