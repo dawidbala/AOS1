@@ -1,4 +1,12 @@
-/*
+/* Kod który może się przydać.
+ 
+ 
+ 
+ int main (void
+ }
+ 
+     uint8_t prev_state = 0; // zmienna do zmiany stanu diody
+ {
  ON OFF DIODA
  while(1)
 {

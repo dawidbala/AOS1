@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		6323C0D31C18FE00001A21E6 /* AOS_v_0_5.4.bas */ = {isa = PBXFileReference; lastKnownFileType = text; name = AOS_v_0_5.4.bas; path = ../../Bascomp/AOS_v_0_5.4.bas; sourceTree = "<group>"; };
 		63A9671B1C18D7A000027729 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
-		63A9671C1C18D7A000027729 /* main.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
 		63A9671E1C18D82D00027729 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		6F883CCD1C6EA5E9004B6D3C /* lib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = lib; sourceTree = "<group>"; };
 		6F883CCE1C6EAE81004B6D3C /* bufor_code.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = bufor_code.cpp; sourceTree = "<group>"; };
@@ -21,8 +19,6 @@
 			children = (
 				6F883CCD1C6EA5E9004B6D3C /* lib */,
 				63A9671E1C18D82D00027729 /* Makefile */,
-				6323C0D31C18FE00001A21E6 /* AOS_v_0_5.4.bas */,
-				63A9671C1C18D7A000027729 /* main.h */,
 				6F883CCE1C6EAE81004B6D3C /* bufor_code.cpp */,
 				63A9671B1C18D7A000027729 /* main.c */,
 			);
