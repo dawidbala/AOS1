@@ -24,8 +24,9 @@ uint8_t RC5_get(uint8_t* addr, uint8_t* comm, uint8_t* tog){
 }
 
 void RC5_init(void){
-	DDRD &= ~(1<<PB6);//pin ICP1 jako wejœcie z podci¹ganiem
-	PORTD |= (1<<PB6);
+    //Konfiguracja w pliku control_signals_conf.h
+	//DDRD &= (~(1<<PD6));//pin ICP1 jako wejœcie z podci¹ganiem
+	//PORTD |= (1<<PD6);
 
 	//taktowanie z preskalera 16MHz/64, timer pracuje w trybie Input Capture (ICR)
 	TCCR1B |=(1<<CS11)|(1<<CS10);//preskaler 64

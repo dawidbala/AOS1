@@ -28,19 +28,21 @@
 int main(void)
 {
 // Konfiguracja portów
+    //Przyciski
     Btn_DIR = 0x00;
     Btn_PORT = 0xff;
+    //Czerowny workLED
     wLED_DIR     |= (1<<wLED);
     wLED_PORT    |= (1<<wLED);
-    
+    //Port B, End-stopy(1-5), Czujnik temperatury, przycisk L-
     DDRB = 0x00;
     PORTB = 0xff;
     
     
 // Inicjalizacje modółów
     LCD_Initalize(); // Inicjalizacja LCD
-    RC5_init();
-    sei(); // przerwania
+    RC5_init(); // Inizjalizacja RC5
+    sei(); // Przerwania
     
 // Zmienne
     // RC5
@@ -60,33 +62,33 @@ int main(void)
     while(1)
     {
 // MENU
-      if (PIND == Btn_LeftPlus)  // L+
+      if (Btn_LeftPlus)  // L+
         {
             PORTC &= (~(1<<7));
             LCD_Clear();
             LCD_GoTo(0,0);
             LCD_WriteText("L+");
         }
-      else if (PINB == 0xFE) // L-
+      else if (Btn_LeftMinus)// L-
         {
             PORTC |= (1<<7);
             LCD_Clear();
             LCD_GoTo(0,0);
             LCD_WriteText("L-");
         }
-      else if (PIND == Btn_PS) // P/S
+      else if (Btn_PS) // P/S
         {
             LCD_Clear();
             LCD_GoTo(0,0);
             LCD_WriteText("P/S");
         }
-      else if (PIND == Btn_S) // S
+      else if (Btn_S) // S
         {
           LCD_Clear();
           LCD_GoTo(0,0);
           LCD_WriteText("S");
         }
-      else if (PIND == Btn_M) // M
+      else if (Btn_M) // M
         {
             LCD_Clear();
             LCD_GoTo(0,0);
@@ -101,19 +103,19 @@ int main(void)
                 }
             }
         }
-      else if (PIND == Btn_Remote) // R
+      else if (Btn_Remote) // R
         {
             LCD_Clear();
             LCD_GoTo(0,0);
             LCD_WriteText("R");
         }
-      else if (PIND == Btn_RightMinus) // R-
+      else if (Btn_RightMinus) // R-
         {
             LCD_Clear();
             LCD_GoTo(0,0);
             LCD_WriteText("R-");
         }
-      else if (PIND == Btn_RightPlus) // R+
+      else if (Btn_RightPlus) // R+
         {
             LCD_Clear();
             LCD_GoTo(0,0);
