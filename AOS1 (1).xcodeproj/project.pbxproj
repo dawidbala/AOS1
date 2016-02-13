@@ -8,33 +8,21 @@
 
 /* Begin PBXFileReference section */
 		6323C0D31C18FE00001A21E6 /* AOS_v_0_5.4.bas */ = {isa = PBXFileReference; lastKnownFileType = text; name = AOS_v_0_5.4.bas; path = ../../Bascomp/AOS_v_0_5.4.bas; sourceTree = "<group>"; };
-		6323C0D81C191448001A21E6 /* lcd.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = lcd.h; path = lib/lcd.h; sourceTree = "<group>"; };
-		6323C0D91C191448001A21E6 /* lcd.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = lcd.c; path = lib/lcd.c; sourceTree = "<group>"; };
 		63A9671B1C18D7A000027729 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		63A9671C1C18D7A000027729 /* main.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = main.h; sourceTree = "<group>"; };
 		63A9671E1C18D82D00027729 /* Makefile */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
-		6FC9EC7E1C3E08CF0050063E /* avr_compiler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = avr_compiler.h; path = lib/avr_compiler.h; sourceTree = "<group>"; };
+		6F883CCD1C6EA5E9004B6D3C /* lib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = lib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
-		6323C0DC1C191E71001A21E6 /* Libraries */ = {
-			isa = PBXGroup;
-			children = (
-				6323C0D81C191448001A21E6 /* lcd.h */,
-				6323C0D91C191448001A21E6 /* lcd.c */,
-				6FC9EC7E1C3E08CF0050063E /* avr_compiler.h */,
-			);
-			name = Libraries;
-			sourceTree = "<group>";
-		};
 		63DEC9BB1C18C5B2000B88BE = {
 			isa = PBXGroup;
 			children = (
+				6F883CCD1C6EA5E9004B6D3C /* lib */,
 				63A9671E1C18D82D00027729 /* Makefile */,
 				6323C0D31C18FE00001A21E6 /* AOS_v_0_5.4.bas */,
 				63A9671C1C18D7A000027729 /* main.h */,
 				63A9671B1C18D7A000027729 /* main.c */,
-				6323C0DC1C191E71001A21E6 /* Libraries */,
 			);
 			sourceTree = "<group>";
 		};

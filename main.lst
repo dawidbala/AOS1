@@ -7,164 +7,155 @@
    7               		.text
    8               	.Ltext0:
    9               		.cfi_sections	.debug_frame
-  10               	.global	lcd_byte
-  12               	lcd_byte:
-  13               	.LFB12:
-  14               		.file 1 "lib/lcd.c"
-   1:lib/lcd.c     **** /*
-   2:lib/lcd.c     ****  * lcd.c
-   3:lib/lcd.c     ****  */
-   4:lib/lcd.c     **** 
-   5:lib/lcd.c     **** #include "lcd.h"
-   6:lib/lcd.c     **** inline void lcd_half( uint8_t data ) {
-   7:lib/lcd.c     ****     
-   8:lib/lcd.c     ****     if( data & (1<<0)) LCD_PORT |= (1<<LCD_D4);
-   9:lib/lcd.c     ****     else LCD_PORT &= ~(1<<LCD_D4);
-  10:lib/lcd.c     ****     
-  11:lib/lcd.c     ****     if( data & (1<<1)) LCD_PORT |= (1<<LCD_D5);
-  12:lib/lcd.c     ****     else LCD_PORT &= ~(1<<LCD_D5);
-  13:lib/lcd.c     ****     
-  14:lib/lcd.c     ****     if( data & (1<<2)) LCD_PORT |= (1<<LCD_D6);
-  15:lib/lcd.c     ****     else LCD_PORT &= ~(1<<LCD_D6);
-  16:lib/lcd.c     ****     
-  17:lib/lcd.c     ****     if( data & (1<<3)) LCD_PORT |= (1<<LCD_D7);
-  18:lib/lcd.c     ****     else LCD_PORT &= ~(1<<LCD_D7);
-  19:lib/lcd.c     ****     
-  20:lib/lcd.c     ****     
-  21:lib/lcd.c     **** }
-  22:lib/lcd.c     **** 
-  23:lib/lcd.c     **** void lcd_byte( uint8_t byte ) {
-  15               		.loc 1 23 0
+  10               	.global	_LCD_OutNibble
+  12               	_LCD_OutNibble:
+  13               	.LFB11:
+  14               		.file 1 "lib/HD44780.c"
+   1:lib/HD44780.c **** //-------------------------------------------------------------------------------------------------
+   2:lib/HD44780.c **** // Wyúwietlacz alfanumeryczny ze sterownikiem HD44780
+   3:lib/HD44780.c **** // Sterowanie w trybie 4-bitowym bez odczytu flagi zajÍtoúci
+   4:lib/HD44780.c **** // z dowolnym przypisaniem sygna≥Ûw sterujπcych
+   5:lib/HD44780.c **** // Plik : HD44780.c	
+   6:lib/HD44780.c **** // Mikrokontroler : Atmel AVR
+   7:lib/HD44780.c **** // Kompilator : avr-gcc
+   8:lib/HD44780.c **** // Autor : Rados≥aw KwiecieÒ
+   9:lib/HD44780.c **** // èrÛd≥o : http://radzio.dxp.pl/hd44780/
+  10:lib/HD44780.c **** // Data : 24.03.2007
+  11:lib/HD44780.c **** //-------------------------------------------------------------------------------------------------
+  12:lib/HD44780.c **** 
+  13:lib/HD44780.c **** #include "HD44780.h"
+  14:lib/HD44780.c **** //-------------------------------------------------------------------------------------------------
+  15:lib/HD44780.c **** //
+  16:lib/HD44780.c **** // Funkcja wystawiajπca pÛ≥bajt na magistralÍ danych
+  17:lib/HD44780.c **** //
+  18:lib/HD44780.c **** //-------------------------------------------------------------------------------------------------
+  19:lib/HD44780.c **** void _LCD_OutNibble(unsigned char nibbleToWrite)
+  20:lib/HD44780.c **** {
+  15               		.loc 1 20 0
   16               		.cfi_startproc
   17               	.LVL0:
   18               	/* prologue: function */
   19               	/* frame size = 0 */
   20               	/* stack size = 0 */
   21               	.L__stack_usage = 0
-  24:lib/lcd.c     ****     
-  25:lib/lcd.c     ****     LCD_PORT |= (1<<LCD_E);
-  22               		.loc 1 25 0
-  23 0000 AC9A      		sbi 0x15,4
-  26:lib/lcd.c     ****     lcd_half( byte >> 4 );
-  24               		.loc 1 26 0
-  25 0002 982F      		mov r25,r24
-  26 0004 9295      		swap r25
-  27 0006 9F70      		andi r25,lo8(15)
-  28               	.LVL1:
-  29               	.LBB12:
-  30               	.LBB13:
-   8:lib/lcd.c     ****     if( data & (1<<0)) LCD_PORT |= (1<<LCD_D4);
-  31               		.loc 1 8 0
-  32 0008 90FF      		sbrs r25,0
-  33 000a 00C0      		rjmp .L2
-  34 000c AB9A      		sbi 0x15,3
-  35 000e 00C0      		rjmp .L3
-  36               	.L2:
-   9:lib/lcd.c     ****     else LCD_PORT &= ~(1<<LCD_D4);
-  37               		.loc 1 9 0
-  38 0010 AB98      		cbi 0x15,3
-  39               	.L3:
-  11:lib/lcd.c     ****     if( data & (1<<1)) LCD_PORT |= (1<<LCD_D5);
-  40               		.loc 1 11 0
-  41 0012 91FF      		sbrs r25,1
-  42 0014 00C0      		rjmp .L4
-  43 0016 AA9A      		sbi 0x15,2
-  44 0018 00C0      		rjmp .L5
-  45               	.L4:
-  12:lib/lcd.c     ****     else LCD_PORT &= ~(1<<LCD_D5);
-  46               		.loc 1 12 0
-  47 001a AA98      		cbi 0x15,2
-  48               	.L5:
-  14:lib/lcd.c     ****     if( data & (1<<2)) LCD_PORT |= (1<<LCD_D6);
-  49               		.loc 1 14 0
-  50 001c 92FF      		sbrs r25,2
-  51 001e 00C0      		rjmp .L6
-  52 0020 A99A      		sbi 0x15,1
-  53 0022 00C0      		rjmp .L7
-  54               	.L6:
-  15:lib/lcd.c     ****     else LCD_PORT &= ~(1<<LCD_D6);
-  55               		.loc 1 15 0
-  56 0024 A998      		cbi 0x15,1
-  57               	.L7:
-  17:lib/lcd.c     ****     if( data & (1<<3)) LCD_PORT |= (1<<LCD_D7);
-  58               		.loc 1 17 0
-  59 0026 9870      		andi r25,lo8(8)
-  60               	.LVL2:
-  61 0028 01F0      		breq .L8
-  62 002a A89A      		sbi 0x15,0
-  63 002c 00C0      		rjmp .L9
-  64               	.L8:
-  18:lib/lcd.c     ****     else LCD_PORT &= ~(1<<LCD_D7);
-  65               		.loc 1 18 0
-  66 002e A898      		cbi 0x15,0
-  67               	.L9:
-  68               	.LBE13:
-  69               	.LBE12:
-  27:lib/lcd.c     ****     LCD_PORT &= ~(1<<LCD_E);
-  70               		.loc 1 27 0
-  71 0030 AC98      		cbi 0x15,4
-  28:lib/lcd.c     ****     
-  29:lib/lcd.c     ****     
-  30:lib/lcd.c     ****     LCD_PORT |= (1<<LCD_E);
-  72               		.loc 1 30 0
-  73 0032 AC9A      		sbi 0x15,4
-  74               	.LVL3:
-  75               	.LBB14:
-  76               	.LBB15:
-   8:lib/lcd.c     ****     if( data & (1<<0)) LCD_PORT |= (1<<LCD_D4);
-  77               		.loc 1 8 0
-  78 0034 80FF      		sbrs r24,0
-  79 0036 00C0      		rjmp .L10
-  80 0038 AB9A      		sbi 0x15,3
-  81 003a 00C0      		rjmp .L11
-  82               	.L10:
-   9:lib/lcd.c     ****     else LCD_PORT &= ~(1<<LCD_D4);
-  83               		.loc 1 9 0
-  84 003c AB98      		cbi 0x15,3
-  85               	.L11:
-  11:lib/lcd.c     ****     if( data & (1<<1)) LCD_PORT |= (1<<LCD_D5);
-  86               		.loc 1 11 0
-  87 003e 81FF      		sbrs r24,1
-  88 0040 00C0      		rjmp .L12
-  89 0042 AA9A      		sbi 0x15,2
-  90 0044 00C0      		rjmp .L13
-  91               	.L12:
-  12:lib/lcd.c     ****     else LCD_PORT &= ~(1<<LCD_D5);
-  92               		.loc 1 12 0
-  93 0046 AA98      		cbi 0x15,2
-  94               	.L13:
-  14:lib/lcd.c     ****     if( data & (1<<2)) LCD_PORT |= (1<<LCD_D6);
-  95               		.loc 1 14 0
-  96 0048 82FF      		sbrs r24,2
-  97 004a 00C0      		rjmp .L14
-  98 004c A99A      		sbi 0x15,1
-  99 004e 00C0      		rjmp .L15
- 100               	.L14:
-  15:lib/lcd.c     ****     else LCD_PORT &= ~(1<<LCD_D6);
- 101               		.loc 1 15 0
- 102 0050 A998      		cbi 0x15,1
- 103               	.L15:
-  17:lib/lcd.c     ****     if( data & (1<<3)) LCD_PORT |= (1<<LCD_D7);
- 104               		.loc 1 17 0
- 105 0052 83FF      		sbrs r24,3
- 106 0054 00C0      		rjmp .L16
- 107 0056 A89A      		sbi 0x15,0
- 108 0058 00C0      		rjmp .L17
- 109               	.L16:
-  18:lib/lcd.c     ****     else LCD_PORT &= ~(1<<LCD_D7);
- 110               		.loc 1 18 0
- 111 005a A898      		cbi 0x15,0
- 112               	.L17:
- 113               	.LBE15:
- 114               	.LBE14:
-  31:lib/lcd.c     ****     lcd_half( byte );
-  32:lib/lcd.c     ****     LCD_PORT &= ~(1<<LCD_E);
- 115               		.loc 1 32 0
- 116 005c AC98      		cbi 0x15,4
- 117               	.LVL4:
- 118               	.LBB16:
- 119               	.LBB17:
- 120               		.file 2 "/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h"
+  21:lib/HD44780.c **** if(nibbleToWrite & 0x01)
+  22               		.loc 1 21 0
+  23 0000 80FF      		sbrs r24,0
+  24 0002 00C0      		rjmp .L2
+  22:lib/HD44780.c **** 	LCD_DB4_PORT |= LCD_DB4;
+  25               		.loc 1 22 0
+  26 0004 AB9A      		sbi 0x15,3
+  27 0006 00C0      		rjmp .L3
+  28               	.L2:
+  23:lib/HD44780.c **** else
+  24:lib/HD44780.c **** 	LCD_DB4_PORT  &= ~LCD_DB4;
+  29               		.loc 1 24 0
+  30 0008 AB98      		cbi 0x15,3
+  31               	.L3:
+  25:lib/HD44780.c **** 
+  26:lib/HD44780.c **** if(nibbleToWrite & 0x02)
+  32               		.loc 1 26 0
+  33 000a 81FF      		sbrs r24,1
+  34 000c 00C0      		rjmp .L4
+  27:lib/HD44780.c **** 	LCD_DB5_PORT |= LCD_DB5;
+  35               		.loc 1 27 0
+  36 000e AA9A      		sbi 0x15,2
+  37 0010 00C0      		rjmp .L5
+  38               	.L4:
+  28:lib/HD44780.c **** else
+  29:lib/HD44780.c **** 	LCD_DB5_PORT  &= ~LCD_DB5;
+  39               		.loc 1 29 0
+  40 0012 AA98      		cbi 0x15,2
+  41               	.L5:
+  30:lib/HD44780.c **** 
+  31:lib/HD44780.c **** if(nibbleToWrite & 0x04)
+  42               		.loc 1 31 0
+  43 0014 82FF      		sbrs r24,2
+  44 0016 00C0      		rjmp .L6
+  32:lib/HD44780.c **** 	LCD_DB6_PORT |= LCD_DB6;
+  45               		.loc 1 32 0
+  46 0018 A99A      		sbi 0x15,1
+  47 001a 00C0      		rjmp .L7
+  48               	.L6:
+  33:lib/HD44780.c **** else
+  34:lib/HD44780.c **** 	LCD_DB6_PORT  &= ~LCD_DB6;
+  49               		.loc 1 34 0
+  50 001c A998      		cbi 0x15,1
+  51               	.L7:
+  35:lib/HD44780.c **** 
+  36:lib/HD44780.c **** if(nibbleToWrite & 0x08)
+  52               		.loc 1 36 0
+  53 001e 83FF      		sbrs r24,3
+  54 0020 00C0      		rjmp .L8
+  55               	.LVL1:
+  56               	.LBB18:
+  57               	.LBB19:
+  37:lib/HD44780.c **** 	LCD_DB7_PORT |= LCD_DB7;
+  58               		.loc 1 37 0
+  59 0022 A89A      		sbi 0x15,0
+  60 0024 0895      		ret
+  61               	.LVL2:
+  62               	.L8:
+  63               	.LBE19:
+  64               	.LBE18:
+  38:lib/HD44780.c **** else
+  39:lib/HD44780.c **** 	LCD_DB7_PORT  &= ~LCD_DB7;
+  65               		.loc 1 39 0
+  66 0026 A898      		cbi 0x15,0
+  67 0028 0895      		ret
+  68               		.cfi_endproc
+  69               	.LFE11:
+  71               	.global	_LCD_Write
+  73               	_LCD_Write:
+  74               	.LFB12:
+  40:lib/HD44780.c **** }
+  41:lib/HD44780.c **** //-------------------------------------------------------------------------------------------------
+  42:lib/HD44780.c **** //
+  43:lib/HD44780.c **** // Funkcja zapisu bajtu do wyúwietacza (bez rozrÛønienia instrukcja/dane).
+  44:lib/HD44780.c **** //
+  45:lib/HD44780.c **** //-------------------------------------------------------------------------------------------------
+  46:lib/HD44780.c **** void _LCD_Write(unsigned char dataToWrite)
+  47:lib/HD44780.c **** {
+  75               		.loc 1 47 0
+  76               		.cfi_startproc
+  77               	.LVL3:
+  78 002a CF93      		push r28
+  79               	.LCFI0:
+  80               		.cfi_def_cfa_offset 3
+  81               		.cfi_offset 28, -2
+  82               	/* prologue: function */
+  83               	/* frame size = 0 */
+  84               	/* stack size = 1 */
+  85               	.L__stack_usage = 1
+  86 002c C82F      		mov r28,r24
+  48:lib/HD44780.c **** LCD_E_PORT |= LCD_E;
+  87               		.loc 1 48 0
+  88 002e AC9A      		sbi 0x15,4
+  49:lib/HD44780.c **** _LCD_OutNibble(dataToWrite >> 4);
+  89               		.loc 1 49 0
+  90 0030 8295      		swap r24
+  91               	.LVL4:
+  92 0032 8F70      		andi r24,lo8(15)
+  93 0034 0E94 0000 		call _LCD_OutNibble
+  94               	.LVL5:
+  50:lib/HD44780.c **** LCD_E_PORT &= ~LCD_E;
+  95               		.loc 1 50 0
+  96 0038 AC98      		cbi 0x15,4
+  51:lib/HD44780.c **** LCD_E_PORT |= LCD_E;
+  97               		.loc 1 51 0
+  98 003a AC9A      		sbi 0x15,4
+  52:lib/HD44780.c **** _LCD_OutNibble(dataToWrite);
+  99               		.loc 1 52 0
+ 100 003c 8C2F      		mov r24,r28
+ 101 003e 0E94 0000 		call _LCD_OutNibble
+ 102               	.LVL6:
+  53:lib/HD44780.c **** LCD_E_PORT &= ~LCD_E;
+ 103               		.loc 1 53 0
+ 104 0042 AC98      		cbi 0x15,4
+ 105               	.LVL7:
+ 106               	.LBB20:
+ 107               	.LBB21:
+ 108               		.file 2 "/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h"
    1:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h **** /* Copyright (c) 2002, Marek Michalkiewicz
    2:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h ****    Copyright (c) 2004,2005,2007 Joerg Wunsch
    3:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h ****    Copyright (c) 2007  Florin-Viorel Petrov
@@ -410,375 +401,723 @@
  243:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h **** 	#endif
  244:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h **** 
  245:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h **** 	__builtin_avr_delay_cycles(__ticks_dc);
- 121               		.loc 2 245 0
- 122 005e 8FED      		ldi r24,lo8(479)
- 123 0060 91E0      		ldi r25,hi8(479)
- 124 0062 0197      		1: sbiw r24,1
- 125 0064 01F4      		brne 1b
- 126               	.LVL5:
- 127 0066 00C0      		rjmp .
- 128 0068 0000      		nop
- 129 006a 0895      		ret
- 130               	.LBE17:
- 131               	.LBE16:
- 132               		.cfi_endproc
- 133               	.LFE12:
- 135               	.global	lcd_cmd
- 137               	lcd_cmd:
- 138               	.LFB13:
-  33:lib/lcd.c     ****     
-  34:lib/lcd.c     ****     _delay_us(120);
-  35:lib/lcd.c     **** }
-  36:lib/lcd.c     **** 
-  37:lib/lcd.c     **** void lcd_cmd( uint8_t cmd ) {
- 139               		.loc 1 37 0
- 140               		.cfi_startproc
- 141               	.LVL6:
- 142               	/* prologue: function */
- 143               	/* frame size = 0 */
- 144               	/* stack size = 0 */
- 145               	.L__stack_usage = 0
-  38:lib/lcd.c     ****     
-  39:lib/lcd.c     ****     LCD_PORT &= ~(1<<LCD_RS);
- 146               		.loc 1 39 0
- 147 006c AD98      		cbi 0x15,5
-  40:lib/lcd.c     ****     lcd_byte( cmd );
- 148               		.loc 1 40 0
- 149 006e 0C94 0000 		jmp lcd_byte
- 150               	.LVL7:
- 151               		.cfi_endproc
- 152               	.LFE13:
- 154               	.global	lcd_data
- 156               	lcd_data:
- 157               	.LFB14:
-  41:lib/lcd.c     **** }
-  42:lib/lcd.c     **** 
-  43:lib/lcd.c     **** void lcd_data( uint8_t data ) {
- 158               		.loc 1 43 0
- 159               		.cfi_startproc
- 160               	.LVL8:
- 161               	/* prologue: function */
- 162               	/* frame size = 0 */
- 163               	/* stack size = 0 */
- 164               	.L__stack_usage = 0
-  44:lib/lcd.c     ****     
-  45:lib/lcd.c     ****     LCD_PORT |= (1<<LCD_RS);
- 165               		.loc 1 45 0
- 166 0072 AD9A      		sbi 0x15,5
-  46:lib/lcd.c     ****     lcd_byte( data );
- 167               		.loc 1 46 0
- 168 0074 0C94 0000 		jmp lcd_byte
- 169               	.LVL9:
- 170               		.cfi_endproc
- 171               	.LFE14:
- 173               	.global	lcd_string
- 175               	lcd_string:
- 176               	.LFB15:
-  47:lib/lcd.c     **** }
-  48:lib/lcd.c     **** 
-  49:lib/lcd.c     **** void lcd_string( char * string ) {
- 177               		.loc 1 49 0
- 178               		.cfi_startproc
- 179               	.LVL10:
- 180 0078 CF93      		push r28
- 181               	.LCFI0:
- 182               		.cfi_def_cfa_offset 3
- 183               		.cfi_offset 28, -2
- 184 007a DF93      		push r29
- 185               	.LCFI1:
- 186               		.cfi_def_cfa_offset 4
- 187               		.cfi_offset 29, -3
- 188               	/* prologue: function */
- 189               	/* frame size = 0 */
- 190               	/* stack size = 2 */
- 191               	.L__stack_usage = 2
- 192 007c EC01      		movw r28,r24
- 193               	.LVL11:
- 194               	.L22:
-  50:lib/lcd.c     ****     
-  51:lib/lcd.c     ****     while( *string ) lcd_data( *string++ );
- 195               		.loc 1 51 0 discriminator 1
- 196 007e 8991      		ld r24,Y+
- 197               	.LVL12:
- 198 0080 8823      		tst r24
- 199 0082 01F0      		breq .L24
- 200               	.LVL13:
- 201               		.loc 1 51 0 is_stmt 0 discriminator 2
- 202 0084 0E94 0000 		call lcd_data
- 203               	.LVL14:
- 204 0088 00C0      		rjmp .L22
- 205               	.LVL15:
- 206               	.L24:
- 207               	/* epilogue start */
-  52:lib/lcd.c     **** }
- 208               		.loc 1 52 0 is_stmt 1
- 209 008a DF91      		pop r29
- 210 008c CF91      		pop r28
- 211               	.LVL16:
- 212 008e 0895      		ret
- 213               		.cfi_endproc
- 214               	.LFE15:
- 216               	.global	lcd_cls
- 218               	lcd_cls:
- 219               	.LFB16:
-  53:lib/lcd.c     **** 
-  54:lib/lcd.c     **** void lcd_cls() {
- 220               		.loc 1 54 0
- 221               		.cfi_startproc
- 222               	/* prologue: function */
- 223               	/* frame size = 0 */
- 224               	/* stack size = 0 */
- 225               	.L__stack_usage = 0
-  55:lib/lcd.c     ****     lcd_cmd( 0x01 );
- 226               		.loc 1 55 0
- 227 0090 81E0      		ldi r24,lo8(1)
- 228 0092 0C94 0000 		jmp lcd_cmd
- 229               	.LVL17:
- 230               		.cfi_endproc
- 231               	.LFE16:
- 233               	.global	lcd_locate
- 235               	lcd_locate:
- 236               	.LFB17:
-  56:lib/lcd.c     **** }
-  57:lib/lcd.c     **** 
-  58:lib/lcd.c     **** void lcd_locate( uint8_t y, uint8_t x ) {
- 237               		.loc 1 58 0
- 238               		.cfi_startproc
- 239               	.LVL18:
- 240               	/* prologue: function */
- 241               	/* frame size = 0 */
- 242               	/* stack size = 0 */
- 243               	.L__stack_usage = 0
- 244 0096 0895      		ret
- 245               		.cfi_endproc
- 246               	.LFE17:
- 248               	.global	lcd_init
- 250               	lcd_init:
- 251               	.LFB18:
-  59:lib/lcd.c     ****     
-  60:lib/lcd.c     ****     switch( y ) {
-  61:lib/lcd.c     ****             
-  62:lib/lcd.c     ****         case 0: y = 0x00; break;
-  63:lib/lcd.c     ****         case 1: y = 0x40; break;
-  64:lib/lcd.c     ****             
-  65:lib/lcd.c     ****             
-  66:lib/lcd.c     ****             
-  67:lib/lcd.c     ****             lcd_cmd( (0x80+y+x) );
-  68:lib/lcd.c     ****             
-  69:lib/lcd.c     ****     }
-  70:lib/lcd.c     **** }
-  71:lib/lcd.c     **** 
-  72:lib/lcd.c     **** void lcd_init() {
- 252               		.loc 1 72 0
- 253               		.cfi_startproc
- 254               	/* prologue: function */
- 255               	/* frame size = 0 */
- 256               	/* stack size = 0 */
- 257               	.L__stack_usage = 0
-  73:lib/lcd.c     ****     
-  74:lib/lcd.c     ****     LCD_DDR |= ( (1<<LCD_RS) | (1<<LCD_E) | (1<<LCD_D4) | (1<<LCD_D5) | (1<<LCD_D6) | (1<<LCD_D7));
- 258               		.loc 1 74 0
- 259 0098 84B3      		in r24,0x14
- 260 009a 8F63      		ori r24,lo8(63)
- 261 009c 84BB      		out 0x14,r24
-  75:lib/lcd.c     ****     
-  76:lib/lcd.c     ****     lcd_cmd( 0x06 );
- 262               		.loc 1 76 0
- 263 009e 86E0      		ldi r24,lo8(6)
- 264 00a0 0E94 0000 		call lcd_cmd
- 265               	.LVL19:
-  77:lib/lcd.c     ****     lcd_cmd( 0x0C );
- 266               		.loc 1 77 0
- 267 00a4 8CE0      		ldi r24,lo8(12)
- 268 00a6 0E94 0000 		call lcd_cmd
- 269               	.LVL20:
-  78:lib/lcd.c     ****     lcd_cmd( 0x17 );
- 270               		.loc 1 78 0
- 271 00aa 87E1      		ldi r24,lo8(23)
- 272 00ac 0E94 0000 		call lcd_cmd
- 273               	.LVL21:
-  79:lib/lcd.c     ****     lcd_cmd( 0x28 );
- 274               		.loc 1 79 0
- 275 00b0 88E2      		ldi r24,lo8(40)
- 276 00b2 0E94 0000 		call lcd_cmd
- 277               	.LVL22:
-  80:lib/lcd.c     ****     
-  81:lib/lcd.c     ****     lcd_cls();
- 278               		.loc 1 81 0
- 279 00b6 0E94 0000 		call lcd_cls
- 280               	.LVL23:
- 281               	.LBB18:
- 282               	.LBB19:
- 283               		.loc 2 245 0
- 284 00ba 8FE1      		ldi r24,lo8(799)
- 285 00bc 93E0      		ldi r25,hi8(799)
- 286 00be 0197      		1: sbiw r24,1
- 287 00c0 01F4      		brne 1b
- 288 00c2 00C0      		rjmp .
- 289 00c4 0000      		nop
- 290 00c6 0895      		ret
- 291               	.LBE19:
- 292               	.LBE18:
- 293               		.cfi_endproc
- 294               	.LFE18:
- 296               		.section	.text.startup,"ax",@progbits
- 297               	.global	main
- 299               	main:
- 300               	.LFB19:
- 301               		.file 3 "main.c"
+ 109               		.loc 2 245 0
+ 110 0044 87EC      		ldi r24,lo8(199)
+ 111 0046 90E0      		ldi r25,hi8(199)
+ 112 0048 0197      		1: sbiw r24,1
+ 113 004a 01F4      		brne 1b
+ 114 004c 00C0      		rjmp .
+ 115 004e 0000      		nop
+ 116               	/* epilogue start */
+ 117               	.LBE21:
+ 118               	.LBE20:
+  54:lib/HD44780.c **** _delay_us(50);
+  55:lib/HD44780.c **** }
+ 119               		.loc 1 55 0
+ 120 0050 CF91      		pop r28
+ 121               	.LVL8:
+ 122 0052 0895      		ret
+ 123               		.cfi_endproc
+ 124               	.LFE12:
+ 126               	.global	LCD_WriteCommand
+ 128               	LCD_WriteCommand:
+ 129               	.LFB13:
+  56:lib/HD44780.c **** //-------------------------------------------------------------------------------------------------
+  57:lib/HD44780.c **** //
+  58:lib/HD44780.c **** // Funkcja zapisu rozkazu do wyúwietlacza
+  59:lib/HD44780.c **** //
+  60:lib/HD44780.c **** //-------------------------------------------------------------------------------------------------
+  61:lib/HD44780.c **** void LCD_WriteCommand(unsigned char commandToWrite)
+  62:lib/HD44780.c **** {
+ 130               		.loc 1 62 0
+ 131               		.cfi_startproc
+ 132               	.LVL9:
+ 133               	/* prologue: function */
+ 134               	/* frame size = 0 */
+ 135               	/* stack size = 0 */
+ 136               	.L__stack_usage = 0
+  63:lib/HD44780.c **** LCD_RS_PORT &= ~LCD_RS;
+ 137               		.loc 1 63 0
+ 138 0054 AD98      		cbi 0x15,5
+  64:lib/HD44780.c **** _LCD_Write(commandToWrite);
+ 139               		.loc 1 64 0
+ 140 0056 0C94 0000 		jmp _LCD_Write
+ 141               	.LVL10:
+ 142               		.cfi_endproc
+ 143               	.LFE13:
+ 145               	.global	LCD_WriteData
+ 147               	LCD_WriteData:
+ 148               	.LFB14:
+  65:lib/HD44780.c **** }
+  66:lib/HD44780.c **** //-------------------------------------------------------------------------------------------------
+  67:lib/HD44780.c **** //
+  68:lib/HD44780.c **** // Funkcja zapisu danych do pamiÍci wyúwietlacza
+  69:lib/HD44780.c **** //
+  70:lib/HD44780.c **** //-------------------------------------------------------------------------------------------------
+  71:lib/HD44780.c **** void LCD_WriteData(unsigned char dataToWrite)
+  72:lib/HD44780.c **** {
+ 149               		.loc 1 72 0
+ 150               		.cfi_startproc
+ 151               	.LVL11:
+ 152               	/* prologue: function */
+ 153               	/* frame size = 0 */
+ 154               	/* stack size = 0 */
+ 155               	.L__stack_usage = 0
+  73:lib/HD44780.c **** LCD_RS_PORT |= LCD_RS;
+ 156               		.loc 1 73 0
+ 157 005a AD9A      		sbi 0x15,5
+  74:lib/HD44780.c **** _LCD_Write(dataToWrite);
+ 158               		.loc 1 74 0
+ 159 005c 0C94 0000 		jmp _LCD_Write
+ 160               	.LVL12:
+ 161               		.cfi_endproc
+ 162               	.LFE14:
+ 164               	.global	LCD_WriteText
+ 166               	LCD_WriteText:
+ 167               	.LFB15:
+  75:lib/HD44780.c **** }
+  76:lib/HD44780.c **** //-------------------------------------------------------------------------------------------------
+  77:lib/HD44780.c **** //
+  78:lib/HD44780.c **** // Funkcja wyúwietlenia napisu na wyswietlaczu.
+  79:lib/HD44780.c **** //
+  80:lib/HD44780.c **** //-------------------------------------------------------------------------------------------------
+  81:lib/HD44780.c **** void LCD_WriteText(char * text)
+  82:lib/HD44780.c **** {
+ 168               		.loc 1 82 0
+ 169               		.cfi_startproc
+ 170               	.LVL13:
+ 171 0060 CF93      		push r28
+ 172               	.LCFI1:
+ 173               		.cfi_def_cfa_offset 3
+ 174               		.cfi_offset 28, -2
+ 175 0062 DF93      		push r29
+ 176               	.LCFI2:
+ 177               		.cfi_def_cfa_offset 4
+ 178               		.cfi_offset 29, -3
+ 179               	/* prologue: function */
+ 180               	/* frame size = 0 */
+ 181               	/* stack size = 2 */
+ 182               	.L__stack_usage = 2
+ 183 0064 EC01      		movw r28,r24
+ 184               	.LVL14:
+ 185               	.L15:
+  83:lib/HD44780.c **** while(*text)
+ 186               		.loc 1 83 0 discriminator 1
+ 187 0066 8991      		ld r24,Y+
+ 188               	.LVL15:
+ 189 0068 8823      		tst r24
+ 190 006a 01F0      		breq .L17
+ 191               	.LVL16:
+  84:lib/HD44780.c ****   LCD_WriteData(*text++);
+ 192               		.loc 1 84 0
+ 193 006c 0E94 0000 		call LCD_WriteData
+ 194               	.LVL17:
+ 195 0070 00C0      		rjmp .L15
+ 196               	.LVL18:
+ 197               	.L17:
+ 198               	/* epilogue start */
+  85:lib/HD44780.c **** }
+ 199               		.loc 1 85 0
+ 200 0072 DF91      		pop r29
+ 201 0074 CF91      		pop r28
+ 202               	.LVL19:
+ 203 0076 0895      		ret
+ 204               		.cfi_endproc
+ 205               	.LFE15:
+ 207               	.global	LCD_GoTo
+ 209               	LCD_GoTo:
+ 210               	.LFB16:
+  86:lib/HD44780.c **** //-------------------------------------------------------------------------------------------------
+  87:lib/HD44780.c **** //
+  88:lib/HD44780.c **** // Funkcja ustawienia wspÛ≥rzÍdnych ekranowych
+  89:lib/HD44780.c **** //
+  90:lib/HD44780.c **** //-------------------------------------------------------------------------------------------------
+  91:lib/HD44780.c **** void LCD_GoTo(unsigned char x, unsigned char y)
+  92:lib/HD44780.c **** {
+ 211               		.loc 1 92 0
+ 212               		.cfi_startproc
+ 213               	.LVL20:
+ 214               	/* prologue: function */
+ 215               	/* frame size = 0 */
+ 216               	/* stack size = 0 */
+ 217               	.L__stack_usage = 0
+  93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
+ 218               		.loc 1 93 0
+ 219 0078 90E4      		ldi r25,lo8(64)
+ 220 007a 699F      		mul r22,r25
+ 221 007c 800D      		add r24,r0
+ 222 007e 1124      		clr __zero_reg__
+ 223               	.LVL21:
+ 224 0080 8068      		ori r24,lo8(-128)
+ 225 0082 0C94 0000 		jmp LCD_WriteCommand
+ 226               	.LVL22:
+ 227               		.cfi_endproc
+ 228               	.LFE16:
+ 230               	.global	LCD_Clear
+ 232               	LCD_Clear:
+ 233               	.LFB17:
+  94:lib/HD44780.c **** }
+  95:lib/HD44780.c **** //-------------------------------------------------------------------------------------------------
+  96:lib/HD44780.c **** //
+  97:lib/HD44780.c **** // Funkcja czyszczenia ekranu wyúwietlacza.
+  98:lib/HD44780.c **** //
+  99:lib/HD44780.c **** //-------------------------------------------------------------------------------------------------
+ 100:lib/HD44780.c **** void LCD_Clear(void)
+ 101:lib/HD44780.c **** {
+ 234               		.loc 1 101 0
+ 235               		.cfi_startproc
+ 236               	/* prologue: function */
+ 237               	/* frame size = 0 */
+ 238               	/* stack size = 0 */
+ 239               	.L__stack_usage = 0
+ 102:lib/HD44780.c **** LCD_WriteCommand(HD44780_CLEAR);
+ 240               		.loc 1 102 0
+ 241 0086 81E0      		ldi r24,lo8(1)
+ 242 0088 0E94 0000 		call LCD_WriteCommand
+ 243               	.LVL23:
+ 244               	.LBB22:
+ 245               	.LBB23:
+ 163:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h **** 	__builtin_avr_delay_cycles(__ticks_dc);
+ 246               		.loc 2 163 0
+ 247 008c 8FE3      		ldi r24,lo8(7999)
+ 248 008e 9FE1      		ldi r25,hi8(7999)
+ 249 0090 0197      		1: sbiw r24,1
+ 250 0092 01F4      		brne 1b
+ 251 0094 00C0      		rjmp .
+ 252 0096 0000      		nop
+ 253 0098 0895      		ret
+ 254               	.LBE23:
+ 255               	.LBE22:
+ 256               		.cfi_endproc
+ 257               	.LFE17:
+ 259               	.global	LCD_Home
+ 261               	LCD_Home:
+ 262               	.LFB18:
+ 103:lib/HD44780.c **** _delay_ms(2);
+ 104:lib/HD44780.c **** }
+ 105:lib/HD44780.c **** //-------------------------------------------------------------------------------------------------
+ 106:lib/HD44780.c **** //
+ 107:lib/HD44780.c **** // Funkcja przywrÛcenia poczπtkowych wspÛ≥rzÍdnych wyúwietlacza.
+ 108:lib/HD44780.c **** //
+ 109:lib/HD44780.c **** //-------------------------------------------------------------------------------------------------
+ 110:lib/HD44780.c **** void LCD_Home(void)
+ 111:lib/HD44780.c **** {
+ 263               		.loc 1 111 0
+ 264               		.cfi_startproc
+ 265               	/* prologue: function */
+ 266               	/* frame size = 0 */
+ 267               	/* stack size = 0 */
+ 268               	.L__stack_usage = 0
+ 112:lib/HD44780.c **** LCD_WriteCommand(HD44780_HOME);
+ 269               		.loc 1 112 0
+ 270 009a 82E0      		ldi r24,lo8(2)
+ 271 009c 0E94 0000 		call LCD_WriteCommand
+ 272               	.LVL24:
+ 273               	.LBB24:
+ 274               	.LBB25:
+ 163:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h **** 	__builtin_avr_delay_cycles(__ticks_dc);
+ 275               		.loc 2 163 0
+ 276 00a0 8FE3      		ldi r24,lo8(7999)
+ 277 00a2 9FE1      		ldi r25,hi8(7999)
+ 278 00a4 0197      		1: sbiw r24,1
+ 279 00a6 01F4      		brne 1b
+ 280 00a8 00C0      		rjmp .
+ 281 00aa 0000      		nop
+ 282 00ac 0895      		ret
+ 283               	.LBE25:
+ 284               	.LBE24:
+ 285               		.cfi_endproc
+ 286               	.LFE18:
+ 288               	.global	LCD_Initalize
+ 290               	LCD_Initalize:
+ 291               	.LFB19:
+ 113:lib/HD44780.c **** _delay_ms(2);
+ 114:lib/HD44780.c **** }
+ 115:lib/HD44780.c **** //-------------------------------------------------------------------------------------------------
+ 116:lib/HD44780.c **** //
+ 117:lib/HD44780.c **** // Procedura inicjalizacji kontrolera HD44780.
+ 118:lib/HD44780.c **** //
+ 119:lib/HD44780.c **** //-------------------------------------------------------------------------------------------------
+ 120:lib/HD44780.c **** void LCD_Initalize(void)
+ 121:lib/HD44780.c **** {
+ 292               		.loc 1 121 0
+ 293               		.cfi_startproc
+ 294 00ae CF93      		push r28
+ 295               	.LCFI3:
+ 296               		.cfi_def_cfa_offset 3
+ 297               		.cfi_offset 28, -2
+ 298               	/* prologue: function */
+ 299               	/* frame size = 0 */
+ 300               	/* stack size = 1 */
+ 301               	.L__stack_usage = 1
+ 122:lib/HD44780.c **** unsigned char i;
+ 123:lib/HD44780.c **** LCD_DB4_DIR |= LCD_DB4; // Konfiguracja kierunku pracy wyprowadzeÒ
+ 302               		.loc 1 123 0
+ 303 00b0 A39A      		sbi 0x14,3
+ 124:lib/HD44780.c **** LCD_DB5_DIR |= LCD_DB5; //
+ 304               		.loc 1 124 0
+ 305 00b2 A29A      		sbi 0x14,2
+ 125:lib/HD44780.c **** LCD_DB6_DIR |= LCD_DB6; //
+ 306               		.loc 1 125 0
+ 307 00b4 A19A      		sbi 0x14,1
+ 126:lib/HD44780.c **** LCD_DB7_DIR |= LCD_DB7; //
+ 308               		.loc 1 126 0
+ 309 00b6 A09A      		sbi 0x14,0
+ 127:lib/HD44780.c **** LCD_E_DIR 	|= LCD_E;   //
+ 310               		.loc 1 127 0
+ 311 00b8 A49A      		sbi 0x14,4
+ 128:lib/HD44780.c **** LCD_RS_DIR 	|= LCD_RS;  //
+ 312               		.loc 1 128 0
+ 313 00ba A59A      		sbi 0x14,5
+ 314               	.LVL25:
+ 315               	.LBB26:
+ 316               	.LBB27:
+ 163:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h **** 	__builtin_avr_delay_cycles(__ticks_dc);
+ 317               		.loc 2 163 0
+ 318 00bc 8FE5      		ldi r24,lo8(-5537)
+ 319 00be 9AEE      		ldi r25,hi8(-5537)
+ 320 00c0 0197      		1: sbiw r24,1
+ 321 00c2 01F4      		brne 1b
+ 322 00c4 00C0      		rjmp .
+ 323 00c6 0000      		nop
+ 324               	.LBE27:
+ 325               	.LBE26:
+ 129:lib/HD44780.c **** _delay_ms(15); // oczekiwanie na ustalibizowanie siÍ napiecia zasilajacego
+ 130:lib/HD44780.c **** LCD_RS_PORT &= ~LCD_RS; // wyzerowanie linii RS
+ 326               		.loc 1 130 0
+ 327 00c8 AD98      		cbi 0x15,5
+ 131:lib/HD44780.c **** LCD_E_PORT &= ~LCD_E;  // wyzerowanie linii E
+ 328               		.loc 1 131 0
+ 329 00ca AC98      		cbi 0x15,4
+ 330               	.LVL26:
+ 331 00cc C3E0      		ldi r28,lo8(3)
+ 332               	.LVL27:
+ 333               	.L23:
+ 132:lib/HD44780.c **** 
+ 133:lib/HD44780.c **** for(i = 0; i < 3; i++) // trzykrotne powtÛrzenie bloku instrukcji
+ 134:lib/HD44780.c ****   {
+ 135:lib/HD44780.c ****   LCD_E_PORT |= LCD_E; //  E = 1
+ 334               		.loc 1 135 0 discriminator 2
+ 335 00ce AC9A      		sbi 0x15,4
+ 136:lib/HD44780.c ****   _LCD_OutNibble(0x03); // tryb 8-bitowy
+ 336               		.loc 1 136 0 discriminator 2
+ 337 00d0 83E0      		ldi r24,lo8(3)
+ 338 00d2 0E94 0000 		call _LCD_OutNibble
+ 339               	.LVL28:
+ 137:lib/HD44780.c ****   LCD_E_PORT &= ~LCD_E; // E = 0
+ 340               		.loc 1 137 0 discriminator 2
+ 341 00d6 AC98      		cbi 0x15,4
+ 342               	.LVL29:
+ 343               	.LBB28:
+ 344               	.LBB29:
+ 163:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h **** 	__builtin_avr_delay_cycles(__ticks_dc);
+ 345               		.loc 2 163 0 discriminator 2
+ 346 00d8 8FE1      		ldi r24,lo8(19999)
+ 347 00da 9EE4      		ldi r25,hi8(19999)
+ 348 00dc 0197      		1: sbiw r24,1
+ 349 00de 01F4      		brne 1b
+ 350 00e0 00C0      		rjmp .
+ 351 00e2 0000      		nop
+ 352               	.LVL30:
+ 353 00e4 C150      		subi r28,lo8(-(-1))
+ 354               	.LVL31:
+ 355               	.LBE29:
+ 356               	.LBE28:
+ 133:lib/HD44780.c **** for(i = 0; i < 3; i++) // trzykrotne powtÛrzenie bloku instrukcji
+ 357               		.loc 1 133 0 discriminator 2
+ 358 00e6 01F4      		brne .L23
+ 138:lib/HD44780.c ****   _delay_ms(5); // czekaj 5ms
+ 139:lib/HD44780.c ****   }
+ 140:lib/HD44780.c **** 
+ 141:lib/HD44780.c **** LCD_E_PORT |= LCD_E; // E = 1
+ 359               		.loc 1 141 0
+ 360 00e8 AC9A      		sbi 0x15,4
+ 142:lib/HD44780.c **** _LCD_OutNibble(0x02); // tryb 4-bitowy
+ 361               		.loc 1 142 0
+ 362 00ea 82E0      		ldi r24,lo8(2)
+ 363 00ec 0E94 0000 		call _LCD_OutNibble
+ 364               	.LVL32:
+ 143:lib/HD44780.c **** LCD_E_PORT &= ~LCD_E; // E = 0
+ 365               		.loc 1 143 0
+ 366 00f0 AC98      		cbi 0x15,4
+ 367               	.LVL33:
+ 368               	.LBB30:
+ 369               	.LBB31:
+ 163:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h **** 	__builtin_avr_delay_cycles(__ticks_dc);
+ 370               		.loc 2 163 0
+ 371 00f2 8FE9      		ldi r24,lo8(3999)
+ 372 00f4 9FE0      		ldi r25,hi8(3999)
+ 373 00f6 0197      		1: sbiw r24,1
+ 374 00f8 01F4      		brne 1b
+ 375 00fa 00C0      		rjmp .
+ 376 00fc 0000      		nop
+ 377               	.LBE31:
+ 378               	.LBE30:
+ 144:lib/HD44780.c **** 
+ 145:lib/HD44780.c **** _delay_ms(1); // czekaj 1ms 
+ 146:lib/HD44780.c **** LCD_WriteCommand(HD44780_FUNCTION_SET | HD44780_FONT5x7 | HD44780_TWO_LINE | HD44780_4_BIT); // int
+ 379               		.loc 1 146 0
+ 380 00fe 88E2      		ldi r24,lo8(40)
+ 381 0100 0E94 0000 		call LCD_WriteCommand
+ 382               	.LVL34:
+ 147:lib/HD44780.c **** LCD_WriteCommand(HD44780_DISPLAY_ONOFF | HD44780_DISPLAY_OFF); // wy≥πczenie wyswietlacza
+ 383               		.loc 1 147 0
+ 384 0104 88E0      		ldi r24,lo8(8)
+ 385 0106 0E94 0000 		call LCD_WriteCommand
+ 386               	.LVL35:
+ 148:lib/HD44780.c **** LCD_WriteCommand(HD44780_CLEAR); // czyszczenie zawartosÊi pamieci DDRAM
+ 387               		.loc 1 148 0
+ 388 010a 81E0      		ldi r24,lo8(1)
+ 389 010c 0E94 0000 		call LCD_WriteCommand
+ 390               	.LVL36:
+ 391               	.LBB32:
+ 392               	.LBB33:
+ 163:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h **** 	__builtin_avr_delay_cycles(__ticks_dc);
+ 393               		.loc 2 163 0
+ 394 0110 8FE3      		ldi r24,lo8(7999)
+ 395 0112 9FE1      		ldi r25,hi8(7999)
+ 396 0114 0197      		1: sbiw r24,1
+ 397 0116 01F4      		brne 1b
+ 398 0118 00C0      		rjmp .
+ 399 011a 0000      		nop
+ 400               	.LBE33:
+ 401               	.LBE32:
+ 149:lib/HD44780.c **** _delay_ms(2);
+ 150:lib/HD44780.c **** LCD_WriteCommand(HD44780_ENTRY_MODE | HD44780_EM_SHIFT_CURSOR | HD44780_EM_INCREMENT);// inkrementa
+ 402               		.loc 1 150 0
+ 403 011c 86E0      		ldi r24,lo8(6)
+ 404 011e 0E94 0000 		call LCD_WriteCommand
+ 405               	.LVL37:
+ 151:lib/HD44780.c **** LCD_WriteCommand(HD44780_DISPLAY_ONOFF | HD44780_DISPLAY_ON | HD44780_CURSOR_OFF | HD44780_CURSOR_N
+ 406               		.loc 1 151 0
+ 407 0122 8CE0      		ldi r24,lo8(12)
+ 408               	/* epilogue start */
+ 152:lib/HD44780.c **** }
+ 409               		.loc 1 152 0
+ 410 0124 CF91      		pop r28
+ 411               	.LVL38:
+ 151:lib/HD44780.c **** LCD_WriteCommand(HD44780_DISPLAY_ONOFF | HD44780_DISPLAY_ON | HD44780_CURSOR_OFF | HD44780_CURSOR_N
+ 412               		.loc 1 151 0
+ 413 0126 0C94 0000 		jmp LCD_WriteCommand
+ 414               	.LVL39:
+ 415               		.cfi_endproc
+ 416               	.LFE19:
+ 418               	.global	ADC_init
+ 420               	ADC_init:
+ 421               	.LFB20:
+ 422               		.file 3 "lib/ADC.c"
+   1:lib/ADC.c     **** /*
+   2:lib/ADC.c     ****  * ADC.c
+   3:lib/ADC.c     ****  *
+   4:lib/ADC.c     ****  * Created: 2014-02-12 16:46:07
+   5:lib/ADC.c     ****  *  Author: Piotr
+   6:lib/ADC.c     ****  */ 
+   7:lib/ADC.c     **** #include "ADC.h"
+   8:lib/ADC.c     **** 
+   9:lib/ADC.c     **** void ADC_init(void){
+ 423               		.loc 3 9 0
+ 424               		.cfi_startproc
+ 425               	/* prologue: function */
+ 426               	/* frame size = 0 */
+ 427               	/* stack size = 0 */
+ 428               	.L__stack_usage = 0
+  10:lib/ADC.c     **** 	ADMUX |= (1<<REFS0);//ustawiam napiÍcie odniesienia na AVCC (napiÍcie zasilania uk≥adu ~5V)
+ 429               		.loc 3 10 0
+ 430 012a 3E9A      		sbi 0x7,6
+  11:lib/ADC.c     **** 	ADCSRA |= (1<<ADPS0)|(1<<ADPS1)|(1<<ADPS2);//ustawienie prescalera na 128 = czÍstotliwoúÊ taktowan
+ 431               		.loc 3 11 0
+ 432 012c 86B1      		in r24,0x6
+ 433 012e 8760      		ori r24,lo8(7)
+ 434 0130 86B9      		out 0x6,r24
+  12:lib/ADC.c     **** 	ADCSRA |= (1<<ADEN);//w≥πczenie przetwornika
+ 435               		.loc 3 12 0
+ 436 0132 379A      		sbi 0x6,7
+ 437 0134 0895      		ret
+ 438               		.cfi_endproc
+ 439               	.LFE20:
+ 441               	.global	ADC_get
+ 443               	ADC_get:
+ 444               	.LFB21:
+  13:lib/ADC.c     **** 	
+  14:lib/ADC.c     **** }
+  15:lib/ADC.c     **** uint16_t ADC_get(uint8_t channel){
+ 445               		.loc 3 15 0
+ 446               		.cfi_startproc
+ 447               	.LVL40:
+ 448               	/* prologue: function */
+ 449               	/* frame size = 0 */
+ 450               	/* stack size = 0 */
+ 451               	.L__stack_usage = 0
+  16:lib/ADC.c     **** 	ADMUX=(ADMUX&0b11100000)|(channel&0b00011111);//ustawiam kana≥
+ 452               		.loc 3 16 0
+ 453 0136 97B1      		in r25,0x7
+ 454 0138 8F71      		andi r24,lo8(31)
+ 455               	.LVL41:
+ 456 013a 907E      		andi r25,lo8(-32)
+ 457 013c 892B      		or r24,r25
+ 458 013e 87B9      		out 0x7,r24
+  17:lib/ADC.c     **** 	ADCSRA |= (1<<ADSC);//rozpoczynam konwersjÍ
+ 459               		.loc 3 17 0
+ 460 0140 369A      		sbi 0x6,6
+ 461               	.L27:
+  18:lib/ADC.c     **** 	while(ADCSRA&(1<<ADSC));//czekamy na zakoÒczenie tej konwersji
+ 462               		.loc 3 18 0 discriminator 1
+ 463 0142 3699      		sbic 0x6,6
+ 464 0144 00C0      		rjmp .L27
+  19:lib/ADC.c     **** 	return ADC;
+ 465               		.loc 3 19 0
+ 466 0146 84B1      		in r24,0x4
+ 467 0148 95B1      		in r25,0x4+1
+  20:lib/ADC.c     **** }
+ 468               		.loc 3 20 0
+ 469 014a 0895      		ret
+ 470               		.cfi_endproc
+ 471               	.LFE21:
+ 473               		.section	.rodata.str1.1,"aMS",@progbits,1
+ 474               	.LC0:
+ 475 0000 4C43 4420 		.string	"LCD ADC display"
+ 475      4144 4320 
+ 475      6469 7370 
+ 475      6C61 7900 
+ 476               	.LC1:
+ 477 0010 4130 3D20 		.string	"A0=     A1=    "
+ 477      2020 2020 
+ 477      4131 3D20 
+ 477      2020 2000 
+ 478               	.LC2:
+ 479 0020 2530 3464 		.string	"%04d"
+ 479      00
+ 480               		.section	.text.startup,"ax",@progbits
+ 481               	.global	main
+ 483               	main:
+ 484               	.LFB22:
+ 485               		.file 4 "main.c"
    1:main.c        **** //
    2:main.c        **** //  main.c
    3:main.c        **** //  AOS1
    4:main.c        **** //
    5:main.c        **** //  Created by David on 02.12.2015.
    6:main.c        **** //
-   7:main.c        **** /*
-   8:main.c        **** 
-   9:main.c        **** //#include "lib/avr_compiler.h"
-  10:main.c        **** #include <avr/io.h>
-  11:main.c        **** #include <util/delay.h>
-  12:main.c        **** #include "lib/lcd.c"
-  13:main.c        **** #include "lib/lcd.h"
+   7:main.c        **** 
+   8:main.c        **** #include <stdint.h>
+   9:main.c        **** #include <avr/io.h>
+  10:main.c        **** #include <util/delay.h>
+  11:main.c        **** #include "lib/avr_compiler.h"
+  12:main.c        **** 
+  13:main.c        **** //Obs≈Çuga mod√≥≈Ç√≥w
   14:main.c        **** 
-  15:main.c        **** 
-  16:main.c        **** //#define ledPin_bm   (1 << 0)
-  17:main.c        **** //#define ledPort     PORTC
-  18:main.c        **** //#define ledDDR      DDRC
-  19:main.c        **** 
-  20:main.c        **** 
-  21:main.c        **** int main(void){
-  22:main.c        ****     DDRD = 0x00;
-  23:main.c        ****     PORTD = 0xff;
-  24:main.c        ****     DDRC |= (1<<LED);
-  25:main.c        ****     PORTC |= (1<<LED);
-  26:main.c        **** 
-  27:main.c        ****   while(1) {
-  28:main.c        ****       
-  29:main.c        ****       
-  30:main.c        ****       if (PIND != 0xFF)
-  31:main.c        ****       {
-  32:main.c        ****           PORTC &= (~(1<<7));
-  33:main.c        ****       }
-  34:main.c        ****       else
-  35:main.c        ****       {
-  36:main.c        ****           PORTC |= (1<<7);
-  37:main.c        ****       };
-  38:main.c        ****       
-  39:main.c        ****       
-  40:main.c        ****   }
+  15:main.c        **** #include "lib/control_signal_conf.h"
+  16:main.c        **** //LCD
+  17:main.c        **** #include "lib/HD44780.h"
+  18:main.c        **** #include "lib/ADC.h"
+  19:main.c        **** #include "lib/HD44780.c"
+  20:main.c        **** #include "lib/ADC.c"
+  21:main.c        **** 
+  22:main.c        **** 
+  23:main.c        **** 
+  24:main.c        **** 
+  25:main.c        **** //#define ledPin_bm  (1 << 0)
+  26:main.c        **** //#define ledPort    PORTC
+  27:main.c        **** //#define ledDDR      DDRC
+  28:main.c        **** 
+  29:main.c        **** 
+  30:main.c        **** int main(void)
+  31:main.c        **** {
+ 486               		.loc 4 31 0
+ 487               		.cfi_startproc
+ 488 0000 CF93      		push r28
+ 489               	.LCFI4:
+ 490               		.cfi_def_cfa_offset 3
+ 491               		.cfi_offset 28, -2
+ 492 0002 DF93      		push r29
+ 493               	.LCFI5:
+ 494               		.cfi_def_cfa_offset 4
+ 495               		.cfi_offset 29, -3
+ 496 0004 00D0      		rcall .
+ 497 0006 00D0      		rcall .
+ 498 0008 00D0      		rcall .
+ 499               	.LCFI6:
+ 500               		.cfi_def_cfa_offset 10
+ 501 000a CDB7      		in r28,__SP_L__
+ 502 000c DEB7      		in r29,__SP_H__
+ 503               	.LCFI7:
+ 504               		.cfi_def_cfa_register 28
+ 505               	/* prologue: function */
+ 506               	/* frame size = 6 */
+ 507               	/* stack size = 8 */
+ 508               	.L__stack_usage = 8
+  32:main.c        ****     DDRD = 0x00;
+ 509               		.loc 4 32 0
+ 510 000e 11BA      		out 0x11,__zero_reg__
+  33:main.c        ****     PORTD = 0xff;
+ 511               		.loc 4 33 0
+ 512 0010 8FEF      		ldi r24,lo8(-1)
+ 513 0012 82BB      		out 0x12,r24
+  34:main.c        ****     DDRC |= (1<<LED);
+ 514               		.loc 4 34 0
+ 515 0014 A79A      		sbi 0x14,7
+  35:main.c        ****     PORTC |= (1<<LED);
+ 516               		.loc 4 35 0
+ 517 0016 AF9A      		sbi 0x15,7
+ 518               	.LVL42:
+  36:main.c        ****     
+  37:main.c        ****     uint8_t prev_state = 0;
+  38:main.c        ****     
+  39:main.c        ****     
+  40:main.c        ****     LCD_Initalize();//inicjalizacja LCD
+ 519               		.loc 4 40 0
+ 520 0018 0E94 0000 		call LCD_Initalize
+ 521               	.LVL43:
   41:main.c        ****     
-  42:main.c        **** }*/
-  43:main.c        **** 
-  44:main.c        **** 
-  45:main.c        **** #include <stdint.h>
-  46:main.c        **** #include <avr/io.h>
-  47:main.c        **** #include <util/delay.h>
-  48:main.c        **** #include "lib/avr_compiler.h"
-  49:main.c        **** #include "lib/lcd.c"
-  50:main.c        **** #include "lib/lcd.h"
-  51:main.c        **** 
-  52:main.c        **** 
-  53:main.c        **** //#define ledPin_bm  (1 << 0)
-  54:main.c        **** //#define ledPort    PORTC
-  55:main.c        **** //#define ledDDR      DDRC
-  56:main.c        **** 
-  57:main.c        **** 
-  58:main.c        **** int main(void)
-  59:main.c        **** {
- 302               		.loc 3 59 0
- 303               		.cfi_startproc
- 304               	/* prologue: function */
- 305               	/* frame size = 0 */
- 306               	/* stack size = 0 */
- 307               	.L__stack_usage = 0
-  60:main.c        ****     DDRD = 0x00;
- 308               		.loc 3 60 0
- 309 0000 11BA      		out 0x11,__zero_reg__
-  61:main.c        ****     PORTD = 0xff;
- 310               		.loc 3 61 0
- 311 0002 8FEF      		ldi r24,lo8(-1)
- 312 0004 82BB      		out 0x12,r24
-  62:main.c        ****     DDRC |= (1<<LED);
- 313               		.loc 3 62 0
- 314 0006 A79A      		sbi 0x14,7
-  63:main.c        ****     PORTC |= (1<<LED);
- 315               		.loc 3 63 0
- 316 0008 AF9A      		sbi 0x15,7
- 317               	.LVL24:
- 318               	.L31:
-  64:main.c        ****     
-  65:main.c        ****     uint8_t prev_state = 0;
-  66:main.c        ****     
-  67:main.c        ****     while(1)
-  68:main.c        ****     {
-  69:main.c        ****        /* if (PIND == 0x7F)
-  70:main.c        ****         {
-  71:main.c        ****             if(prev_state == 1)
-  72:main.c        ****             {
-  73:main.c        ****                 PORTC ^= (1<<7);
-  74:main.c        ****             }
-  75:main.c        ****             prev_state = 0;
-  76:main.c        ****         }
-  77:main.c        ****         else
-  78:main.c        ****             {
-  79:main.c        ****                 prev_state = 1;
-  80:main.c        ****             }*/
-  81:main.c        ****         
-  82:main.c        ****         if (PIND == 0x7F)
- 319               		.loc 3 82 0
- 320 000a 80B3      		in r24,0x10
- 321 000c 8F37      		cpi r24,lo8(127)
- 322 000e 01F4      		brne .L29
-  83:main.c        ****         {
-  84:main.c        ****             PORTC &= (~(1<<7));
- 323               		.loc 3 84 0
- 324 0010 AF98      		cbi 0x15,7
- 325 0012 00C0      		rjmp .L30
- 326               	.L29:
-  85:main.c        ****         }
-  86:main.c        ****         else if (PIND == 0xBF)
- 327               		.loc 3 86 0
- 328 0014 80B3      		in r24,0x10
- 329 0016 8F3B      		cpi r24,lo8(-65)
- 330 0018 01F4      		brne .L30
-  87:main.c        ****         {
-  88:main.c        ****             PORTC |= (1<<7);
- 331               		.loc 3 88 0
- 332 001a AF9A      		sbi 0x15,7
- 333               	.L30:
- 334               	.LVL25:
- 335               	.LBB20:
- 336               	.LBB21:
- 163:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h **** 	__builtin_avr_delay_cycles(__ticks_dc);
- 337               		.loc 2 163 0
- 338 001c 8FE9      		ldi r24,lo8(3999)
- 339 001e 9FE0      		ldi r25,hi8(3999)
- 340 0020 0197      		1: sbiw r24,1
- 341 0022 01F4      		brne 1b
- 342 0024 00C0      		rjmp .
- 343 0026 0000      		nop
- 344 0028 00C0      		rjmp .L31
- 345               	.LBE21:
- 346               	.LBE20:
- 347               		.cfi_endproc
- 348               	.LFE19:
- 350               		.text
- 351               	.Letext0:
- 352               		.file 4 "/usr/local/CrossPack-AVR-20131216/avr/include/stdint.h"
+  42:main.c        ****    ADC_init();
+ 522               		.loc 4 42 0
+ 523 001c 0E94 0000 		call ADC_init
+ 524               	.LVL44:
+ 525               	.LBB43:
+ 526               	.LBB44:
+  93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
+ 527               		.loc 1 93 0
+ 528 0020 80E8      		ldi r24,lo8(-128)
+ 529 0022 0E94 0000 		call LCD_WriteCommand
+ 530               	.LVL45:
+ 531               	.LBE44:
+ 532               	.LBE43:
+  43:main.c        ****     
+  44:main.c        ****     LCD_GoTo(0,0);//ustawiamy si√ç w pierwszej kolumnie i pierwszym wierszu
+  45:main.c        ****     LCD_WriteText("LCD ADC display");
+ 533               		.loc 4 45 0
+ 534 0026 80E0      		ldi r24,lo8(.LC0)
+ 535 0028 90E0      		ldi r25,hi8(.LC0)
+ 536 002a 0E94 0000 		call LCD_WriteText
+ 537               	.LVL46:
+ 538               	.LBB45:
+ 539               	.LBB46:
+  93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
+ 540               		.loc 1 93 0
+ 541 002e 80EC      		ldi r24,lo8(-64)
+ 542 0030 0E94 0000 		call LCD_WriteCommand
+ 543               	.LVL47:
+ 544               	.LBE46:
+ 545               	.LBE45:
+  46:main.c        ****     
+  47:main.c        ****     LCD_GoTo(0,1);//ustawiamy si√ç w pierwszej kolumnie i drugim wierszu
+  48:main.c        ****     LCD_WriteText("A0=     A1=    ");
+ 546               		.loc 4 48 0
+ 547 0034 80E0      		ldi r24,lo8(.LC1)
+ 548 0036 90E0      		ldi r25,hi8(.LC1)
+ 549 0038 0E94 0000 		call LCD_WriteText
+ 550               	.LVL48:
+ 551               	.LBB47:
+  49:main.c        ****     
+  50:main.c        ****     char buffer[6];
+  51:main.c        ****     uint16_t val;
+  52:main.c        ****     
+  53:main.c        ****     while(1)
+  54:main.c        ****     {
+  55:main.c        ****         val=ADC_get(0);//pobieram odczyt
+  56:main.c        ****         sprintf(buffer,"%04d",val);//konwertuj√ç go na ciœÄg znak√õw i dopisuj√ç zera
+ 552               		.loc 4 56 0
+ 553 003c 80E0      		ldi r24,lo8(.LC2)
+ 554 003e E82E      		mov r14,r24
+ 555 0040 80E0      		ldi r24,hi8(.LC2)
+ 556 0042 F82E      		mov r15,r24
+ 557 0044 8E01      		movw r16,r28
+ 558 0046 0F5F      		subi r16,-1
+ 559 0048 1F4F      		sbci r17,-1
+ 560               	.L29:
+  55:main.c        ****         val=ADC_get(0);//pobieram odczyt
+ 561               		.loc 4 55 0 discriminator 1
+ 562 004a 80E0      		ldi r24,0
+ 563 004c 0E94 0000 		call ADC_get
+ 564               	.LVL49:
+ 565               		.loc 4 56 0 discriminator 1
+ 566 0050 9F93      		push r25
+ 567 0052 8F93      		push r24
+ 568 0054 FF92      		push r15
+ 569 0056 EF92      		push r14
+ 570 0058 1F93      		push r17
+ 571 005a 0F93      		push r16
+ 572 005c 0E94 0000 		call sprintf
+ 573               	.LVL50:
+ 574               	.LBB48:
+ 575               	.LBB49:
+  93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
+ 576               		.loc 1 93 0 discriminator 1
+ 577 0060 83EC      		ldi r24,lo8(-61)
+ 578 0062 0E94 0000 		call LCD_WriteCommand
+ 579               	.LVL51:
+ 580               	.LBE49:
+ 581               	.LBE48:
+  57:main.c        ****         LCD_GoTo(3,1);//ustawiam si√ç na poczœÄtku pola, w kt√õrym ma by√ä widoczny wynik
+  58:main.c        ****         LCD_WriteText(buffer);//wy√∫wietlam go (nadpisuj√ç poprzedni)
+ 582               		.loc 4 58 0 discriminator 1
+ 583 0066 C801      		movw r24,r16
+ 584 0068 0E94 0000 		call LCD_WriteText
+ 585               	.LVL52:
+  59:main.c        ****         
+  60:main.c        ****         val=ADC_get(1);
+ 586               		.loc 4 60 0 discriminator 1
+ 587 006c 81E0      		ldi r24,lo8(1)
+ 588 006e 0E94 0000 		call ADC_get
+ 589               	.LVL53:
+  61:main.c        ****         sprintf(buffer,"%04d",val);
+ 590               		.loc 4 61 0 discriminator 1
+ 591 0072 9F93      		push r25
+ 592 0074 8F93      		push r24
+ 593 0076 FF92      		push r15
+ 594 0078 EF92      		push r14
+ 595 007a 1F93      		push r17
+ 596 007c 0F93      		push r16
+ 597 007e 0E94 0000 		call sprintf
+ 598               	.LVL54:
+ 599               	.LBB50:
+ 600               	.LBB51:
+  93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
+ 601               		.loc 1 93 0 discriminator 1
+ 602 0082 8BEC      		ldi r24,lo8(-53)
+ 603 0084 0E94 0000 		call LCD_WriteCommand
+ 604               	.LVL55:
+ 605               	.LBE51:
+ 606               	.LBE50:
+  62:main.c        ****         LCD_GoTo(11,1);
+  63:main.c        ****         LCD_WriteText(buffer);
+ 607               		.loc 4 63 0 discriminator 1
+ 608 0088 C801      		movw r24,r16
+ 609 008a 0E94 0000 		call LCD_WriteText
+ 610               	.LVL56:
+ 611 008e 0FB6      		in __tmp_reg__,__SREG__
+ 612 0090 F894      		cli
+ 613 0092 DEBF      		out __SP_H__,r29
+ 614 0094 0FBE      		out __SREG__,__tmp_reg__
+ 615 0096 CDBF      		out __SP_L__,r28
+ 616 0098 00C0      		rjmp .L29
+ 617               	.LBE47:
+ 618               		.cfi_endproc
+ 619               	.LFE22:
+ 621               		.text
+ 622               	.Letext0:
+ 623               		.file 5 "/usr/local/CrossPack-AVR-20131216/avr/include/stdint.h"
+ 624               		.file 6 "<built-in>"
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccTvykJC.s:2      *ABS*:0000003e __SP_H__
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccTvykJC.s:3      *ABS*:0000003d __SP_L__
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccTvykJC.s:4      *ABS*:0000003f __SREG__
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccTvykJC.s:5      *ABS*:00000000 __tmp_reg__
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccTvykJC.s:6      *ABS*:00000001 __zero_reg__
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccTvykJC.s:12     .text:00000000 lcd_byte
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccTvykJC.s:137    .text:0000006c lcd_cmd
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccTvykJC.s:156    .text:00000072 lcd_data
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccTvykJC.s:175    .text:00000078 lcd_string
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccTvykJC.s:218    .text:00000090 lcd_cls
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccTvykJC.s:235    .text:00000096 lcd_locate
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccTvykJC.s:250    .text:00000098 lcd_init
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccTvykJC.s:299    .text.startup:00000000 main
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccHaFamz.s:2      *ABS*:0000003e __SP_H__
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccHaFamz.s:3      *ABS*:0000003d __SP_L__
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccHaFamz.s:4      *ABS*:0000003f __SREG__
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccHaFamz.s:5      *ABS*:00000000 __tmp_reg__
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccHaFamz.s:6      *ABS*:00000001 __zero_reg__
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccHaFamz.s:12     .text:00000000 _LCD_OutNibble
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccHaFamz.s:73     .text:0000002a _LCD_Write
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccHaFamz.s:128    .text:00000054 LCD_WriteCommand
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccHaFamz.s:147    .text:0000005a LCD_WriteData
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccHaFamz.s:166    .text:00000060 LCD_WriteText
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccHaFamz.s:209    .text:00000078 LCD_GoTo
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccHaFamz.s:232    .text:00000086 LCD_Clear
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccHaFamz.s:261    .text:0000009a LCD_Home
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccHaFamz.s:290    .text:000000ae LCD_Initalize
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccHaFamz.s:420    .text:0000012a ADC_init
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccHaFamz.s:443    .text:00000136 ADC_get
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccHaFamz.s:483    .text.startup:00000000 main
 
-NO UNDEFINED SYMBOLS
+UNDEFINED SYMBOLS
+sprintf
+__do_copy_data
