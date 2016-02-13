@@ -1,7 +1,7 @@
 //
 //  main.c
 //  AOS1
-//
+//  version 0.1
 //  Created by David on 02.12.2015.
 //
 
@@ -11,8 +11,8 @@
 #include "lib/avr_compiler.h"
 
 //Obsługa modółów
-
 #include "lib/control_signal_conf.h"
+
 //LCD
 #include "lib/HD44780.h"
 #include "lib/ADC.h"
@@ -31,7 +31,7 @@ int main(void)
 {
     DDRD = 0x00;
     PORTD = 0xff;
-    DDRC |= (1<<LED);
+   DDRC |= (1<<LED);
     PORTC |= (1<<LED);
     
     uint8_t prev_state = 0;
@@ -39,66 +39,69 @@ int main(void)
     
     LCD_Initalize();//inicjalizacja LCD
     
-   ADC_init();
+    LCD_GoTo(0,0);// kursor w pierwszyej kolumnie pierwszego wiersza
+    LCD_WriteText("AOS 1");
     
-    LCD_GoTo(0,0);//ustawiamy siÍ w pierwszej kolumnie i pierwszym wierszu
-    LCD_WriteText("LCD ADC display");
+    LCD_GoTo(0,1);//kursor w pierwszej kolumnie drugiego wiersza
+    LCD_WriteText("version: 0.1");
     
-    LCD_GoTo(0,1);//ustawiamy siÍ w pierwszej kolumnie i drugim wierszu
-    LCD_WriteText("A0=     A1=    ");
-    
-    char buffer[6];
-    uint16_t val;
+
+   
     
     while(1)
     {
-        val=ADC_get(0);//pobieram odczyt
-        sprintf(buffer,"%04d",val);//konwertujÍ go na ciπg znakÛw i dopisujÍ zera
-        LCD_GoTo(3,1);//ustawiam siÍ na poczπtku pola, w ktÛrym ma byÊ widoczny wynik
-        LCD_WriteText(buffer);//wyúwietlam go (nadpisujÍ poprzedni)
-        
-        val=ADC_get(1);
-        sprintf(buffer,"%04d",val);
-        LCD_GoTo(11,1);
-        LCD_WriteText(buffer);
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-  //  while(1)
- //   {
-      
-        
-        // DIODA LED
-        /* if (PIND == 0x7F)
-        {
-            if(prev_state == 1)
-            {
-                PORTC ^= (1<<7);
-            }
-            prev_state = 0;
-        }
-        else
-            {
-                prev_state = 1;
-            }*/
-        
-   /*     if (PIND == 0x7F)
+// MENU
+      if (PIND == 0x7F)  // L+
         {
             PORTC &= (~(1<<7));
+            LCD_Clear();
+            LCD_GoTo(0,0);// kursor w pierwszyej kolumnie pierwszego wiersza
+            LCD_WriteText("L+");
         }
-        else if (PIND == 0xBF)
+      else if (PIND == 0xBF) // L-
         {
             PORTC |= (1<<7);
+            LCD_Clear();
+            LCD_GoTo(0,0);// kursor w pierwszyej kolumnie pierwszego wiersza
+            LCD_WriteText("L-");
         }
-        
-        _delay_ms(1);  */
-  //  }
+      else if (PIND == 0xDF) // P/S
+        {
+            LCD_Clear();
+            LCD_GoTo(0,0);// kursor w pierwszyej kolumnie pierwszego wiersza
+            LCD_WriteText("P/S");
+        }
+      else if (PIND == 0xEF) // S
+        {
+          LCD_Clear();
+          LCD_GoTo(0,0);// kursor w pierwszyej kolumnie pierwszego wiersza
+          LCD_WriteText("S");
+        }
+      else if (PIND == 0xF7) // M
+        {
+            LCD_Clear();
+            LCD_GoTo(0,0);// kursor w pierwszyej kolumnie pierwszego wiersza
+            LCD_WriteText("M");
+        }
+      else if (PIND == 0xFB) // R
+        {
+            LCD_Clear();
+            LCD_GoTo(0,0);// kursor w pierwszyej kolumnie pierwszego wiersza
+            LCD_WriteText("R");
+        }
+      else if (PIND == 0xFD) // R-
+        {
+            LCD_Clear();
+            LCD_GoTo(0,0);// kursor w pierwszyej kolumnie pierwszego wiersza
+            LCD_WriteText("R-");
+        }
+      else if (PIND == 0xFE) // R+
+        {
+            LCD_Clear();
+            LCD_GoTo(0,0);// kursor w pierwszyej kolumnie pierwszego wiersza
+            LCD_WriteText("R+");
+        }
+        _delay_ms(1); // Eliminacja migotania styków
+   }
     
 }
