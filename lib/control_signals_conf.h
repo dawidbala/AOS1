@@ -1,5 +1,5 @@
 // Buzzer
-#define BUZ                 PC6
+#define BUZ                 PB6
 
 // Czewona dioda (workLed)
 #define wLED                PC7
@@ -9,8 +9,8 @@
 // Przyciski
 #define Btn_DIR             DDRD
 #define Btn_PORT            PORTD
-#define Btn_LeftMinus       0x7F
-#define Btn_LeftPlus        0xBF
+#define Btn_LeftPlus        0x7F
+#define Btn_LeftMinus       0xBF
 #define Btn_PS              0xDF
 #define Btn_S               0xEF
 #define Btn_M               0xF7
