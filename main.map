@@ -370,33 +370,33 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000      0xa1a
+.debug_info     0x00000000      0xa0e
  *(.debug_info)
- .debug_info    0x00000000      0x89e main.o
- .debug_info    0x0000089e       0xbe /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_exit.o)
- .debug_info    0x0000095c       0xbe /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_copy_data.o)
+ .debug_info    0x00000000      0x892 main.o
+ .debug_info    0x00000892       0xbe /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_exit.o)
+ .debug_info    0x00000950       0xbe /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_copy_data.o)
  *(.gnu.linkonce.wi.*)
 
-.debug_abbrev   0x00000000      0x21d
+.debug_abbrev   0x00000000      0x20e
  *(.debug_abbrev)
- .debug_abbrev  0x00000000      0x1f5 main.o
- .debug_abbrev  0x000001f5       0x14 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_exit.o)
- .debug_abbrev  0x00000209       0x14 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_copy_data.o)
+ .debug_abbrev  0x00000000      0x1e6 main.o
+ .debug_abbrev  0x000001e6       0x14 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_exit.o)
+ .debug_abbrev  0x000001fa       0x14 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_copy_data.o)
 
-.debug_line     0x00000000      0x2b0
+.debug_line     0x00000000      0x2af
  *(.debug_line)
- .debug_line    0x00000000      0x1f7 main.o
- .debug_line    0x000001f7       0x58 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_exit.o)
- .debug_line    0x0000024f       0x61 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_copy_data.o)
+ .debug_line    0x00000000      0x1f6 main.o
+ .debug_line    0x000001f6       0x58 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_exit.o)
+ .debug_line    0x0000024e       0x61 /usr/local/CrossPack-AVR-20131216/lib/gcc/avr/4.8.1/avr5/libgcc.a(_copy_data.o)
 
 .debug_frame    0x00000000       0xf0
  *(.debug_frame)
  .debug_frame   0x00000000       0xf0 main.o
 
-.debug_str      0x00000000      0x21d
+.debug_str      0x00000000      0x212
  *(.debug_str)
- .debug_str     0x00000000      0x21d main.o
-                                0x256 (size before relaxing)
+ .debug_str     0x00000000      0x212 main.o
+                                0x24b (size before relaxing)
 
 .debug_loc      0x00000000      0x28a
  *(.debug_loc)

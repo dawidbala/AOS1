@@ -11,19 +11,19 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   3 .debug_aranges 00000068  00000000  00000000  00000370  2**3
                   CONTENTS, READONLY, DEBUGGING
-  4 .debug_info   00000a1a  00000000  00000000  000003d8  2**0
+  4 .debug_info   00000a0e  00000000  00000000  000003d8  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_abbrev 0000021d  00000000  00000000  00000df2  2**0
+  5 .debug_abbrev 0000020e  00000000  00000000  00000de6  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_line   000002b0  00000000  00000000  0000100f  2**0
+  6 .debug_line   000002af  00000000  00000000  00000ff4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_frame  000000f0  00000000  00000000  000012c0  2**2
+  7 .debug_frame  000000f0  00000000  00000000  000012a4  2**2
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_str    0000021d  00000000  00000000  000013b0  2**0
+  8 .debug_str    00000212  00000000  00000000  00001394  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_loc    0000028a  00000000  00000000  000015cd  2**0
+  9 .debug_loc    0000028a  00000000  00000000  000015a6  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_ranges 00000018  00000000  00000000  00001857  2**0
+ 10 .debug_ranges 00000018  00000000  00000000  00001830  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -409,25 +409,24 @@ uint16_t ADC_get(uint8_t channel){
  1cc:	08 95       	ret
 
 000001ce <main>:
-//#define ledDDR      DDRC
 
-
+// G艂贸wna funkcja
 int main(void)
 {
-    DDRD = 0x00;
+// Konfiguracja port贸w
+    Btn_DIR = 0x00;
  1ce:	11 ba       	out	0x11, r1	; 17
-    PORTD = 0xff;
+    Btn_PORT = 0xff;
  1d0:	8f ef       	ldi	r24, 0xFF	; 255
  1d2:	82 bb       	out	0x12, r24	; 18
-   DDRC |= (1<<LED);
+    wLED_DIR     |= (1<<wLED);
  1d4:	a7 9a       	sbi	0x14, 7	; 20
-    PORTC |= (1<<LED);
+    wLED_PORT    |= (1<<wLED);
  1d6:	af 9a       	sbi	0x15, 7	; 21
     
-    uint8_t prev_state = 0;
     
-    
-    LCD_Initalize();//inicjalizacja LCD
+// Inicjalizacje mod贸艂贸w
+    LCD_Initalize(); // Inicjalizacja LCD
  1d8:	0e 94 98 00 	call	0x130	; 0x130 <LCD_Initalize>
 // Funkcja ustawienia wsp蟪rz阣nych ekranowych
 //
@@ -438,7 +437,9 @@ LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
  1dc:	80 e8       	ldi	r24, 0x80	; 128
  1de:	0e 94 6b 00 	call	0xd6	; 0xd6 <LCD_WriteCommand>
     
-    LCD_GoTo(0,0);// kursor w pierwszyej kolumnie pierwszego wiersza
+    
+// Ekran startowy
+    LCD_GoTo(0,0); // Kursor w pierwszyej kolumnie pierwszego wiersza.
     LCD_WriteText("AOS 1");
  1e2:	80 e6       	ldi	r24, 0x60	; 96
  1e4:	90 e0       	ldi	r25, 0x00	; 0
@@ -446,17 +447,17 @@ LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
  1ea:	80 ec       	ldi	r24, 0xC0	; 192
  1ec:	0e 94 6b 00 	call	0xd6	; 0xd6 <LCD_WriteCommand>
     
-    LCD_GoTo(0,1);//kursor w pierwszej kolumnie drugiego wiersza
+    LCD_GoTo(0,1); // Kursor w pierwszej kolumnie drugiego wiersza.
     LCD_WriteText("version: 0.1");
  1f0:	86 e6       	ldi	r24, 0x66	; 102
  1f2:	90 e0       	ldi	r25, 0x00	; 0
  1f4:	0e 94 71 00 	call	0xe2	; 0xe2 <LCD_WriteText>
+    
+//G艂贸wna p臋tla
     while(1)
     {
-        // MENU
-        
-        
-      if (PIND == 0x7F)  // L+
+// MENU
+      if (PIND == Btn_LeftMinus)  // L+
  1f8:	80 b3       	in	r24, 0x10	; 16
  1fa:	8f 37       	cpi	r24, 0x7F	; 127
  1fc:	49 f4       	brne	.+18     	; 0x210 <main+0x42>
@@ -467,13 +468,13 @@ LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
  200:	0e 94 84 00 	call	0x108	; 0x108 <LCD_Clear>
  204:	80 e8       	ldi	r24, 0x80	; 128
  206:	0e 94 6b 00 	call	0xd6	; 0xd6 <LCD_WriteCommand>
-            LCD_GoTo(0,0);// kursor w pierwszyej kolumnie pierwszego wiersza
+            LCD_GoTo(0,0);
             LCD_WriteText("L+");
  20a:	83 e7       	ldi	r24, 0x73	; 115
  20c:	90 e0       	ldi	r25, 0x00	; 0
  20e:	4d c0       	rjmp	.+154    	; 0x2aa <main+0xdc>
         }
-      else if (PIND == 0xBF) // L-
+      else if (PIND == Btn_LeftPlus) // L-
  210:	80 b3       	in	r24, 0x10	; 16
  212:	8f 3b       	cpi	r24, 0xBF	; 191
  214:	49 f4       	brne	.+18     	; 0x228 <main+0x5a>
@@ -484,13 +485,13 @@ LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
  218:	0e 94 84 00 	call	0x108	; 0x108 <LCD_Clear>
  21c:	80 e8       	ldi	r24, 0x80	; 128
  21e:	0e 94 6b 00 	call	0xd6	; 0xd6 <LCD_WriteCommand>
-            LCD_GoTo(0,0);// kursor w pierwszyej kolumnie pierwszego wiersza
+            LCD_GoTo(0,0);
             LCD_WriteText("L-");
  222:	86 e7       	ldi	r24, 0x76	; 118
  224:	90 e0       	ldi	r25, 0x00	; 0
  226:	41 c0       	rjmp	.+130    	; 0x2aa <main+0xdc>
         }
-      else if (PIND == 0xDF) // P/S
+      else if (PIND == Btn_PS) // P/S
  228:	80 b3       	in	r24, 0x10	; 16
  22a:	8f 3d       	cpi	r24, 0xDF	; 223
  22c:	41 f4       	brne	.+16     	; 0x23e <main+0x70>
@@ -499,13 +500,13 @@ LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
  22e:	0e 94 84 00 	call	0x108	; 0x108 <LCD_Clear>
  232:	80 e8       	ldi	r24, 0x80	; 128
  234:	0e 94 6b 00 	call	0xd6	; 0xd6 <LCD_WriteCommand>
-            LCD_GoTo(0,0);// kursor w pierwszyej kolumnie pierwszego wiersza
+            LCD_GoTo(0,0);
             LCD_WriteText("P/S");
  238:	89 e7       	ldi	r24, 0x79	; 121
  23a:	90 e0       	ldi	r25, 0x00	; 0
  23c:	36 c0       	rjmp	.+108    	; 0x2aa <main+0xdc>
         }
-      else if (PIND == 0xEF) // S
+      else if (PIND == Btn_S) // S
  23e:	80 b3       	in	r24, 0x10	; 16
  240:	8f 3e       	cpi	r24, 0xEF	; 239
  242:	41 f4       	brne	.+16     	; 0x254 <main+0x86>
@@ -514,13 +515,13 @@ LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
  244:	0e 94 84 00 	call	0x108	; 0x108 <LCD_Clear>
  248:	80 e8       	ldi	r24, 0x80	; 128
  24a:	0e 94 6b 00 	call	0xd6	; 0xd6 <LCD_WriteCommand>
-          LCD_GoTo(0,0);// kursor w pierwszyej kolumnie pierwszego wiersza
+          LCD_GoTo(0,0);
           LCD_WriteText("S");
  24e:	8b e7       	ldi	r24, 0x7B	; 123
  250:	90 e0       	ldi	r25, 0x00	; 0
  252:	2b c0       	rjmp	.+86     	; 0x2aa <main+0xdc>
         }
-      else if (PIND == 0xF7) // M
+      else if (PIND == Btn_M) // M
  254:	80 b3       	in	r24, 0x10	; 16
  256:	87 3f       	cpi	r24, 0xF7	; 247
  258:	41 f4       	brne	.+16     	; 0x26a <main+0x9c>
@@ -529,13 +530,13 @@ LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
  25a:	0e 94 84 00 	call	0x108	; 0x108 <LCD_Clear>
  25e:	80 e8       	ldi	r24, 0x80	; 128
  260:	0e 94 6b 00 	call	0xd6	; 0xd6 <LCD_WriteCommand>
-            LCD_GoTo(0,0);// kursor w pierwszyej kolumnie pierwszego wiersza
+            LCD_GoTo(0,0);
             LCD_WriteText("M");
  264:	8d e7       	ldi	r24, 0x7D	; 125
  266:	90 e0       	ldi	r25, 0x00	; 0
  268:	20 c0       	rjmp	.+64     	; 0x2aa <main+0xdc>
         }
-      else if (PIND == 0xFB) // R
+      else if (PIND == Btn_Remote) // R
  26a:	80 b3       	in	r24, 0x10	; 16
  26c:	8b 3f       	cpi	r24, 0xFB	; 251
  26e:	41 f4       	brne	.+16     	; 0x280 <main+0xb2>
@@ -544,13 +545,13 @@ LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
  270:	0e 94 84 00 	call	0x108	; 0x108 <LCD_Clear>
  274:	80 e8       	ldi	r24, 0x80	; 128
  276:	0e 94 6b 00 	call	0xd6	; 0xd6 <LCD_WriteCommand>
-            LCD_GoTo(0,0);// kursor w pierwszyej kolumnie pierwszego wiersza
+            LCD_GoTo(0,0);
             LCD_WriteText("R");
  27a:	8f e7       	ldi	r24, 0x7F	; 127
  27c:	90 e0       	ldi	r25, 0x00	; 0
  27e:	15 c0       	rjmp	.+42     	; 0x2aa <main+0xdc>
         }
-      else if (PIND == 0xFD) // R-
+      else if (PIND == Btn_RightMinus) // R-
  280:	80 b3       	in	r24, 0x10	; 16
  282:	8d 3f       	cpi	r24, 0xFD	; 253
  284:	41 f4       	brne	.+16     	; 0x296 <main+0xc8>
@@ -559,13 +560,13 @@ LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
  286:	0e 94 84 00 	call	0x108	; 0x108 <LCD_Clear>
  28a:	80 e8       	ldi	r24, 0x80	; 128
  28c:	0e 94 6b 00 	call	0xd6	; 0xd6 <LCD_WriteCommand>
-            LCD_GoTo(0,0);// kursor w pierwszyej kolumnie pierwszego wiersza
+            LCD_GoTo(0,0);
             LCD_WriteText("R-");
  290:	81 e8       	ldi	r24, 0x81	; 129
  292:	90 e0       	ldi	r25, 0x00	; 0
  294:	0a c0       	rjmp	.+20     	; 0x2aa <main+0xdc>
         }
-      else if (PIND == 0xFE) // R+
+      else if (PIND == Btn_RightPlus) // R+
  296:	80 b3       	in	r24, 0x10	; 16
  298:	8e 3f       	cpi	r24, 0xFE	; 254
  29a:	49 f4       	brne	.+18     	; 0x2ae <main+0xe0>
@@ -574,7 +575,7 @@ LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
  29c:	0e 94 84 00 	call	0x108	; 0x108 <LCD_Clear>
  2a0:	80 e8       	ldi	r24, 0x80	; 128
  2a2:	0e 94 6b 00 	call	0xd6	; 0xd6 <LCD_WriteCommand>
-            LCD_GoTo(0,0);// kursor w pierwszyej kolumnie pierwszego wiersza
+            LCD_GoTo(0,0);
             LCD_WriteText("R+");
  2a6:	84 e8       	ldi	r24, 0x84	; 132
  2a8:	90 e0       	ldi	r25, 0x00	; 0
