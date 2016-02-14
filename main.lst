@@ -88,16 +88,16 @@
   53 001e 83FF      		sbrs r24,3
   54 0020 00C0      		rjmp .L8
   55               	.LVL1:
-  56               	.LBB20:
-  57               	.LBB21:
+  56               	.LBB22:
+  57               	.LBB23:
   37:lib/HD44780.c **** 	LCD_DB7_PORT |= LCD_DB7;
   58               		.loc 1 37 0
   59 0022 A89A      		sbi 0x15,0
   60 0024 0895      		ret
   61               	.LVL2:
   62               	.L8:
-  63               	.LBE21:
-  64               	.LBE20:
+  63               	.LBE23:
+  64               	.LBE22:
   38:lib/HD44780.c **** else
   39:lib/HD44780.c **** 	LCD_DB7_PORT  &= ~LCD_DB7;
   65               		.loc 1 39 0
@@ -153,8 +153,8 @@
  103               		.loc 1 53 0
  104 0042 AC98      		cbi 0x15,4
  105               	.LVL7:
- 106               	.LBB22:
- 107               	.LBB23:
+ 106               	.LBB24:
+ 107               	.LBB25:
  108               		.file 2 "/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h"
    1:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h **** /* Copyright (c) 2002, Marek Michalkiewicz
    2:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h ****    Copyright (c) 2004,2005,2007 Joerg Wunsch
@@ -409,8 +409,8 @@
  114 004c 00C0      		rjmp .
  115 004e 0000      		nop
  116               	/* epilogue start */
- 117               	.LBE23:
- 118               	.LBE22:
+ 117               	.LBE25:
+ 118               	.LBE24:
   54:lib/HD44780.c **** _delay_us(50);
   55:lib/HD44780.c **** }
  119               		.loc 1 55 0
@@ -575,8 +575,8 @@
  241 0086 81E0      		ldi r24,lo8(1)
  242 0088 0E94 0000 		call LCD_WriteCommand
  243               	.LVL23:
- 244               	.LBB24:
- 245               	.LBB25:
+ 244               	.LBB26:
+ 245               	.LBB27:
  163:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h **** 	__builtin_avr_delay_cycles(__ticks_dc);
  246               		.loc 2 163 0
  247 008c 8FE3      		ldi r24,lo8(7999)
@@ -586,8 +586,8 @@
  251 0094 00C0      		rjmp .
  252 0096 0000      		nop
  253 0098 0895      		ret
- 254               	.LBE25:
- 255               	.LBE24:
+ 254               	.LBE27:
+ 255               	.LBE26:
  256               		.cfi_endproc
  257               	.LFE18:
  259               	.global	LCD_Home
@@ -613,8 +613,8 @@
  270 009a 82E0      		ldi r24,lo8(2)
  271 009c 0E94 0000 		call LCD_WriteCommand
  272               	.LVL24:
- 273               	.LBB26:
- 274               	.LBB27:
+ 273               	.LBB28:
+ 274               	.LBB29:
  163:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h **** 	__builtin_avr_delay_cycles(__ticks_dc);
  275               		.loc 2 163 0
  276 00a0 8FE3      		ldi r24,lo8(7999)
@@ -624,8 +624,8 @@
  280 00a8 00C0      		rjmp .
  281 00aa 0000      		nop
  282 00ac 0895      		ret
- 283               	.LBE27:
- 284               	.LBE26:
+ 283               	.LBE29:
+ 284               	.LBE28:
  285               		.cfi_endproc
  286               	.LFE19:
  288               	.global	LCD_Initalize
@@ -670,8 +670,8 @@
  312               		.loc 1 128 0
  313 00ba A59A      		sbi 0x14,5
  314               	.LVL25:
- 315               	.LBB28:
- 316               	.LBB29:
+ 315               	.LBB30:
+ 316               	.LBB31:
  163:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h **** 	__builtin_avr_delay_cycles(__ticks_dc);
  317               		.loc 2 163 0
  318 00bc 8FE5      		ldi r24,lo8(-5537)
@@ -680,8 +680,8 @@
  321 00c2 01F4      		brne 1b
  322 00c4 00C0      		rjmp .
  323 00c6 0000      		nop
- 324               	.LBE29:
- 325               	.LBE28:
+ 324               	.LBE31:
+ 325               	.LBE30:
  129:lib/HD44780.c **** _delay_ms(15); // oczekiwanie na ustalibizowanie si� napiecia zasilajacego
  130:lib/HD44780.c **** LCD_RS_PORT &= ~LCD_RS; // wyzerowanie linii RS
  326               		.loc 1 130 0
@@ -708,8 +708,8 @@
  340               		.loc 1 137 0 discriminator 2
  341 00d6 AC98      		cbi 0x15,4
  342               	.LVL29:
- 343               	.LBB30:
- 344               	.LBB31:
+ 343               	.LBB32:
+ 344               	.LBB33:
  163:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h **** 	__builtin_avr_delay_cycles(__ticks_dc);
  345               		.loc 2 163 0 discriminator 2
  346 00d8 8FE1      		ldi r24,lo8(19999)
@@ -721,8 +721,8 @@
  352               	.LVL30:
  353 00e4 C150      		subi r28,lo8(-(-1))
  354               	.LVL31:
- 355               	.LBE31:
- 356               	.LBE30:
+ 355               	.LBE33:
+ 356               	.LBE32:
  133:lib/HD44780.c **** for(i = 0; i < 3; i++) // trzykrotne powt�rzenie bloku instrukcji
  357               		.loc 1 133 0 discriminator 2
  358 00e6 01F4      		brne .L23
@@ -741,8 +741,8 @@
  365               		.loc 1 143 0
  366 00f0 AC98      		cbi 0x15,4
  367               	.LVL33:
- 368               	.LBB32:
- 369               	.LBB33:
+ 368               	.LBB34:
+ 369               	.LBB35:
  163:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h **** 	__builtin_avr_delay_cycles(__ticks_dc);
  370               		.loc 2 163 0
  371 00f2 8FE9      		ldi r24,lo8(3999)
@@ -751,8 +751,8 @@
  374 00f8 01F4      		brne 1b
  375 00fa 00C0      		rjmp .
  376 00fc 0000      		nop
- 377               	.LBE33:
- 378               	.LBE32:
+ 377               	.LBE35:
+ 378               	.LBE34:
  144:lib/HD44780.c **** 
  145:lib/HD44780.c **** _delay_ms(1); // czekaj 1ms 
  146:lib/HD44780.c **** LCD_WriteCommand(HD44780_FUNCTION_SET | HD44780_FONT5x7 | HD44780_TWO_LINE | HD44780_4_BIT); // int
@@ -770,8 +770,8 @@
  388 010a 81E0      		ldi r24,lo8(1)
  389 010c 0E94 0000 		call LCD_WriteCommand
  390               	.LVL36:
- 391               	.LBB34:
- 392               	.LBB35:
+ 391               	.LBB36:
+ 392               	.LBB37:
  163:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h **** 	__builtin_avr_delay_cycles(__ticks_dc);
  393               		.loc 2 163 0
  394 0110 8FE3      		ldi r24,lo8(7999)
@@ -780,8 +780,8 @@
  397 0116 01F4      		brne 1b
  398 0118 00C0      		rjmp .
  399 011a 0000      		nop
- 400               	.LBE35:
- 401               	.LBE34:
+ 400               	.LBE37:
+ 401               	.LBE36:
  149:lib/HD44780.c **** _delay_ms(2);
  150:lib/HD44780.c **** LCD_WriteCommand(HD44780_ENTRY_MODE | HD44780_EM_SHIFT_CURSOR | HD44780_EM_INCREMENT);// inkrementa
  402               		.loc 1 150 0
@@ -1247,26 +1247,39 @@
  754               	.LC4:
  755 0019 502F 5300 		.string	"P/S"
  756               	.LC5:
- 757 001d 5300      		.string	"S"
+ 757 001d 532C 2045 		.string	"S, End-Stop"
+ 757      6E64 2D53 
+ 757      746F 7000 
  758               	.LC6:
- 759 001f 5263 3500 		.string	"Rc5"
+ 759 0029 3100      		.string	"1"
  760               	.LC7:
- 761 0023 2041 3A25 		.string	" A:%02d C:%02d T:%02d "
- 761      3032 6420 
- 761      433A 2530 
- 761      3264 2054 
- 761      3A25 3032 
+ 761 002b 3200      		.string	"2"
  762               	.LC8:
- 763 003a 5200      		.string	"R"
+ 763 002d 3300      		.string	"3"
  764               	.LC9:
- 765 003c 522D 00   		.string	"R-"
+ 765 002f 3400      		.string	"4"
  766               	.LC10:
- 767 003f 522B 00   		.string	"R+"
- 768               		.section	.text.startup,"ax",@progbits
- 769               	.global	main
- 771               	main:
- 772               	.LFB26:
- 773               		.file 5 "main.c"
+ 767 0031 3500      		.string	"5"
+ 768               	.LC11:
+ 769 0033 4D2C 2052 		.string	"M, Rc5"
+ 769      6335 00
+ 770               	.LC12:
+ 771 003a 2041 3A25 		.string	" A:%02d C:%02d T:%02d "
+ 771      3032 6420 
+ 771      433A 2530 
+ 771      3264 2054 
+ 771      3A25 3032 
+ 772               	.LC13:
+ 773 0051 5200      		.string	"R"
+ 774               	.LC14:
+ 775 0053 522D 00   		.string	"R-"
+ 776               	.LC15:
+ 777 0056 522B 00   		.string	"R+"
+ 778               		.section	.text.startup,"ax",@progbits
+ 779               	.global	main
+ 781               	main:
+ 782               	.LFB26:
+ 783               		.file 5 "main.c"
    1:main.c        **** //
    2:main.c        **** //  main.c
    3:main.c        **** //  AOS1
@@ -1296,480 +1309,672 @@
   27:main.c        **** // Główna funkcja
   28:main.c        **** int main(void)
   29:main.c        **** {
- 774               		.loc 5 29 0
- 775               		.cfi_startproc
- 776 0000 CF93      		push r28
- 777               	.LCFI12:
- 778               		.cfi_def_cfa_offset 3
- 779               		.cfi_offset 28, -2
- 780 0002 DF93      		push r29
- 781               	.LCFI13:
- 782               		.cfi_def_cfa_offset 4
- 783               		.cfi_offset 29, -3
- 784 0004 CDB7      		in r28,__SP_L__
- 785 0006 DEB7      		in r29,__SP_H__
- 786               	.LCFI14:
- 787               		.cfi_def_cfa_register 28
- 788 0008 A497      		sbiw r28,36
- 789               	.LCFI15:
- 790               		.cfi_def_cfa_offset 40
- 791 000a 0FB6      		in __tmp_reg__,__SREG__
- 792 000c F894      		cli
- 793 000e DEBF      		out __SP_H__,r29
- 794 0010 0FBE      		out __SREG__,__tmp_reg__
- 795 0012 CDBF      		out __SP_L__,r28
- 796               	/* prologue: function */
- 797               	/* frame size = 36 */
- 798               	/* stack size = 38 */
- 799               	.L__stack_usage = 38
+ 784               		.loc 5 29 0
+ 785               		.cfi_startproc
+ 786 0000 CF93      		push r28
+ 787               	.LCFI12:
+ 788               		.cfi_def_cfa_offset 3
+ 789               		.cfi_offset 28, -2
+ 790 0002 DF93      		push r29
+ 791               	.LCFI13:
+ 792               		.cfi_def_cfa_offset 4
+ 793               		.cfi_offset 29, -3
+ 794 0004 CDB7      		in r28,__SP_L__
+ 795 0006 DEB7      		in r29,__SP_H__
+ 796               	.LCFI14:
+ 797               		.cfi_def_cfa_register 28
+ 798 0008 A497      		sbiw r28,36
+ 799               	.LCFI15:
+ 800               		.cfi_def_cfa_offset 40
+ 801 000a 0FB6      		in __tmp_reg__,__SREG__
+ 802 000c F894      		cli
+ 803 000e DEBF      		out __SP_H__,r29
+ 804 0010 0FBE      		out __SREG__,__tmp_reg__
+ 805 0012 CDBF      		out __SP_L__,r28
+ 806               	/* prologue: function */
+ 807               	/* frame size = 36 */
+ 808               	/* stack size = 38 */
+ 809               	.L__stack_usage = 38
   30:main.c        **** // Konfiguracja portów
   31:main.c        ****     //Przyciski
   32:main.c        ****     Btn_DIR = 0x00;
- 800               		.loc 5 32 0
- 801 0014 11BA      		out 0x11,__zero_reg__
+ 810               		.loc 5 32 0
+ 811 0014 11BA      		out 0x11,__zero_reg__
   33:main.c        ****     Btn_PORT = 0xff;
- 802               		.loc 5 33 0
- 803 0016 8FEF      		ldi r24,lo8(-1)
- 804 0018 82BB      		out 0x12,r24
+ 812               		.loc 5 33 0
+ 813 0016 8FEF      		ldi r24,lo8(-1)
+ 814 0018 82BB      		out 0x12,r24
   34:main.c        ****     //Czerowny workLED
   35:main.c        ****     wLED_DIR     |= (1<<wLED);
- 805               		.loc 5 35 0
- 806 001a A79A      		sbi 0x14,7
+ 815               		.loc 5 35 0
+ 816 001a A79A      		sbi 0x14,7
   36:main.c        ****     wLED_PORT    |= (1<<wLED);
- 807               		.loc 5 36 0
- 808 001c AF9A      		sbi 0x15,7
+ 817               		.loc 5 36 0
+ 818 001c AF9A      		sbi 0x15,7
   37:main.c        ****     //Port B, End-stopy(1-5), Czujnik temperatury, przycisk L-
   38:main.c        ****     DDRB = 0x00;
- 809               		.loc 5 38 0
- 810 001e 17BA      		out 0x17,__zero_reg__
-  39:main.c        ****     PORTB = 0xff;
- 811               		.loc 5 39 0
- 812 0020 88BB      		out 0x18,r24
+ 819               		.loc 5 38 0
+ 820 001e 17BA      		out 0x17,__zero_reg__
+  39:main.c        ****     PORTB = 0x9f;
+ 821               		.loc 5 39 0
+ 822 0020 8FE9      		ldi r24,lo8(-97)
+ 823 0022 88BB      		out 0x18,r24
   40:main.c        ****     
   41:main.c        ****     
   42:main.c        **** // Inicjalizacje modółów
   43:main.c        ****     LCD_Initalize(); // Inicjalizacja LCD
- 813               		.loc 5 43 0
- 814 0022 0E94 0000 		call LCD_Initalize
- 815               	.LVL50:
+ 824               		.loc 5 43 0
+ 825 0024 0E94 0000 		call LCD_Initalize
+ 826               	.LVL50:
   44:main.c        ****     RC5_init(); // Inizjalizacja RC5
- 816               		.loc 5 44 0
- 817 0026 0E94 0000 		call RC5_init
- 818               	.LVL51:
+ 827               		.loc 5 44 0
+ 828 0028 0E94 0000 		call RC5_init
+ 829               	.LVL51:
   45:main.c        ****     sei(); // Przerwania
- 819               		.loc 5 45 0
- 820               	/* #APP */
- 821               	 ;  45 "main.c" 1
- 822 002a 7894      		sei
- 823               	 ;  0 "" 2
- 824               	.LVL52:
- 825               	/* #NOAPP */
- 826               	.LBB60:
- 827               	.LBB61:
+ 830               		.loc 5 45 0
+ 831               	/* #APP */
+ 832               	 ;  45 "main.c" 1
+ 833 002c 7894      		sei
+ 834               	 ;  0 "" 2
+ 835               	.LVL52:
+ 836               	/* #NOAPP */
+ 837               	.LBB74:
+ 838               	.LBB75:
   93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
- 828               		.loc 1 93 0
- 829 002c 80E8      		ldi r24,lo8(-128)
- 830 002e 0E94 0000 		call LCD_WriteCommand
- 831               	.LVL53:
- 832               	.LBE61:
- 833               	.LBE60:
+ 839               		.loc 1 93 0
+ 840 002e 80E8      		ldi r24,lo8(-128)
+ 841 0030 0E94 0000 		call LCD_WriteCommand
+ 842               	.LVL53:
+ 843               	.LBE75:
+ 844               	.LBE74:
   46:main.c        ****     
   47:main.c        **** // Zmienne
   48:main.c        ****     // RC5
   49:main.c        ****     char buffer[33];
   50:main.c        ****     uint8_t addr, comm, tog;
-  51:main.c        ****     
+  51:main.c        ****     uint8_t btn_off_rc5 = 1;
   52:main.c        ****     
-  53:main.c        **** // Ekran startowy
-  54:main.c        ****     LCD_GoTo(0,0); // Kursor w pierwszyej kolumnie pierwszego wiersza.
-  55:main.c        ****     LCD_WriteText("AOS 1");
- 834               		.loc 5 55 0
- 835 0032 80E0      		ldi r24,lo8(.LC0)
- 836 0034 90E0      		ldi r25,hi8(.LC0)
- 837 0036 0E94 0000 		call LCD_WriteText
- 838               	.LVL54:
- 839               	.LBB62:
- 840               	.LBB63:
+  53:main.c        ****     
+  54:main.c        **** // Ekran startowy
+  55:main.c        ****     LCD_GoTo(0,0); // Kursor w pierwszyej kolumnie pierwszego wiersza.
+  56:main.c        ****     LCD_WriteText("AOS 1");
+ 845               		.loc 5 56 0
+ 846 0034 80E0      		ldi r24,lo8(.LC0)
+ 847 0036 90E0      		ldi r25,hi8(.LC0)
+ 848 0038 0E94 0000 		call LCD_WriteText
+ 849               	.LVL54:
+ 850               	.LBB76:
+ 851               	.LBB77:
   93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
- 841               		.loc 1 93 0
- 842 003a 80EC      		ldi r24,lo8(-64)
- 843 003c 0E94 0000 		call LCD_WriteCommand
- 844               	.LVL55:
- 845               	.LBE63:
- 846               	.LBE62:
-  56:main.c        ****     
-  57:main.c        ****     LCD_GoTo(0,1); // Kursor w pierwszej kolumnie drugiego wiersza.
-  58:main.c        ****     LCD_WriteText("version: 0.1");
- 847               		.loc 5 58 0
- 848 0040 80E0      		ldi r24,lo8(.LC1)
- 849 0042 90E0      		ldi r25,hi8(.LC1)
- 850 0044 0E94 0000 		call LCD_WriteText
- 851               	.LVL56:
- 852               	.L54:
-  59:main.c        ****  
-  60:main.c        ****     
-  61:main.c        **** //Główna pętla
-  62:main.c        ****     while(1)
-  63:main.c        ****     {
-  64:main.c        **** // MENU
-  65:main.c        ****       if (Btn_LeftPlus)  // L+
- 853               		.loc 5 65 0
- 854 0048 8799      		sbic 0x10,7
- 855 004a 00C0      		rjmp .L43
-  66:main.c        ****         {
-  67:main.c        ****             PORTC &= (~(1<<7));
- 856               		.loc 5 67 0
- 857 004c AF98      		cbi 0x15,7
-  68:main.c        ****             LCD_Clear();
- 858               		.loc 5 68 0
- 859 004e 0E94 0000 		call LCD_Clear
- 860               	.LVL57:
- 861               	.LBB64:
- 862               	.LBB65:
+ 852               		.loc 1 93 0
+ 853 003c 80EC      		ldi r24,lo8(-64)
+ 854 003e 0E94 0000 		call LCD_WriteCommand
+ 855               	.LVL55:
+ 856               	.LBE77:
+ 857               	.LBE76:
+  57:main.c        ****     
+  58:main.c        ****     LCD_GoTo(0,1); // Kursor w pierwszej kolumnie drugiego wiersza.
+  59:main.c        ****     LCD_WriteText("version: 0.1");
+ 858               		.loc 5 59 0
+ 859 0042 80E0      		ldi r24,lo8(.LC1)
+ 860 0044 90E0      		ldi r25,hi8(.LC1)
+ 861 0046 0E94 0000 		call LCD_WriteText
+ 862               	.LVL56:
+  60:main.c        ****  
+  61:main.c        ****     
+  62:main.c        **** //Główna pętla
+  63:main.c        ****     while(1)
+  64:main.c        ****     {
+  65:main.c        **** // MENU
+  66:main.c        ****       if (Btn_LeftPlus)  // L+
+  67:main.c        ****         {
+  68:main.c        ****             PORTC &= (~(1<<7));
+  69:main.c        ****             LCD_Clear();
+  70:main.c        ****             LCD_GoTo(0,0);
+  71:main.c        ****             LCD_WriteText("L+");
+  72:main.c        ****         }
+  73:main.c        ****       else if (Btn_LeftMinus)// L-
+  74:main.c        ****         {
+  75:main.c        ****             PORTC |= (1<<7);
+  76:main.c        ****             LCD_Clear();
+  77:main.c        ****             LCD_GoTo(0,0);
+  78:main.c        ****             LCD_WriteText("L-");
+  79:main.c        ****         }
+  80:main.c        ****       else if (Btn_PS) // P/S
+  81:main.c        ****         {
+  82:main.c        ****             LCD_Clear();
+  83:main.c        ****             LCD_GoTo(0,0);
+  84:main.c        ****             LCD_WriteText("P/S");
+  85:main.c        ****         }
+  86:main.c        ****       else if (Btn_S) // S
+  87:main.c        ****         {
+  88:main.c        ****             LCD_Clear();
+  89:main.c        ****             LCD_GoTo(0,0);
+  90:main.c        ****             LCD_WriteText("S, End-Stop");
+  91:main.c        ****             while (1)
+  92:main.c        ****             {
+  93:main.c        ****                 if (!End_stop_1)
+  94:main.c        ****                 {
+  95:main.c        ****                     LCD_Clear();
+  96:main.c        ****                     LCD_GoTo(0,0);
+  97:main.c        ****                     LCD_WriteText("1");
+  98:main.c        ****                 }
+  99:main.c        ****                 else if (!End_stop_2)
+ 100:main.c        ****                 {
+ 101:main.c        ****                     LCD_Clear();
+ 102:main.c        ****                     LCD_GoTo(0,0);
+ 103:main.c        ****                     LCD_WriteText("2");
+ 104:main.c        ****                 }
+ 105:main.c        ****                 else if (!End_stop_3)
+ 106:main.c        ****                 {
+ 107:main.c        ****                     LCD_Clear();
+ 108:main.c        ****                     LCD_GoTo(0,0);
+ 109:main.c        ****                     LCD_WriteText("3");
+ 110:main.c        ****                 }
+ 111:main.c        ****                 else if (!End_stop_4)
+ 112:main.c        ****                 {
+ 113:main.c        ****                     LCD_Clear();
+ 114:main.c        ****                     LCD_GoTo(0,0);
+ 115:main.c        ****                     LCD_WriteText("4");
+ 116:main.c        ****                 }
+ 117:main.c        ****                 else if (!End_stop_5)
+ 118:main.c        ****                 {
+ 119:main.c        ****                     LCD_Clear();
+ 120:main.c        ****                     LCD_GoTo(0,0);
+ 121:main.c        ****                     LCD_WriteText("5");
+ 122:main.c        ****                 }
+ 123:main.c        ****             }
+ 124:main.c        ****         }
+ 125:main.c        ****       else if (Btn_M) // M
+ 126:main.c        ****         {
+ 127:main.c        ****             LCD_Clear();
+ 128:main.c        ****             LCD_GoTo(0,0);
+ 129:main.c        ****             LCD_WriteText("M, Rc5");
+ 130:main.c        ****             while(((PIND&(1<<PD3))))
+ 131:main.c        ****             {
+ 132:main.c        ****                 if(RC5_get(&addr,&comm,&tog))
+ 133:main.c        ****                 {  // sprawdzanie, czy system odbiera sygnały rc5, jeśli tak to wyświetlamy
+ 134:main.c        ****                     sprintf(buffer," A:%02d C:%02d T:%02d ",addr,comm,tog);
+ 863               		.loc 5 134 0
+ 864 004a 60E0      		ldi r22,lo8(.LC12)
+ 865 004c E62E      		mov r14,r22
+ 866 004e 60E0      		ldi r22,hi8(.LC12)
+ 867 0050 F62E      		mov r15,r22
+ 868 0052 8E01      		movw r16,r28
+ 869 0054 0F5F      		subi r16,-1
+ 870 0056 1F4F      		sbci r17,-1
+ 871               	.L61:
+  66:main.c        ****       if (Btn_LeftPlus)  // L+
+ 872               		.loc 5 66 0
+ 873 0058 8799      		sbic 0x10,7
+ 874 005a 00C0      		rjmp .L43
+  68:main.c        ****             PORTC &= (~(1<<7));
+ 875               		.loc 5 68 0
+ 876 005c AF98      		cbi 0x15,7
+  69:main.c        ****             LCD_Clear();
+ 877               		.loc 5 69 0
+ 878 005e 0E94 0000 		call LCD_Clear
+ 879               	.LVL57:
+ 880               	.LBB78:
+ 881               	.LBB79:
   93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
- 863               		.loc 1 93 0
- 864 0052 80E8      		ldi r24,lo8(-128)
- 865 0054 0E94 0000 		call LCD_WriteCommand
- 866               	.LVL58:
- 867               	.LBE65:
- 868               	.LBE64:
-  69:main.c        ****             LCD_GoTo(0,0);
-  70:main.c        ****             LCD_WriteText("L+");
- 869               		.loc 5 70 0
- 870 0058 80E0      		ldi r24,lo8(.LC2)
- 871 005a 90E0      		ldi r25,hi8(.LC2)
- 872 005c 00C0      		rjmp .L55
- 873               	.LVL59:
- 874               	.L43:
-  71:main.c        ****         }
-  72:main.c        ****       else if (Btn_LeftMinus)// L-
- 875               		.loc 5 72 0
- 876 005e B099      		sbic 0x16,0
- 877 0060 00C0      		rjmp .L45
-  73:main.c        ****         {
-  74:main.c        ****             PORTC |= (1<<7);
- 878               		.loc 5 74 0
- 879 0062 AF9A      		sbi 0x15,7
-  75:main.c        ****             LCD_Clear();
- 880               		.loc 5 75 0
- 881 0064 0E94 0000 		call LCD_Clear
- 882               	.LVL60:
- 883               	.LBB66:
- 884               	.LBB67:
+ 882               		.loc 1 93 0
+ 883 0062 80E8      		ldi r24,lo8(-128)
+ 884 0064 0E94 0000 		call LCD_WriteCommand
+ 885               	.LVL58:
+ 886               	.LBE79:
+ 887               	.LBE78:
+  71:main.c        ****             LCD_WriteText("L+");
+ 888               		.loc 5 71 0
+ 889 0068 80E0      		ldi r24,lo8(.LC2)
+ 890 006a 90E0      		ldi r25,hi8(.LC2)
+ 891 006c 00C0      		rjmp .L66
+ 892               	.LVL59:
+ 893               	.L43:
+  73:main.c        ****       else if (Btn_LeftMinus)// L-
+ 894               		.loc 5 73 0
+ 895 006e B099      		sbic 0x16,0
+ 896 0070 00C0      		rjmp .L45
+  75:main.c        ****             PORTC |= (1<<7);
+ 897               		.loc 5 75 0
+ 898 0072 AF9A      		sbi 0x15,7
+  76:main.c        ****             LCD_Clear();
+ 899               		.loc 5 76 0
+ 900 0074 0E94 0000 		call LCD_Clear
+ 901               	.LVL60:
+ 902               	.LBB80:
+ 903               	.LBB81:
   93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
- 885               		.loc 1 93 0
- 886 0068 80E8      		ldi r24,lo8(-128)
- 887 006a 0E94 0000 		call LCD_WriteCommand
- 888               	.LVL61:
- 889               	.LBE67:
- 890               	.LBE66:
-  76:main.c        ****             LCD_GoTo(0,0);
-  77:main.c        ****             LCD_WriteText("L-");
- 891               		.loc 5 77 0
- 892 006e 80E0      		ldi r24,lo8(.LC3)
- 893 0070 90E0      		ldi r25,hi8(.LC3)
- 894 0072 00C0      		rjmp .L55
- 895               	.LVL62:
- 896               	.L45:
-  78:main.c        ****         }
-  79:main.c        ****       else if (Btn_PS) // P/S
- 897               		.loc 5 79 0
- 898 0074 8599      		sbic 0x10,5
- 899 0076 00C0      		rjmp .L46
-  80:main.c        ****         {
-  81:main.c        ****             LCD_Clear();
- 900               		.loc 5 81 0
- 901 0078 0E94 0000 		call LCD_Clear
- 902               	.LVL63:
- 903               	.LBB68:
- 904               	.LBB69:
+ 904               		.loc 1 93 0
+ 905 0078 80E8      		ldi r24,lo8(-128)
+ 906 007a 0E94 0000 		call LCD_WriteCommand
+ 907               	.LVL61:
+ 908               	.LBE81:
+ 909               	.LBE80:
+  78:main.c        ****             LCD_WriteText("L-");
+ 910               		.loc 5 78 0
+ 911 007e 80E0      		ldi r24,lo8(.LC3)
+ 912 0080 90E0      		ldi r25,hi8(.LC3)
+ 913 0082 00C0      		rjmp .L66
+ 914               	.LVL62:
+ 915               	.L45:
+  80:main.c        ****       else if (Btn_PS) // P/S
+ 916               		.loc 5 80 0
+ 917 0084 8599      		sbic 0x10,5
+ 918 0086 00C0      		rjmp .L46
+  82:main.c        ****             LCD_Clear();
+ 919               		.loc 5 82 0
+ 920 0088 0E94 0000 		call LCD_Clear
+ 921               	.LVL63:
+ 922               	.LBB82:
+ 923               	.LBB83:
   93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
- 905               		.loc 1 93 0
- 906 007c 80E8      		ldi r24,lo8(-128)
- 907 007e 0E94 0000 		call LCD_WriteCommand
- 908               	.LVL64:
- 909               	.LBE69:
- 910               	.LBE68:
-  82:main.c        ****             LCD_GoTo(0,0);
-  83:main.c        ****             LCD_WriteText("P/S");
- 911               		.loc 5 83 0
- 912 0082 80E0      		ldi r24,lo8(.LC4)
- 913 0084 90E0      		ldi r25,hi8(.LC4)
- 914 0086 00C0      		rjmp .L55
- 915               	.LVL65:
- 916               	.L46:
-  84:main.c        ****         }
-  85:main.c        ****       else if (Btn_S) // S
- 917               		.loc 5 85 0
- 918 0088 8499      		sbic 0x10,4
- 919 008a 00C0      		rjmp .L47
-  86:main.c        ****         {
-  87:main.c        ****           LCD_Clear();
- 920               		.loc 5 87 0
- 921 008c 0E94 0000 		call LCD_Clear
- 922               	.LVL66:
- 923               	.LBB70:
- 924               	.LBB71:
+ 924               		.loc 1 93 0
+ 925 008c 80E8      		ldi r24,lo8(-128)
+ 926 008e 0E94 0000 		call LCD_WriteCommand
+ 927               	.LVL64:
+ 928               	.LBE83:
+ 929               	.LBE82:
+  84:main.c        ****             LCD_WriteText("P/S");
+ 930               		.loc 5 84 0
+ 931 0092 80E0      		ldi r24,lo8(.LC4)
+ 932 0094 90E0      		ldi r25,hi8(.LC4)
+ 933 0096 00C0      		rjmp .L66
+ 934               	.LVL65:
+ 935               	.L46:
+  86:main.c        ****       else if (Btn_S) // S
+ 936               		.loc 5 86 0
+ 937 0098 8499      		sbic 0x10,4
+ 938 009a 00C0      		rjmp .L47
+  88:main.c        ****             LCD_Clear();
+ 939               		.loc 5 88 0
+ 940 009c 0E94 0000 		call LCD_Clear
+ 941               	.LVL66:
+ 942               	.LBB84:
+ 943               	.LBB85:
   93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
- 925               		.loc 1 93 0
- 926 0090 80E8      		ldi r24,lo8(-128)
- 927 0092 0E94 0000 		call LCD_WriteCommand
- 928               	.LVL67:
- 929               	.LBE71:
- 930               	.LBE70:
-  88:main.c        ****           LCD_GoTo(0,0);
-  89:main.c        ****           LCD_WriteText("S");
- 931               		.loc 5 89 0
- 932 0096 80E0      		ldi r24,lo8(.LC5)
- 933 0098 90E0      		ldi r25,hi8(.LC5)
- 934 009a 00C0      		rjmp .L55
- 935               	.LVL68:
- 936               	.L47:
-  90:main.c        ****         }
-  91:main.c        ****       else if (Btn_M) // M
- 937               		.loc 5 91 0
- 938 009c 8399      		sbic 0x10,3
- 939 009e 00C0      		rjmp .L48
-  92:main.c        ****         {
-  93:main.c        ****             LCD_Clear();
- 940               		.loc 5 93 0
- 941 00a0 0E94 0000 		call LCD_Clear
- 942               	.LVL69:
- 943               	.LBB72:
- 944               	.LBB73:
+ 944               		.loc 1 93 0
+ 945 00a0 80E8      		ldi r24,lo8(-128)
+ 946 00a2 0E94 0000 		call LCD_WriteCommand
+ 947               	.LVL67:
+ 948               	.LBE85:
+ 949               	.LBE84:
+  90:main.c        ****             LCD_WriteText("S, End-Stop");
+ 950               		.loc 5 90 0
+ 951 00a6 80E0      		ldi r24,lo8(.LC5)
+ 952 00a8 90E0      		ldi r25,hi8(.LC5)
+ 953               	.L65:
+ 954 00aa 0E94 0000 		call LCD_WriteText
+ 955               	.LVL68:
+ 956               	.L48:
+  93:main.c        ****                 if (!End_stop_1)
+ 957               		.loc 5 93 0
+ 958 00ae B39B      		sbis 0x16,3
+ 959 00b0 00C0      		rjmp .L49
+  95:main.c        ****                     LCD_Clear();
+ 960               		.loc 5 95 0
+ 961 00b2 0E94 0000 		call LCD_Clear
+ 962               	.LVL69:
+ 963               	.LBB86:
+ 964               	.LBB87:
   93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
- 945               		.loc 1 93 0
- 946 00a4 80E8      		ldi r24,lo8(-128)
- 947 00a6 0E94 0000 		call LCD_WriteCommand
- 948               	.LVL70:
- 949               	.LBE73:
- 950               	.LBE72:
-  94:main.c        ****             LCD_GoTo(0,0);
-  95:main.c        ****             LCD_WriteText("Rc5");
- 951               		.loc 5 95 0
- 952 00aa 80E0      		ldi r24,lo8(.LC6)
- 953 00ac 90E0      		ldi r25,hi8(.LC6)
- 954 00ae 0E94 0000 		call LCD_WriteText
- 955               	.LVL71:
-  96:main.c        ****             while(1)
-  97:main.c        ****             {
-  98:main.c        ****                 if(RC5_get(&addr,&comm,&tog)){//sprawdzamy, czy system odebra≥ jakπú ramkÍ RC5
-  99:main.c        ****                     //jeúli tak to jπ wyúwietlamy
- 100:main.c        ****                     sprintf(buffer," A:%02d C:%02d T:%02d ",addr,comm,tog);
- 956               		.loc 5 100 0
- 957 00b2 60E0      		ldi r22,lo8(.LC7)
- 958 00b4 E62E      		mov r14,r22
- 959 00b6 60E0      		ldi r22,hi8(.LC7)
- 960 00b8 F62E      		mov r15,r22
- 961 00ba 8E01      		movw r16,r28
- 962 00bc 0F5F      		subi r16,-1
- 963 00be 1F4F      		sbci r17,-1
- 964               	.L50:
-  98:main.c        ****                 if(RC5_get(&addr,&comm,&tog)){//sprawdzamy, czy system odebra≥ jakπú ramkÍ RC5
- 965               		.loc 5 98 0
- 966 00c0 AE01      		movw r20,r28
- 967 00c2 4E5D      		subi r20,-34
- 968 00c4 5F4F      		sbci r21,-1
- 969 00c6 BE01      		movw r22,r28
- 970 00c8 6D5D      		subi r22,-35
- 971 00ca 7F4F      		sbci r23,-1
- 972 00cc CE01      		movw r24,r28
- 973 00ce 8496      		adiw r24,36
- 974 00d0 0E94 0000 		call RC5_get
- 975               	.LVL72:
- 976 00d4 8823      		tst r24
- 977 00d6 01F0      		breq .L50
- 978               		.loc 5 100 0
- 979 00d8 8AA1      		ldd r24,Y+34
- 980 00da 1F92      		push __zero_reg__
- 981 00dc 8F93      		push r24
- 982 00de 8BA1      		ldd r24,Y+35
- 983 00e0 1F92      		push __zero_reg__
- 984 00e2 8F93      		push r24
- 985 00e4 8CA1      		ldd r24,Y+36
- 986 00e6 1F92      		push __zero_reg__
- 987 00e8 8F93      		push r24
- 988 00ea FF92      		push r15
- 989 00ec EF92      		push r14
- 990 00ee 1F93      		push r17
- 991 00f0 0F93      		push r16
- 992 00f2 0E94 0000 		call sprintf
- 993               	.LVL73:
- 994               	.LBB74:
- 995               	.LBB75:
+ 965               		.loc 1 93 0
+ 966 00b6 80E8      		ldi r24,lo8(-128)
+ 967 00b8 0E94 0000 		call LCD_WriteCommand
+ 968               	.LVL70:
+ 969               	.LBE87:
+ 970               	.LBE86:
+  97:main.c        ****                     LCD_WriteText("1");
+ 971               		.loc 5 97 0
+ 972 00bc 80E0      		ldi r24,lo8(.LC6)
+ 973 00be 90E0      		ldi r25,hi8(.LC6)
+ 974 00c0 00C0      		rjmp .L65
+ 975               	.LVL71:
+ 976               	.L49:
+  99:main.c        ****                 else if (!End_stop_2)
+ 977               		.loc 5 99 0
+ 978 00c2 B49B      		sbis 0x16,4
+ 979 00c4 00C0      		rjmp .L51
+ 101:main.c        ****                     LCD_Clear();
+ 980               		.loc 5 101 0
+ 981 00c6 0E94 0000 		call LCD_Clear
+ 982               	.LVL72:
+ 983               	.LBB88:
+ 984               	.LBB89:
   93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
- 996               		.loc 1 93 0
- 997 00f6 80EC      		ldi r24,lo8(-64)
- 998 00f8 0E94 0000 		call LCD_WriteCommand
- 999               	.LVL74:
- 1000               	.LBE75:
- 1001               	.LBE74:
- 101:main.c        ****                     LCD_GoTo(0,1);
- 102:main.c        ****                     LCD_WriteText(buffer);
- 1002               		.loc 5 102 0
- 1003 00fc C801      		movw r24,r16
- 1004 00fe 0E94 0000 		call LCD_WriteText
- 1005               	.LVL75:
- 1006 0102 0FB6      		in __tmp_reg__,__SREG__
- 1007 0104 F894      		cli
- 1008 0106 DEBF      		out __SP_H__,r29
- 1009 0108 0FBE      		out __SREG__,__tmp_reg__
- 1010 010a CDBF      		out __SP_L__,r28
- 1011 010c 00C0      		rjmp .L50
- 1012               	.LVL76:
- 1013               	.L48:
- 103:main.c        ****                 }
- 104:main.c        ****             }
- 105:main.c        ****         }
- 106:main.c        ****       else if (Btn_Remote) // R
- 1014               		.loc 5 106 0
- 1015 010e 8299      		sbic 0x10,2
- 1016 0110 00C0      		rjmp .L52
- 107:main.c        ****         {
- 108:main.c        ****             LCD_Clear();
- 1017               		.loc 5 108 0
- 1018 0112 0E94 0000 		call LCD_Clear
- 1019               	.LVL77:
- 1020               	.LBB76:
- 1021               	.LBB77:
+ 985               		.loc 1 93 0
+ 986 00ca 80E8      		ldi r24,lo8(-128)
+ 987 00cc 0E94 0000 		call LCD_WriteCommand
+ 988               	.LVL73:
+ 989               	.LBE89:
+ 990               	.LBE88:
+ 103:main.c        ****                     LCD_WriteText("2");
+ 991               		.loc 5 103 0
+ 992 00d0 80E0      		ldi r24,lo8(.LC7)
+ 993 00d2 90E0      		ldi r25,hi8(.LC7)
+ 994 00d4 00C0      		rjmp .L65
+ 995               	.LVL74:
+ 996               	.L51:
+ 105:main.c        ****                 else if (!End_stop_3)
+ 997               		.loc 5 105 0
+ 998 00d6 B59B      		sbis 0x16,5
+ 999 00d8 00C0      		rjmp .L52
+ 107:main.c        ****                     LCD_Clear();
+ 1000               		.loc 5 107 0
+ 1001 00da 0E94 0000 		call LCD_Clear
+ 1002               	.LVL75:
+ 1003               	.LBB90:
+ 1004               	.LBB91:
   93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
- 1022               		.loc 1 93 0
- 1023 0116 80E8      		ldi r24,lo8(-128)
- 1024 0118 0E94 0000 		call LCD_WriteCommand
- 1025               	.LVL78:
- 1026               	.LBE77:
- 1027               	.LBE76:
- 109:main.c        ****             LCD_GoTo(0,0);
- 110:main.c        ****             LCD_WriteText("R");
- 1028               		.loc 5 110 0
- 1029 011c 80E0      		ldi r24,lo8(.LC8)
- 1030 011e 90E0      		ldi r25,hi8(.LC8)
- 1031 0120 00C0      		rjmp .L55
- 1032               	.LVL79:
- 1033               	.L52:
- 111:main.c        ****         }
- 112:main.c        ****       else if (Btn_RightMinus) // R-
- 1034               		.loc 5 112 0
- 1035 0122 8199      		sbic 0x10,1
- 1036 0124 00C0      		rjmp .L53
- 113:main.c        ****         {
- 114:main.c        ****             LCD_Clear();
- 1037               		.loc 5 114 0
- 1038 0126 0E94 0000 		call LCD_Clear
- 1039               	.LVL80:
- 1040               	.LBB78:
- 1041               	.LBB79:
+ 1005               		.loc 1 93 0
+ 1006 00de 80E8      		ldi r24,lo8(-128)
+ 1007 00e0 0E94 0000 		call LCD_WriteCommand
+ 1008               	.LVL76:
+ 1009               	.LBE91:
+ 1010               	.LBE90:
+ 109:main.c        ****                     LCD_WriteText("3");
+ 1011               		.loc 5 109 0
+ 1012 00e4 80E0      		ldi r24,lo8(.LC8)
+ 1013 00e6 90E0      		ldi r25,hi8(.LC8)
+ 1014 00e8 00C0      		rjmp .L65
+ 1015               	.LVL77:
+ 1016               	.L52:
+ 111:main.c        ****                 else if (!End_stop_4)
+ 1017               		.loc 5 111 0
+ 1018 00ea B69B      		sbis 0x16,6
+ 1019 00ec 00C0      		rjmp .L53
+ 113:main.c        ****                     LCD_Clear();
+ 1020               		.loc 5 113 0
+ 1021 00ee 0E94 0000 		call LCD_Clear
+ 1022               	.LVL78:
+ 1023               	.LBB92:
+ 1024               	.LBB93:
   93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
- 1042               		.loc 1 93 0
- 1043 012a 80E8      		ldi r24,lo8(-128)
- 1044 012c 0E94 0000 		call LCD_WriteCommand
- 1045               	.LVL81:
- 1046               	.LBE79:
- 1047               	.LBE78:
- 115:main.c        ****             LCD_GoTo(0,0);
- 116:main.c        ****             LCD_WriteText("R-");
- 1048               		.loc 5 116 0
- 1049 0130 80E0      		ldi r24,lo8(.LC9)
- 1050 0132 90E0      		ldi r25,hi8(.LC9)
- 1051 0134 00C0      		rjmp .L55
- 1052               	.LVL82:
- 1053               	.L53:
- 117:main.c        ****         }
- 118:main.c        ****       else if (Btn_RightPlus) // R+
- 1054               		.loc 5 118 0
- 1055 0136 8099      		sbic 0x10,0
- 1056 0138 00C0      		rjmp .L44
- 119:main.c        ****         {
- 120:main.c        ****             LCD_Clear();
- 1057               		.loc 5 120 0
- 1058 013a 0E94 0000 		call LCD_Clear
- 1059               	.LVL83:
- 1060               	.LBB80:
- 1061               	.LBB81:
+ 1025               		.loc 1 93 0
+ 1026 00f2 80E8      		ldi r24,lo8(-128)
+ 1027 00f4 0E94 0000 		call LCD_WriteCommand
+ 1028               	.LVL79:
+ 1029               	.LBE93:
+ 1030               	.LBE92:
+ 115:main.c        ****                     LCD_WriteText("4");
+ 1031               		.loc 5 115 0
+ 1032 00f8 80E0      		ldi r24,lo8(.LC9)
+ 1033 00fa 90E0      		ldi r25,hi8(.LC9)
+ 1034 00fc 00C0      		rjmp .L65
+ 1035               	.LVL80:
+ 1036               	.L53:
+ 117:main.c        ****                 else if (!End_stop_5)
+ 1037               		.loc 5 117 0
+ 1038 00fe B79B      		sbis 0x16,7
+ 1039 0100 00C0      		rjmp .L48
+ 119:main.c        ****                     LCD_Clear();
+ 1040               		.loc 5 119 0
+ 1041 0102 0E94 0000 		call LCD_Clear
+ 1042               	.LVL81:
+ 1043               	.LBB94:
+ 1044               	.LBB95:
   93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
- 1062               		.loc 1 93 0
- 1063 013e 80E8      		ldi r24,lo8(-128)
- 1064 0140 0E94 0000 		call LCD_WriteCommand
- 1065               	.LVL84:
- 1066               	.LBE81:
- 1067               	.LBE80:
- 121:main.c        ****             LCD_GoTo(0,0);
- 122:main.c        ****             LCD_WriteText("R+");
- 1068               		.loc 5 122 0
- 1069 0144 80E0      		ldi r24,lo8(.LC10)
- 1070 0146 90E0      		ldi r25,hi8(.LC10)
- 1071               	.LVL85:
- 1072               	.L55:
- 1073 0148 0E94 0000 		call LCD_WriteText
- 1074               	.LVL86:
- 1075               	.L44:
- 1076               	.LBB82:
- 1077               	.LBB83:
+ 1045               		.loc 1 93 0
+ 1046 0106 80E8      		ldi r24,lo8(-128)
+ 1047 0108 0E94 0000 		call LCD_WriteCommand
+ 1048               	.LVL82:
+ 1049               	.LBE95:
+ 1050               	.LBE94:
+ 121:main.c        ****                     LCD_WriteText("5");
+ 1051               		.loc 5 121 0
+ 1052 010c 80E0      		ldi r24,lo8(.LC10)
+ 1053 010e 90E0      		ldi r25,hi8(.LC10)
+ 1054 0110 00C0      		rjmp .L65
+ 1055               	.LVL83:
+ 1056               	.L47:
+ 125:main.c        ****       else if (Btn_M) // M
+ 1057               		.loc 5 125 0
+ 1058 0112 8399      		sbic 0x10,3
+ 1059 0114 00C0      		rjmp .L54
+ 127:main.c        ****             LCD_Clear();
+ 1060               		.loc 5 127 0
+ 1061 0116 0E94 0000 		call LCD_Clear
+ 1062               	.LVL84:
+ 1063               	.LBB96:
+ 1064               	.LBB97:
+  93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
+ 1065               		.loc 1 93 0
+ 1066 011a 80E8      		ldi r24,lo8(-128)
+ 1067 011c 0E94 0000 		call LCD_WriteCommand
+ 1068               	.LVL85:
+ 1069               	.LBE97:
+ 1070               	.LBE96:
+ 129:main.c        ****             LCD_WriteText("M, Rc5");
+ 1071               		.loc 5 129 0
+ 1072 0120 80E0      		ldi r24,lo8(.LC11)
+ 1073 0122 90E0      		ldi r25,hi8(.LC11)
+ 1074 0124 0E94 0000 		call LCD_WriteText
+ 1075               	.LVL86:
+ 1076               	.L55:
+ 130:main.c        ****             while(((PIND&(1<<PD3))))
+ 1077               		.loc 5 130 0 discriminator 1
+ 1078 0128 839B      		sbis 0x10,3
+ 1079 012a 00C0      		rjmp .L44
+ 132:main.c        ****                 if(RC5_get(&addr,&comm,&tog))
+ 1080               		.loc 5 132 0
+ 1081 012c AE01      		movw r20,r28
+ 1082 012e 4E5D      		subi r20,-34
+ 1083 0130 5F4F      		sbci r21,-1
+ 1084 0132 BE01      		movw r22,r28
+ 1085 0134 6D5D      		subi r22,-35
+ 1086 0136 7F4F      		sbci r23,-1
+ 1087 0138 CE01      		movw r24,r28
+ 1088 013a 8496      		adiw r24,36
+ 1089 013c 0E94 0000 		call RC5_get
+ 1090               	.LVL87:
+ 1091 0140 8823      		tst r24
+ 1092 0142 01F0      		breq .L56
+ 1093               		.loc 5 134 0
+ 1094 0144 8AA1      		ldd r24,Y+34
+ 1095 0146 1F92      		push __zero_reg__
+ 1096 0148 8F93      		push r24
+ 1097 014a 8BA1      		ldd r24,Y+35
+ 1098 014c 1F92      		push __zero_reg__
+ 1099 014e 8F93      		push r24
+ 1100 0150 8CA1      		ldd r24,Y+36
+ 1101 0152 1F92      		push __zero_reg__
+ 1102 0154 8F93      		push r24
+ 1103 0156 FF92      		push r15
+ 1104 0158 EF92      		push r14
+ 1105 015a 1F93      		push r17
+ 1106 015c 0F93      		push r16
+ 1107 015e 0E94 0000 		call sprintf
+ 1108               	.LVL88:
+ 1109               	.LBB98:
+ 1110               	.LBB99:
+  93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
+ 1111               		.loc 1 93 0
+ 1112 0162 80EC      		ldi r24,lo8(-64)
+ 1113 0164 0E94 0000 		call LCD_WriteCommand
+ 1114               	.LVL89:
+ 1115               	.LBE99:
+ 1116               	.LBE98:
+ 135:main.c        ****                     LCD_GoTo(0,1);
+ 136:main.c        ****                     LCD_WriteText(buffer);
+ 1117               		.loc 5 136 0
+ 1118 0168 C801      		movw r24,r16
+ 1119 016a 0E94 0000 		call LCD_WriteText
+ 1120               	.LVL90:
+ 1121 016e 0FB6      		in __tmp_reg__,__SREG__
+ 1122 0170 F894      		cli
+ 1123 0172 DEBF      		out __SP_H__,r29
+ 1124 0174 0FBE      		out __SREG__,__tmp_reg__
+ 1125 0176 CDBF      		out __SP_L__,r28
+ 1126               	.LVL91:
+ 1127               	.L56:
+ 1128               	.LBB100:
+ 1129               	.LBB101:
  163:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h **** 	__builtin_avr_delay_cycles(__ticks_dc);
- 1078               		.loc 2 163 0
- 1079 014c 8FE9      		ldi r24,lo8(3999)
- 1080 014e 9FE0      		ldi r25,hi8(3999)
- 1081 0150 0197      		1: sbiw r24,1
- 1082 0152 01F4      		brne 1b
- 1083 0154 00C0      		rjmp .
- 1084 0156 0000      		nop
- 1085 0158 00C0      		rjmp .L54
- 1086               	.LBE83:
- 1087               	.LBE82:
- 1088               		.cfi_endproc
- 1089               	.LFE26:
- 1091               		.local	RC5_tmp.2159
- 1092               		.comm	RC5_tmp.2159,2,1
- 1093               		.local	BitVal.2158
- 1094               		.comm	BitVal.2158,1,1
- 1095               		.local	BitCt.2157
- 1096               		.comm	BitCt.2157,1,1
- 1097               		.local	EdgeCt.2156
- 1098               		.comm	EdgeCt.2156,1,1
- 1099               		.local	LastICR.2154
- 1100               		.comm	LastICR.2154,2,1
- 1101               		.comm	toggle,1,1
- 1102               		.comm	address,1,1
- 1103               		.comm	command,1,1
- 1104               	.global	RC5_decoded_flag
- 1105               		.section .bss
- 1108               	RC5_decoded_flag:
- 1109 0000 00        		.zero	1
- 1110               		.text
- 1111               	.Letext0:
- 1112               		.file 6 "/usr/local/CrossPack-AVR-20131216/avr/include/stdint.h"
- 1113               		.file 7 "/usr/local/CrossPack-AVR-20131216/avr/include/stdio.h"
+ 1130               		.loc 2 163 0
+ 1131 0178 8FE9      		ldi r24,lo8(3999)
+ 1132 017a 9FE0      		ldi r25,hi8(3999)
+ 1133 017c 0197      		1: sbiw r24,1
+ 1134 017e 01F4      		brne 1b
+ 1135 0180 00C0      		rjmp .
+ 1136 0182 0000      		nop
+ 1137 0184 00C0      		rjmp .L55
+ 1138               	.LVL92:
+ 1139               	.L54:
+ 1140               	.LBE101:
+ 1141               	.LBE100:
+ 137:main.c        ****                 }
+ 138:main.c        ****                 _delay_ms(1);
+ 139:main.c        ****             }
+ 140:main.c        ****         }
+ 141:main.c        ****       else if (Btn_Remote) // R
+ 1142               		.loc 5 141 0
+ 1143 0186 8299      		sbic 0x10,2
+ 1144 0188 00C0      		rjmp .L58
+ 142:main.c        ****         {
+ 143:main.c        ****             LCD_Clear();
+ 1145               		.loc 5 143 0
+ 1146 018a 0E94 0000 		call LCD_Clear
+ 1147               	.LVL93:
+ 1148               	.LBB102:
+ 1149               	.LBB103:
+  93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
+ 1150               		.loc 1 93 0
+ 1151 018e 80E8      		ldi r24,lo8(-128)
+ 1152 0190 0E94 0000 		call LCD_WriteCommand
+ 1153               	.LVL94:
+ 1154               	.LBE103:
+ 1155               	.LBE102:
+ 144:main.c        ****             LCD_GoTo(0,0);
+ 145:main.c        ****             LCD_WriteText("R");
+ 1156               		.loc 5 145 0
+ 1157 0194 80E0      		ldi r24,lo8(.LC13)
+ 1158 0196 90E0      		ldi r25,hi8(.LC13)
+ 1159 0198 00C0      		rjmp .L66
+ 1160               	.LVL95:
+ 1161               	.L58:
+ 146:main.c        ****         }
+ 147:main.c        ****       else if (Btn_RightMinus) // R-
+ 1162               		.loc 5 147 0
+ 1163 019a 8199      		sbic 0x10,1
+ 1164 019c 00C0      		rjmp .L59
+ 148:main.c        ****         {
+ 149:main.c        ****             LCD_Clear();
+ 1165               		.loc 5 149 0
+ 1166 019e 0E94 0000 		call LCD_Clear
+ 1167               	.LVL96:
+ 1168               	.LBB104:
+ 1169               	.LBB105:
+  93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
+ 1170               		.loc 1 93 0
+ 1171 01a2 80E8      		ldi r24,lo8(-128)
+ 1172 01a4 0E94 0000 		call LCD_WriteCommand
+ 1173               	.LVL97:
+ 1174               	.LBE105:
+ 1175               	.LBE104:
+ 150:main.c        ****             LCD_GoTo(0,0);
+ 151:main.c        ****             LCD_WriteText("R-");
+ 1176               		.loc 5 151 0
+ 1177 01a8 80E0      		ldi r24,lo8(.LC14)
+ 1178 01aa 90E0      		ldi r25,hi8(.LC14)
+ 1179 01ac 00C0      		rjmp .L66
+ 1180               	.LVL98:
+ 1181               	.L59:
+ 152:main.c        ****         }
+ 153:main.c        ****       else if (Btn_RightPlus) // R+
+ 1182               		.loc 5 153 0
+ 1183 01ae 8099      		sbic 0x10,0
+ 1184 01b0 00C0      		rjmp .L44
+ 154:main.c        ****         {
+ 155:main.c        ****             LCD_Clear();
+ 1185               		.loc 5 155 0
+ 1186 01b2 0E94 0000 		call LCD_Clear
+ 1187               	.LVL99:
+ 1188               	.LBB106:
+ 1189               	.LBB107:
+  93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
+ 1190               		.loc 1 93 0
+ 1191 01b6 80E8      		ldi r24,lo8(-128)
+ 1192 01b8 0E94 0000 		call LCD_WriteCommand
+ 1193               	.LVL100:
+ 1194               	.LBE107:
+ 1195               	.LBE106:
+ 156:main.c        ****             LCD_GoTo(0,0);
+ 157:main.c        ****             LCD_WriteText("R+");
+ 1196               		.loc 5 157 0
+ 1197 01bc 80E0      		ldi r24,lo8(.LC15)
+ 1198 01be 90E0      		ldi r25,hi8(.LC15)
+ 1199               	.LVL101:
+ 1200               	.L66:
+ 1201 01c0 0E94 0000 		call LCD_WriteText
+ 1202               	.LVL102:
+ 1203               	.L44:
+ 1204               	.LBB108:
+ 1205               	.LBB109:
+ 163:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h **** 	__builtin_avr_delay_cycles(__ticks_dc);
+ 1206               		.loc 2 163 0
+ 1207 01c4 8FE9      		ldi r24,lo8(3999)
+ 1208 01c6 9FE0      		ldi r25,hi8(3999)
+ 1209 01c8 0197      		1: sbiw r24,1
+ 1210 01ca 01F4      		brne 1b
+ 1211 01cc 00C0      		rjmp .
+ 1212 01ce 0000      		nop
+ 1213 01d0 00C0      		rjmp .L61
+ 1214               	.LBE109:
+ 1215               	.LBE108:
+ 1216               		.cfi_endproc
+ 1217               	.LFE26:
+ 1219               		.local	RC5_tmp.2159
+ 1220               		.comm	RC5_tmp.2159,2,1
+ 1221               		.local	BitVal.2158
+ 1222               		.comm	BitVal.2158,1,1
+ 1223               		.local	BitCt.2157
+ 1224               		.comm	BitCt.2157,1,1
+ 1225               		.local	EdgeCt.2156
+ 1226               		.comm	EdgeCt.2156,1,1
+ 1227               		.local	LastICR.2154
+ 1228               		.comm	LastICR.2154,2,1
+ 1229               		.comm	toggle,1,1
+ 1230               		.comm	address,1,1
+ 1231               		.comm	command,1,1
+ 1232               	.global	RC5_decoded_flag
+ 1233               		.section .bss
+ 1236               	RC5_decoded_flag:
+ 1237 0000 00        		.zero	1
+ 1238               		.text
+ 1239               	.Letext0:
+ 1240               		.file 6 "/usr/local/CrossPack-AVR-20131216/avr/include/stdint.h"
+ 1241               		.file 7 "/usr/local/CrossPack-AVR-20131216/avr/include/stdio.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccapxBaH.s:2      *ABS*:0000003e __SP_H__
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccapxBaH.s:3      *ABS*:0000003d __SP_L__
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccapxBaH.s:4      *ABS*:0000003f __SREG__
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccapxBaH.s:5      *ABS*:00000000 __tmp_reg__
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccapxBaH.s:6      *ABS*:00000001 __zero_reg__
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccapxBaH.s:12     .text:00000000 _LCD_OutNibble
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccapxBaH.s:73     .text:0000002a _LCD_Write
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccapxBaH.s:128    .text:00000054 LCD_WriteCommand
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccapxBaH.s:147    .text:0000005a LCD_WriteData
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccapxBaH.s:166    .text:00000060 LCD_WriteText
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccapxBaH.s:209    .text:00000078 LCD_GoTo
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccapxBaH.s:232    .text:00000086 LCD_Clear
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccapxBaH.s:261    .text:0000009a LCD_Home
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccapxBaH.s:290    .text:000000ae LCD_Initalize
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccapxBaH.s:420    .text:0000012a ADC_init
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccapxBaH.s:443    .text:00000136 ADC_get
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccapxBaH.s:475    .text:0000014c RC5_get
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccapxBaH.s:1108   .bss:00000000 RC5_decoded_flag
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:2      *ABS*:0000003e __SP_H__
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:3      *ABS*:0000003d __SP_L__
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:4      *ABS*:0000003f __SREG__
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:5      *ABS*:00000000 __tmp_reg__
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:6      *ABS*:00000001 __zero_reg__
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:12     .text:00000000 _LCD_OutNibble
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:73     .text:0000002a _LCD_Write
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:128    .text:00000054 LCD_WriteCommand
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:147    .text:0000005a LCD_WriteData
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:166    .text:00000060 LCD_WriteText
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:209    .text:00000078 LCD_GoTo
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:232    .text:00000086 LCD_Clear
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:261    .text:0000009a LCD_Home
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:290    .text:000000ae LCD_Initalize
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:420    .text:0000012a ADC_init
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:443    .text:00000136 ADC_get
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:475    .text:0000014c RC5_get
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:1236   .bss:00000000 RC5_decoded_flag
                             *COM*:00000001 address
                             *COM*:00000001 command
                             *COM*:00000001 toggle
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccapxBaH.s:520    .text:00000178 RC5_init
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccapxBaH.s:548    .text:00000190 __vector_6
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccapxBaH.s:1098   .bss:00000006 LastICR.2154
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccapxBaH.s:1096   .bss:00000005 EdgeCt.2156
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccapxBaH.s:1094   .bss:00000004 BitCt.2157
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccapxBaH.s:1092   .bss:00000003 BitVal.2158
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:520    .text:00000178 RC5_init
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:548    .text:00000190 __vector_6
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:1226   .bss:00000006 LastICR.2154
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:1224   .bss:00000005 EdgeCt.2156
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:1222   .bss:00000004 BitCt.2157
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:1220   .bss:00000003 BitVal.2158
                              .bss:00000001 RC5_tmp.2159
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccapxBaH.s:771    .text.startup:00000000 main
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:781    .text.startup:00000000 main
 
 UNDEFINED SYMBOLS
 sprintf

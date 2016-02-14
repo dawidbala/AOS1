@@ -1,5 +1,9 @@
-// Buzzer
-#define BUZ                 PB6
+//1. End-Stop (1-5), 2. Czujnik temperatury, 3. Buzzer, 4. Button L-
+#define End_stop_1          (!(PINB&(1<<PB3)))
+#define End_stop_2          (!(PINB&(1<<PB4)))
+#define End_stop_3          (!(PINB&(1<<PB5)))
+#define End_stop_4          (!(PINB&(1<<PB6)))
+#define End_stop_5          (!(PINB&(1<<PB7)))
 
 // Czewona dioda (workLed)
 #define wLED                PC7

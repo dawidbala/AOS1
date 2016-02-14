@@ -36,7 +36,7 @@ int main(void)
     wLED_PORT    |= (1<<wLED);
     //Port B, End-stopy(1-5), Czujnik temperatury, przycisk L-
     DDRB = 0x00;
-    PORTB = 0xff;
+    PORTB = 0x9f;
     
     
 // Inicjalizacje modółów
@@ -48,6 +48,7 @@ int main(void)
     // RC5
     char buffer[33];
     uint8_t addr, comm, tog;
+    uint8_t btn_off_rc5 = 1;
     
     
 // Ekran startowy
@@ -84,23 +85,57 @@ int main(void)
         }
       else if (Btn_S) // S
         {
-          LCD_Clear();
-          LCD_GoTo(0,0);
-          LCD_WriteText("S");
+            LCD_Clear();
+            LCD_GoTo(0,0);
+            LCD_WriteText("S, End-Stop");
+            while (1)
+            {
+                if (!End_stop_1)
+                {
+                    LCD_Clear();
+                    LCD_GoTo(0,0);
+                    LCD_WriteText("1");
+                }
+                else if (!End_stop_2)
+                {
+                    LCD_Clear();
+                    LCD_GoTo(0,0);
+                    LCD_WriteText("2");
+                }
+                else if (!End_stop_3)
+                {
+                    LCD_Clear();
+                    LCD_GoTo(0,0);
+                    LCD_WriteText("3");
+                }
+                else if (!End_stop_4)
+                {
+                    LCD_Clear();
+                    LCD_GoTo(0,0);
+                    LCD_WriteText("4");
+                }
+                else if (!End_stop_5)
+                {
+                    LCD_Clear();
+                    LCD_GoTo(0,0);
+                    LCD_WriteText("5");
+                }
+            }
         }
       else if (Btn_M) // M
         {
             LCD_Clear();
             LCD_GoTo(0,0);
-            LCD_WriteText("Rc5");
-            while(1)
+            LCD_WriteText("M, Rc5");
+            while(((PIND&(1<<PD3))))
             {
-                if(RC5_get(&addr,&comm,&tog)){//sprawdzamy, czy system odebra≥ jakπú ramkÍ RC5
-                    //jeúli tak to jπ wyúwietlamy
+                if(RC5_get(&addr,&comm,&tog))
+                {  // sprawdzanie, czy system odbiera sygnały rc5, jeśli tak to wyświetlamy
                     sprintf(buffer," A:%02d C:%02d T:%02d ",addr,comm,tog);
                     LCD_GoTo(0,1);
                     LCD_WriteText(buffer);
                 }
+                _delay_ms(1);
             }
         }
       else if (Btn_Remote) // R
