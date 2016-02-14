@@ -63,14 +63,14 @@ int main(void)
     while(1)
     {
 // MENU
-      if (Btn_LeftPlus)  // L+
+        if (Btn_LeftPlus || comm == 1)  // L+
         {
             PORTC &= (~(1<<7));
             LCD_Clear();
             LCD_GoTo(0,0);
             LCD_WriteText("L+");
         }
-      else if (Btn_LeftMinus)// L-
+      else if (Btn_LeftMinus || comm == 2)// L-
         {
             PORTC |= (1<<7);
             LCD_Clear();
@@ -120,6 +120,7 @@ int main(void)
                     LCD_GoTo(0,0);
                     LCD_WriteText("5");
                 }
+                _delay_ms(1); // Eliminacja migotania styków
             }
         }
       else if (Btn_M) // M
@@ -127,7 +128,7 @@ int main(void)
             LCD_Clear();
             LCD_GoTo(0,0);
             LCD_WriteText("M, Rc5");
-            while(((PIND&(1<<PD3))))
+            while(1)
             {
                 if(RC5_get(&addr,&comm,&tog))
                 {  // sprawdzanie, czy system odbiera sygnały rc5, jeśli tak to wyświetlamy
@@ -156,6 +157,10 @@ int main(void)
             LCD_GoTo(0,0);
             LCD_WriteText("R+");
         }
+       comm=0;
+        RC5_get(&addr,&comm,&tog);
+
+        
         _delay_ms(1); // Eliminacja migotania styków
    }
 }

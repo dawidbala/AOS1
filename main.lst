@@ -88,16 +88,16 @@
   53 001e 83FF      		sbrs r24,3
   54 0020 00C0      		rjmp .L8
   55               	.LVL1:
-  56               	.LBB22:
-  57               	.LBB23:
+  56               	.LBB24:
+  57               	.LBB25:
   37:lib/HD44780.c **** 	LCD_DB7_PORT |= LCD_DB7;
   58               		.loc 1 37 0
   59 0022 A89A      		sbi 0x15,0
   60 0024 0895      		ret
   61               	.LVL2:
   62               	.L8:
-  63               	.LBE23:
-  64               	.LBE22:
+  63               	.LBE25:
+  64               	.LBE24:
   38:lib/HD44780.c **** else
   39:lib/HD44780.c **** 	LCD_DB7_PORT  &= ~LCD_DB7;
   65               		.loc 1 39 0
@@ -153,8 +153,8 @@
  103               		.loc 1 53 0
  104 0042 AC98      		cbi 0x15,4
  105               	.LVL7:
- 106               	.LBB24:
- 107               	.LBB25:
+ 106               	.LBB26:
+ 107               	.LBB27:
  108               		.file 2 "/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h"
    1:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h **** /* Copyright (c) 2002, Marek Michalkiewicz
    2:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h ****    Copyright (c) 2004,2005,2007 Joerg Wunsch
@@ -409,8 +409,8 @@
  114 004c 00C0      		rjmp .
  115 004e 0000      		nop
  116               	/* epilogue start */
- 117               	.LBE25:
- 118               	.LBE24:
+ 117               	.LBE27:
+ 118               	.LBE26:
   54:lib/HD44780.c **** _delay_us(50);
   55:lib/HD44780.c **** }
  119               		.loc 1 55 0
@@ -575,8 +575,8 @@
  241 0086 81E0      		ldi r24,lo8(1)
  242 0088 0E94 0000 		call LCD_WriteCommand
  243               	.LVL23:
- 244               	.LBB26:
- 245               	.LBB27:
+ 244               	.LBB28:
+ 245               	.LBB29:
  163:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h **** 	__builtin_avr_delay_cycles(__ticks_dc);
  246               		.loc 2 163 0
  247 008c 8FE3      		ldi r24,lo8(7999)
@@ -586,8 +586,8 @@
  251 0094 00C0      		rjmp .
  252 0096 0000      		nop
  253 0098 0895      		ret
- 254               	.LBE27:
- 255               	.LBE26:
+ 254               	.LBE29:
+ 255               	.LBE28:
  256               		.cfi_endproc
  257               	.LFE18:
  259               	.global	LCD_Home
@@ -613,8 +613,8 @@
  270 009a 82E0      		ldi r24,lo8(2)
  271 009c 0E94 0000 		call LCD_WriteCommand
  272               	.LVL24:
- 273               	.LBB28:
- 274               	.LBB29:
+ 273               	.LBB30:
+ 274               	.LBB31:
  163:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h **** 	__builtin_avr_delay_cycles(__ticks_dc);
  275               		.loc 2 163 0
  276 00a0 8FE3      		ldi r24,lo8(7999)
@@ -624,8 +624,8 @@
  280 00a8 00C0      		rjmp .
  281 00aa 0000      		nop
  282 00ac 0895      		ret
- 283               	.LBE29:
- 284               	.LBE28:
+ 283               	.LBE31:
+ 284               	.LBE30:
  285               		.cfi_endproc
  286               	.LFE19:
  288               	.global	LCD_Initalize
@@ -670,8 +670,8 @@
  312               		.loc 1 128 0
  313 00ba A59A      		sbi 0x14,5
  314               	.LVL25:
- 315               	.LBB30:
- 316               	.LBB31:
+ 315               	.LBB32:
+ 316               	.LBB33:
  163:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h **** 	__builtin_avr_delay_cycles(__ticks_dc);
  317               		.loc 2 163 0
  318 00bc 8FE5      		ldi r24,lo8(-5537)
@@ -680,8 +680,8 @@
  321 00c2 01F4      		brne 1b
  322 00c4 00C0      		rjmp .
  323 00c6 0000      		nop
- 324               	.LBE31:
- 325               	.LBE30:
+ 324               	.LBE33:
+ 325               	.LBE32:
  129:lib/HD44780.c **** _delay_ms(15); // oczekiwanie na ustalibizowanie siê napiecia zasilajacego
  130:lib/HD44780.c **** LCD_RS_PORT &= ~LCD_RS; // wyzerowanie linii RS
  326               		.loc 1 130 0
@@ -708,8 +708,8 @@
  340               		.loc 1 137 0 discriminator 2
  341 00d6 AC98      		cbi 0x15,4
  342               	.LVL29:
- 343               	.LBB32:
- 344               	.LBB33:
+ 343               	.LBB34:
+ 344               	.LBB35:
  163:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h **** 	__builtin_avr_delay_cycles(__ticks_dc);
  345               		.loc 2 163 0 discriminator 2
  346 00d8 8FE1      		ldi r24,lo8(19999)
@@ -721,8 +721,8 @@
  352               	.LVL30:
  353 00e4 C150      		subi r28,lo8(-(-1))
  354               	.LVL31:
- 355               	.LBE33:
- 356               	.LBE32:
+ 355               	.LBE35:
+ 356               	.LBE34:
  133:lib/HD44780.c **** for(i = 0; i < 3; i++) // trzykrotne powtórzenie bloku instrukcji
  357               		.loc 1 133 0 discriminator 2
  358 00e6 01F4      		brne .L23
@@ -741,8 +741,8 @@
  365               		.loc 1 143 0
  366 00f0 AC98      		cbi 0x15,4
  367               	.LVL33:
- 368               	.LBB34:
- 369               	.LBB35:
+ 368               	.LBB36:
+ 369               	.LBB37:
  163:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h **** 	__builtin_avr_delay_cycles(__ticks_dc);
  370               		.loc 2 163 0
  371 00f2 8FE9      		ldi r24,lo8(3999)
@@ -751,8 +751,8 @@
  374 00f8 01F4      		brne 1b
  375 00fa 00C0      		rjmp .
  376 00fc 0000      		nop
- 377               	.LBE35:
- 378               	.LBE34:
+ 377               	.LBE37:
+ 378               	.LBE36:
  144:lib/HD44780.c **** 
  145:lib/HD44780.c **** _delay_ms(1); // czekaj 1ms 
  146:lib/HD44780.c **** LCD_WriteCommand(HD44780_FUNCTION_SET | HD44780_FONT5x7 | HD44780_TWO_LINE | HD44780_4_BIT); // int
@@ -770,8 +770,8 @@
  388 010a 81E0      		ldi r24,lo8(1)
  389 010c 0E94 0000 		call LCD_WriteCommand
  390               	.LVL36:
- 391               	.LBB36:
- 392               	.LBB37:
+ 391               	.LBB38:
+ 392               	.LBB39:
  163:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h **** 	__builtin_avr_delay_cycles(__ticks_dc);
  393               		.loc 2 163 0
  394 0110 8FE3      		ldi r24,lo8(7999)
@@ -780,8 +780,8 @@
  397 0116 01F4      		brne 1b
  398 0118 00C0      		rjmp .
  399 011a 0000      		nop
- 400               	.LBE37:
- 401               	.LBE36:
+ 400               	.LBE39:
+ 401               	.LBE38:
  149:lib/HD44780.c **** _delay_ms(2);
  150:lib/HD44780.c **** LCD_WriteCommand(HD44780_ENTRY_MODE | HD44780_EM_SHIFT_CURSOR | HD44780_EM_INCREMENT);// inkrementa
  402               		.loc 1 150 0
@@ -903,129 +903,133 @@
  486 014c 2091 0000 		lds r18,RC5_decoded_flag
  487 0150 2223      		tst r18
  488 0152 01F0      		breq .L30
+ 489               	.LVL43:
+ 490               	.LBB42:
+ 491               	.LBB43:
   16:lib/RC5.c     **** 		*addr=address;
- 489               		.loc 4 16 0
- 490 0154 2091 0000 		lds r18,address
- 491 0158 FC01      		movw r30,r24
- 492 015a 2083      		st Z,r18
+ 492               		.loc 4 16 0
+ 493 0154 2091 0000 		lds r18,address
+ 494 0158 FC01      		movw r30,r24
+ 495 015a 2083      		st Z,r18
   17:lib/RC5.c     **** 		*comm=command;
- 493               		.loc 4 17 0
- 494 015c 8091 0000 		lds r24,command
- 495               	.LVL43:
- 496 0160 FB01      		movw r30,r22
- 497               	.LVL44:
- 498 0162 8083      		st Z,r24
+ 496               		.loc 4 17 0
+ 497 015c 8091 0000 		lds r24,command
+ 498               	.LVL44:
+ 499 0160 FB01      		movw r30,r22
+ 500               	.LVL45:
+ 501 0162 8083      		st Z,r24
   18:lib/RC5.c     **** 		*tog=toggle;
- 499               		.loc 4 18 0
- 500 0164 8091 0000 		lds r24,toggle
- 501 0168 FA01      		movw r30,r20
- 502 016a 8083      		st Z,r24
+ 502               		.loc 4 18 0
+ 503 0164 8091 0000 		lds r24,toggle
+ 504 0168 FA01      		movw r30,r20
+ 505 016a 8083      		st Z,r24
   19:lib/RC5.c     **** 		RC5_decoded_flag=0;
- 503               		.loc 4 19 0
- 504 016c 1092 0000 		sts RC5_decoded_flag,__zero_reg__
+ 506               		.loc 4 19 0
+ 507 016c 1092 0000 		sts RC5_decoded_flag,__zero_reg__
+ 508 0170 81E0      		ldi r24,lo8(1)
+ 509 0172 0895      		ret
+ 510               	.LVL46:
+ 511               	.L30:
+ 512               	.LBE43:
+ 513               	.LBE42:
   20:lib/RC5.c     **** 		return 1;		
- 505               		.loc 4 20 0
- 506 0170 81E0      		ldi r24,lo8(1)
- 507 0172 0895      		ret
- 508               	.LVL45:
- 509               	.L30:
   21:lib/RC5.c     **** 	}else{
   22:lib/RC5.c     **** 		return 0;
- 510               		.loc 4 22 0
- 511 0174 80E0      		ldi r24,0
- 512               	.LVL46:
+ 514               		.loc 4 22 0
+ 515 0174 80E0      		ldi r24,0
+ 516               	.LVL47:
   23:lib/RC5.c     **** 	}
   24:lib/RC5.c     **** }
- 513               		.loc 4 24 0
- 514 0176 0895      		ret
- 515               		.cfi_endproc
- 516               	.LFE23:
- 518               	.global	RC5_init
- 520               	RC5_init:
- 521               	.LFB24:
+ 517               		.loc 4 24 0
+ 518 0176 0895      		ret
+ 519               		.cfi_endproc
+ 520               	.LFE23:
+ 522               	.global	RC5_init
+ 524               	RC5_init:
+ 525               	.LFB24:
   25:lib/RC5.c     **** 
   26:lib/RC5.c     **** void RC5_init(void){
- 522               		.loc 4 26 0
- 523               		.cfi_startproc
- 524               	/* prologue: function */
- 525               	/* frame size = 0 */
- 526               	/* stack size = 0 */
- 527               	.L__stack_usage = 0
+ 526               		.loc 4 26 0
+ 527               		.cfi_startproc
+ 528               	/* prologue: function */
+ 529               	/* frame size = 0 */
+ 530               	/* stack size = 0 */
+ 531               	.L__stack_usage = 0
   27:lib/RC5.c     ****     //Konfiguracja w pliku control_signals_conf.h
   28:lib/RC5.c     **** 	//DDRD &= (~(1<<PD6));//pin ICP1 jako wejœcie z podci¹ganiem
   29:lib/RC5.c     **** 	//PORTD |= (1<<PD6);
   30:lib/RC5.c     **** 
   31:lib/RC5.c     **** 	//taktowanie z preskalera 16MHz/64, timer pracuje w trybie Input Capture (ICR)
   32:lib/RC5.c     **** 	TCCR1B |=(1<<CS11)|(1<<CS10);//preskaler 64
- 528               		.loc 4 32 0
- 529 0178 8EB5      		in r24,0x2e
- 530 017a 8360      		ori r24,lo8(3)
- 531 017c 8EBD      		out 0x2e,r24
+ 532               		.loc 4 32 0
+ 533 0178 8EB5      		in r24,0x2e
+ 534 017a 8360      		ori r24,lo8(3)
+ 535 017c 8EBD      		out 0x2e,r24
   33:lib/RC5.c     **** 	TCCR1B &= ~(1<<ICES1);//zbocze opadaj¹ce do pierwszego wyzwolenia
- 532               		.loc 4 33 0
- 533 017e 8EB5      		in r24,0x2e
- 534 0180 8F7B      		andi r24,lo8(-65)
- 535 0182 8EBD      		out 0x2e,r24
+ 536               		.loc 4 33 0
+ 537 017e 8EB5      		in r24,0x2e
+ 538 0180 8F7B      		andi r24,lo8(-65)
+ 539 0182 8EBD      		out 0x2e,r24
   34:lib/RC5.c     **** 
   35:lib/RC5.c     **** 	TIMSK |= (1<<TICIE1);//aktywowanie przerwania
- 536               		.loc 4 35 0
- 537 0184 89B7      		in r24,0x39
- 538 0186 8062      		ori r24,lo8(32)
- 539 0188 89BF      		out 0x39,r24
+ 540               		.loc 4 35 0
+ 541 0184 89B7      		in r24,0x39
+ 542 0186 8062      		ori r24,lo8(32)
+ 543 0188 89BF      		out 0x39,r24
   36:lib/RC5.c     **** 	RC5_decoded_flag = 0;//zerowanie flagi
- 540               		.loc 4 36 0
- 541 018a 1092 0000 		sts RC5_decoded_flag,__zero_reg__
- 542 018e 0895      		ret
- 543               		.cfi_endproc
- 544               	.LFE24:
- 546               	.global	__vector_6
- 548               	__vector_6:
- 549               	.LFB25:
+ 544               		.loc 4 36 0
+ 545 018a 1092 0000 		sts RC5_decoded_flag,__zero_reg__
+ 546 018e 0895      		ret
+ 547               		.cfi_endproc
+ 548               	.LFE24:
+ 550               	.global	__vector_6
+ 552               	__vector_6:
+ 553               	.LFB25:
   37:lib/RC5.c     **** }
   38:lib/RC5.c     **** 
   39:lib/RC5.c     **** //dekodowanie w przerwaniu ICR1
   40:lib/RC5.c     **** ISR(TIMER1_CAPT_vect){
- 550               		.loc 4 40 0
- 551               		.cfi_startproc
- 552 0190 1F92      		push r1
- 553               	.LCFI4:
- 554               		.cfi_def_cfa_offset 3
- 555               		.cfi_offset 1, -2
- 556 0192 0F92      		push r0
- 557               	.LCFI5:
- 558               		.cfi_def_cfa_offset 4
- 559               		.cfi_offset 0, -3
- 560 0194 0FB6      		in r0,__SREG__
- 561 0196 0F92      		push r0
- 562 0198 1124      		clr __zero_reg__
- 563 019a 2F93      		push r18
- 564               	.LCFI6:
- 565               		.cfi_def_cfa_offset 5
- 566               		.cfi_offset 18, -4
- 567 019c 3F93      		push r19
- 568               	.LCFI7:
- 569               		.cfi_def_cfa_offset 6
- 570               		.cfi_offset 19, -5
- 571 019e 4F93      		push r20
- 572               	.LCFI8:
- 573               		.cfi_def_cfa_offset 7
- 574               		.cfi_offset 20, -6
- 575 01a0 5F93      		push r21
- 576               	.LCFI9:
- 577               		.cfi_def_cfa_offset 8
- 578               		.cfi_offset 21, -7
- 579 01a2 8F93      		push r24
- 580               	.LCFI10:
- 581               		.cfi_def_cfa_offset 9
- 582               		.cfi_offset 24, -8
- 583 01a4 9F93      		push r25
- 584               	.LCFI11:
- 585               		.cfi_def_cfa_offset 10
- 586               		.cfi_offset 25, -9
- 587               	/* prologue: Signal */
- 588               	/* frame size = 0 */
- 589               	/* stack size = 9 */
- 590               	.L__stack_usage = 9
+ 554               		.loc 4 40 0
+ 555               		.cfi_startproc
+ 556 0190 1F92      		push r1
+ 557               	.LCFI4:
+ 558               		.cfi_def_cfa_offset 3
+ 559               		.cfi_offset 1, -2
+ 560 0192 0F92      		push r0
+ 561               	.LCFI5:
+ 562               		.cfi_def_cfa_offset 4
+ 563               		.cfi_offset 0, -3
+ 564 0194 0FB6      		in r0,__SREG__
+ 565 0196 0F92      		push r0
+ 566 0198 1124      		clr __zero_reg__
+ 567 019a 2F93      		push r18
+ 568               	.LCFI6:
+ 569               		.cfi_def_cfa_offset 5
+ 570               		.cfi_offset 18, -4
+ 571 019c 3F93      		push r19
+ 572               	.LCFI7:
+ 573               		.cfi_def_cfa_offset 6
+ 574               		.cfi_offset 19, -5
+ 575 019e 4F93      		push r20
+ 576               	.LCFI8:
+ 577               		.cfi_def_cfa_offset 7
+ 578               		.cfi_offset 20, -6
+ 579 01a0 5F93      		push r21
+ 580               	.LCFI9:
+ 581               		.cfi_def_cfa_offset 8
+ 582               		.cfi_offset 21, -7
+ 583 01a2 8F93      		push r24
+ 584               	.LCFI10:
+ 585               		.cfi_def_cfa_offset 9
+ 586               		.cfi_offset 24, -8
+ 587 01a4 9F93      		push r25
+ 588               	.LCFI11:
+ 589               		.cfi_def_cfa_offset 10
+ 590               		.cfi_offset 25, -9
+ 591               	/* prologue: Signal */
+ 592               	/* frame size = 0 */
+ 593               	/* stack size = 9 */
+ 594               	.L__stack_usage = 9
   41:lib/RC5.c     **** 	
   42:lib/RC5.c     **** 	static uint16_t LastICR;//ostatnia wartoœæ przechwycenia
   43:lib/RC5.c     **** 	uint16_t PulseWidth;//szerokoœæ impulsu miêdzy zboczami
@@ -1035,251 +1039,251 @@
   47:lib/RC5.c     **** 	static uint16_t RC5_tmp;//tymczasowa zmienna do której zapisywane s¹ kolejno odbierane bity
   48:lib/RC5.c     **** 
   49:lib/RC5.c     **** 	PulseWidth = ICR1 - LastICR;//szerokoœæ impulsu
- 591               		.loc 4 49 0
- 592 01a6 86B5      		in r24,0x26
- 593 01a8 97B5      		in r25,0x26+1
- 594 01aa 2091 0000 		lds r18,LastICR.2154
- 595 01ae 3091 0000 		lds r19,LastICR.2154+1
- 596               	.LVL47:
+ 595               		.loc 4 49 0
+ 596 01a6 86B5      		in r24,0x26
+ 597 01a8 97B5      		in r25,0x26+1
+ 598 01aa 2091 0000 		lds r18,LastICR.2154
+ 599 01ae 3091 0000 		lds r19,LastICR.2154+1
+ 600               	.LVL48:
   50:lib/RC5.c     **** 	LastICR=ICR1;//zapisujemy dane tego zbocza
- 597               		.loc 4 50 0
- 598 01b2 46B5      		in r20,0x26
- 599 01b4 57B5      		in r21,0x26+1
- 600 01b6 5093 0000 		sts LastICR.2154+1,r21
- 601 01ba 4093 0000 		sts LastICR.2154,r20
+ 601               		.loc 4 50 0
+ 602 01b2 46B5      		in r20,0x26
+ 603 01b4 57B5      		in r21,0x26+1
+ 604 01b6 5093 0000 		sts LastICR.2154+1,r21
+ 605 01ba 4093 0000 		sts LastICR.2154,r20
   51:lib/RC5.c     **** 
   52:lib/RC5.c     **** 	TCCR1B ^= (1<<ICES1);//zmiana zbocza wyzwalaj¹cego na przeciwne
- 602               		.loc 4 52 0
- 603 01be 4EB5      		in r20,0x2e
- 604 01c0 50E4      		ldi r21,lo8(64)
- 605 01c2 4527      		eor r20,r21
- 606 01c4 4EBD      		out 0x2e,r20
+ 606               		.loc 4 52 0
+ 607 01be 4EB5      		in r20,0x2e
+ 608 01c0 50E4      		ldi r21,lo8(64)
+ 609 01c2 4527      		eor r20,r21
+ 610 01c4 4EBD      		out 0x2e,r20
   53:lib/RC5.c     **** 	
   54:lib/RC5.c     **** 
   55:lib/RC5.c     **** 	if(EdgeCt == 0){//jeœli system dekodowania zosta³ wyzerowany
- 607               		.loc 4 55 0
- 608 01c6 4091 0000 		lds r20,EdgeCt.2156
- 609 01ca 4111      		cpse r20,__zero_reg__
- 610 01cc 00C0      		rjmp .L33
+ 611               		.loc 4 55 0
+ 612 01c6 4091 0000 		lds r20,EdgeCt.2156
+ 613 01ca 4111      		cpse r20,__zero_reg__
+ 614 01cc 00C0      		rjmp .L33
   56:lib/RC5.c     **** 		BitCt=0;//resetujemy wszystkie zmienne
- 611               		.loc 4 56 0
- 612 01ce 1092 0000 		sts BitCt.2157,__zero_reg__
+ 615               		.loc 4 56 0
+ 616 01ce 1092 0000 		sts BitCt.2157,__zero_reg__
   57:lib/RC5.c     **** 		BitVal=1;
- 613               		.loc 4 57 0
- 614 01d2 41E0      		ldi r20,lo8(1)
- 615 01d4 4093 0000 		sts BitVal.2158,r20
+ 617               		.loc 4 57 0
+ 618 01d2 41E0      		ldi r20,lo8(1)
+ 619 01d4 4093 0000 		sts BitVal.2158,r20
   58:lib/RC5.c     **** 		RC5_tmp=0;
- 616               		.loc 4 58 0
- 617 01d8 1092 0000 		sts RC5_tmp.2159+1,__zero_reg__
- 618 01dc 1092 0000 		sts RC5_tmp.2159,__zero_reg__
+ 620               		.loc 4 58 0
+ 621 01d8 1092 0000 		sts RC5_tmp.2159+1,__zero_reg__
+ 622 01dc 1092 0000 		sts RC5_tmp.2159,__zero_reg__
   59:lib/RC5.c     **** 		TCCR1B &= ~(1<<ICES1);//zbocze opadaj¹ce do pierwszego wyzwolenia
- 619               		.loc 4 59 0
- 620 01e0 4EB5      		in r20,0x2e
- 621 01e2 4F7B      		andi r20,lo8(-65)
- 622 01e4 4EBD      		out 0x2e,r20
- 623               	.L33:
+ 623               		.loc 4 59 0
+ 624 01e0 4EB5      		in r20,0x2e
+ 625 01e2 4F7B      		andi r20,lo8(-65)
+ 626 01e4 4EBD      		out 0x2e,r20
+ 627               	.L33:
   49:lib/RC5.c     **** 	PulseWidth = ICR1 - LastICR;//szerokoœæ impulsu
- 624               		.loc 4 49 0
- 625 01e6 8859      		subi r24,-104
- 626 01e8 9109      		sbc r25,__zero_reg__
- 627               	.LVL48:
+ 628               		.loc 4 49 0
+ 629 01e6 8859      		subi r24,-104
+ 630 01e8 9109      		sbc r25,__zero_reg__
+ 631               	.LVL49:
   60:lib/RC5.c     **** 	}
   61:lib/RC5.c     **** 
   62:lib/RC5.c     **** 	if(PulseWidth < MIN_HALF_BIT || PulseWidth > MAX_BIT){//impuls za d³ugi lub za krótki - reset deko
- 628               		.loc 4 62 0
- 629 01ea 821B      		sub r24,r18
- 630 01ec 930B      		sbc r25,r19
- 631               	.LVL49:
- 632 01ee 8A36      		cpi r24,106
- 633 01f0 21E0      		ldi r18,1
- 634 01f2 9207      		cpc r25,r18
- 635 01f4 00F0      		brlo .L34
+ 632               		.loc 4 62 0
+ 633 01ea 821B      		sub r24,r18
+ 634 01ec 930B      		sbc r25,r19
+ 635               	.LVL50:
+ 636 01ee 8A36      		cpi r24,106
+ 637 01f0 21E0      		ldi r18,1
+ 638 01f2 9207      		cpc r25,r18
+ 639 01f4 00F0      		brlo .L34
   63:lib/RC5.c     **** 		EdgeCt=0;
- 636               		.loc 4 63 0
- 637 01f6 1092 0000 		sts EdgeCt.2156,__zero_reg__
- 638 01fa 00C0      		rjmp .L35
- 639               	.L34:
- 640 01fc 3091 0000 		lds r19,EdgeCt.2156
- 641 0200 4091 0000 		lds r20,BitCt.2157
+ 640               		.loc 4 63 0
+ 641 01f6 1092 0000 		sts EdgeCt.2156,__zero_reg__
+ 642 01fa 00C0      		rjmp .L35
+ 643               	.L34:
+ 644 01fc 3091 0000 		lds r19,EdgeCt.2156
+ 645 0200 4091 0000 		lds r20,BitCt.2157
   64:lib/RC5.c     **** 		}else if(PulseWidth >= MIN_HALF_BIT && PulseWidth <= MAX_HALF_BIT){//impuls krótki (1/2 CLK)
- 642               		.loc 4 64 0
- 643 0204 8C38      		cpi r24,-116
- 644 0206 9105      		cpc r25,__zero_reg__
- 645 0208 00F4      		brsh .L36
+ 646               		.loc 4 64 0
+ 647 0204 8C38      		cpi r24,-116
+ 648 0206 9105      		cpc r25,__zero_reg__
+ 649 0208 00F4      		brsh .L36
   65:lib/RC5.c     **** 		if(EdgeCt % 2  == 0){//jeœli to parzyste zbocze
- 646               		.loc 4 65 0
- 647 020a 30FD      		sbrc r19,0
- 648 020c 00C0      		rjmp .L37
+ 650               		.loc 4 65 0
+ 651 020a 30FD      		sbrc r19,0
+ 652 020c 00C0      		rjmp .L37
   66:lib/RC5.c     **** 			RC5_tmp<<=1;//to zapisujemy bit
   67:lib/RC5.c     **** 			RC5_tmp|=(uint64_t)BitVal;
- 649               		.loc 4 67 0
- 650 020e 2091 0000 		lds r18,BitVal.2158
+ 653               		.loc 4 67 0
+ 654 020e 2091 0000 		lds r18,BitVal.2158
   66:lib/RC5.c     **** 			RC5_tmp<<=1;//to zapisujemy bit
- 651               		.loc 4 66 0
- 652 0212 8091 0000 		lds r24,RC5_tmp.2159
- 653 0216 9091 0000 		lds r25,RC5_tmp.2159+1
- 654 021a 880F      		lsl r24
- 655 021c 991F      		rol r25
- 656               		.loc 4 67 0
- 657 021e 822B      		or r24,r18
- 658 0220 9093 0000 		sts RC5_tmp.2159+1,r25
- 659 0224 8093 0000 		sts RC5_tmp.2159,r24
+ 655               		.loc 4 66 0
+ 656 0212 8091 0000 		lds r24,RC5_tmp.2159
+ 657 0216 9091 0000 		lds r25,RC5_tmp.2159+1
+ 658 021a 880F      		lsl r24
+ 659 021c 991F      		rol r25
+ 660               		.loc 4 67 0
+ 661 021e 822B      		or r24,r18
+ 662 0220 9093 0000 		sts RC5_tmp.2159+1,r25
+ 663 0224 8093 0000 		sts RC5_tmp.2159,r24
   68:lib/RC5.c     **** 			BitCt++;//i zwiêkszamy licznik odebranych bitów
- 660               		.loc 4 68 0
- 661 0228 4F5F      		subi r20,lo8(-(1))
- 662 022a 4093 0000 		sts BitCt.2157,r20
- 663               	.L37:
+ 664               		.loc 4 68 0
+ 665 0228 4F5F      		subi r20,lo8(-(1))
+ 666 022a 4093 0000 		sts BitCt.2157,r20
+ 667               	.L37:
   69:lib/RC5.c     **** 		}
   70:lib/RC5.c     **** 		EdgeCt++;//zwiêkszamy licznik zbocz
- 664               		.loc 4 70 0
- 665 022e 3F5F      		subi r19,lo8(-(1))
- 666 0230 00C0      		rjmp .L41
- 667               	.L36:
+ 668               		.loc 4 70 0
+ 669 022e 3F5F      		subi r19,lo8(-(1))
+ 670 0230 00C0      		rjmp .L41
+ 671               	.L36:
   71:lib/RC5.c     **** 		}else{//przeciwny wypadek - (PulseWidth > MAX_HALF_BIT && PulseWidth < MAX_BIT)
   72:lib/RC5.c     **** 		//czyli d³ugi impuls (1 CLK)
   73:lib/RC5.c     **** 		BitVal^=0x01;//zmieniamy wartoœæ aktualnie przetwarzanego bitu
- 668               		.loc 4 73 0
- 669 0232 2091 0000 		lds r18,BitVal.2158
- 670 0236 81E0      		ldi r24,lo8(1)
- 671 0238 2827      		eor r18,r24
- 672 023a 2093 0000 		sts BitVal.2158,r18
+ 672               		.loc 4 73 0
+ 673 0232 2091 0000 		lds r18,BitVal.2158
+ 674 0236 81E0      		ldi r24,lo8(1)
+ 675 0238 2827      		eor r18,r24
+ 676 023a 2093 0000 		sts BitVal.2158,r18
   74:lib/RC5.c     **** 		RC5_tmp<<=1;//i zapisujemy bit
- 673               		.loc 4 74 0
- 674 023e 8091 0000 		lds r24,RC5_tmp.2159
- 675 0242 9091 0000 		lds r25,RC5_tmp.2159+1
- 676 0246 880F      		lsl r24
- 677 0248 991F      		rol r25
+ 677               		.loc 4 74 0
+ 678 023e 8091 0000 		lds r24,RC5_tmp.2159
+ 679 0242 9091 0000 		lds r25,RC5_tmp.2159+1
+ 680 0246 880F      		lsl r24
+ 681 0248 991F      		rol r25
   75:lib/RC5.c     **** 		RC5_tmp|=(uint64_t)BitVal;
- 678               		.loc 4 75 0
- 679 024a 822B      		or r24,r18
- 680 024c 9093 0000 		sts RC5_tmp.2159+1,r25
- 681 0250 8093 0000 		sts RC5_tmp.2159,r24
+ 682               		.loc 4 75 0
+ 683 024a 822B      		or r24,r18
+ 684 024c 9093 0000 		sts RC5_tmp.2159+1,r25
+ 685 0250 8093 0000 		sts RC5_tmp.2159,r24
   76:lib/RC5.c     **** 		BitCt++;//i zwiêkszamy licznik odebranych bitów
- 682               		.loc 4 76 0
- 683 0254 4F5F      		subi r20,lo8(-(1))
- 684 0256 4093 0000 		sts BitCt.2157,r20
+ 686               		.loc 4 76 0
+ 687 0254 4F5F      		subi r20,lo8(-(1))
+ 688 0256 4093 0000 		sts BitCt.2157,r20
   77:lib/RC5.c     **** 		EdgeCt+=2;//i zwiêkszamy licznik zbocz o 2 (dla porz¹dku)
- 685               		.loc 4 77 0
- 686 025a 3E5F      		subi r19,lo8(-(2))
- 687               	.L41:
- 688 025c 3093 0000 		sts EdgeCt.2156,r19
- 689               	.L35:
+ 689               		.loc 4 77 0
+ 690 025a 3E5F      		subi r19,lo8(-(2))
+ 691               	.L41:
+ 692 025c 3093 0000 		sts EdgeCt.2156,r19
+ 693               	.L35:
   78:lib/RC5.c     **** 	}
   79:lib/RC5.c     **** 
   80:lib/RC5.c     **** 	if(BitCt==13){//jeœli odebraliœmy ca³¹ ramkê
- 690               		.loc 4 80 0
- 691 0260 8091 0000 		lds r24,BitCt.2157
- 692 0264 8D30      		cpi r24,lo8(13)
- 693 0266 01F4      		brne .L32
+ 694               		.loc 4 80 0
+ 695 0260 8091 0000 		lds r24,BitCt.2157
+ 696 0264 8D30      		cpi r24,lo8(13)
+ 697 0266 01F4      		brne .L32
   81:lib/RC5.c     **** 		EdgeCt=0;//resetujemy system do obdioru kolejnej
- 694               		.loc 4 81 0
- 695 0268 1092 0000 		sts EdgeCt.2156,__zero_reg__
+ 698               		.loc 4 81 0
+ 699 0268 1092 0000 		sts EdgeCt.2156,__zero_reg__
   82:lib/RC5.c     **** 		if (RC5_decoded_flag == 0) {//i jeœli poprzednie dekodowanie zosta³o odebrane w programie
- 696               		.loc 4 82 0
- 697 026c 8091 0000 		lds r24,RC5_decoded_flag
- 698 0270 8111      		cpse r24,__zero_reg__
- 699 0272 00C0      		rjmp .L32
+ 700               		.loc 4 82 0
+ 701 026c 8091 0000 		lds r24,RC5_decoded_flag
+ 702 0270 8111      		cpse r24,__zero_reg__
+ 703 0272 00C0      		rjmp .L32
   83:lib/RC5.c     **** 			command = RC5_tmp & 0b0000000000111111;
- 700               		.loc 4 83 0
- 701 0274 8091 0000 		lds r24,RC5_tmp.2159
- 702 0278 9091 0000 		lds r25,RC5_tmp.2159+1
- 703 027c 282F      		mov r18,r24
- 704 027e 2F73      		andi r18,lo8(63)
- 705 0280 2093 0000 		sts command,r18
+ 704               		.loc 4 83 0
+ 705 0274 8091 0000 		lds r24,RC5_tmp.2159
+ 706 0278 9091 0000 		lds r25,RC5_tmp.2159+1
+ 707 027c 282F      		mov r18,r24
+ 708 027e 2F73      		andi r18,lo8(63)
+ 709 0280 2093 0000 		sts command,r18
   84:lib/RC5.c     **** 			address = (RC5_tmp & 0b0000011111000000) >> 6;
- 706               		.loc 4 84 0
- 707 0284 9C01      		movw r18,r24
- 708 0286 207C      		andi r18,192
- 709 0288 3770      		andi r19,7
- 710 028a 46E0      		ldi r20,6
- 711               		1:
- 712 028c 3695      		lsr r19
- 713 028e 2795      		ror r18
- 714 0290 4A95      		dec r20
- 715 0292 01F4      		brne 1b
- 716 0294 2093 0000 		sts address,r18
+ 710               		.loc 4 84 0
+ 711 0284 9C01      		movw r18,r24
+ 712 0286 207C      		andi r18,192
+ 713 0288 3770      		andi r19,7
+ 714 028a 46E0      		ldi r20,6
+ 715               		1:
+ 716 028c 3695      		lsr r19
+ 717 028e 2795      		ror r18
+ 718 0290 4A95      		dec r20
+ 719 0292 01F4      		brne 1b
+ 720 0294 2093 0000 		sts address,r18
   85:lib/RC5.c     **** 			toggle = (RC5_tmp& 0b0000100000000000) >> 11;
- 717               		.loc 4 85 0
- 718 0298 8827      		clr r24
- 719 029a 9870      		andi r25,8
- 720 029c 892F      		mov r24,r25
- 721 029e 8695      		lsr r24
- 722 02a0 8695      		lsr r24
- 723 02a2 8695      		lsr r24
- 724 02a4 8093 0000 		sts toggle,r24
+ 721               		.loc 4 85 0
+ 722 0298 8827      		clr r24
+ 723 029a 9870      		andi r25,8
+ 724 029c 892F      		mov r24,r25
+ 725 029e 8695      		lsr r24
+ 726 02a0 8695      		lsr r24
+ 727 02a2 8695      		lsr r24
+ 728 02a4 8093 0000 		sts toggle,r24
   86:lib/RC5.c     **** 			RC5_decoded_flag=1;//i przypisujemy fladze to czy zdekodowano poprawnie ramkê, czy nie
- 725               		.loc 4 86 0
- 726 02a8 81E0      		ldi r24,lo8(1)
- 727 02aa 8093 0000 		sts RC5_decoded_flag,r24
- 728               	.L32:
- 729               	/* epilogue start */
+ 729               		.loc 4 86 0
+ 730 02a8 81E0      		ldi r24,lo8(1)
+ 731 02aa 8093 0000 		sts RC5_decoded_flag,r24
+ 732               	.L32:
+ 733               	/* epilogue start */
   87:lib/RC5.c     **** 		}
   88:lib/RC5.c     **** 	}
   89:lib/RC5.c     **** 
   90:lib/RC5.c     **** }...
- 730               		.loc 4 90 0
- 731 02ae 9F91      		pop r25
- 732 02b0 8F91      		pop r24
- 733 02b2 5F91      		pop r21
- 734 02b4 4F91      		pop r20
- 735 02b6 3F91      		pop r19
- 736 02b8 2F91      		pop r18
- 737 02ba 0F90      		pop r0
- 738 02bc 0FBE      		out __SREG__,r0
- 739 02be 0F90      		pop r0
- 740 02c0 1F90      		pop r1
- 741 02c2 1895      		reti
- 742               		.cfi_endproc
- 743               	.LFE25:
- 745               		.section	.rodata.str1.1,"aMS",@progbits,1
- 746               	.LC0:
- 747 0000 414F 5320 		.string	"AOS 1"
- 747      3100 
- 748               	.LC1:
- 749 0006 7665 7273 		.string	"version: 0.1"
- 749      696F 6E3A 
- 749      2030 2E31 
- 749      00
- 750               	.LC2:
- 751 0013 4C2B 00   		.string	"L+"
- 752               	.LC3:
- 753 0016 4C2D 00   		.string	"L-"
- 754               	.LC4:
- 755 0019 502F 5300 		.string	"P/S"
- 756               	.LC5:
- 757 001d 532C 2045 		.string	"S, End-Stop"
- 757      6E64 2D53 
- 757      746F 7000 
- 758               	.LC6:
- 759 0029 3100      		.string	"1"
- 760               	.LC7:
- 761 002b 3200      		.string	"2"
- 762               	.LC8:
- 763 002d 3300      		.string	"3"
- 764               	.LC9:
- 765 002f 3400      		.string	"4"
- 766               	.LC10:
- 767 0031 3500      		.string	"5"
- 768               	.LC11:
- 769 0033 4D2C 2052 		.string	"M, Rc5"
- 769      6335 00
- 770               	.LC12:
- 771 003a 2041 3A25 		.string	" A:%02d C:%02d T:%02d "
- 771      3032 6420 
- 771      433A 2530 
- 771      3264 2054 
- 771      3A25 3032 
- 772               	.LC13:
- 773 0051 5200      		.string	"R"
- 774               	.LC14:
- 775 0053 522D 00   		.string	"R-"
- 776               	.LC15:
- 777 0056 522B 00   		.string	"R+"
- 778               		.section	.text.startup,"ax",@progbits
- 779               	.global	main
- 781               	main:
- 782               	.LFB26:
- 783               		.file 5 "main.c"
+ 734               		.loc 4 90 0
+ 735 02ae 9F91      		pop r25
+ 736 02b0 8F91      		pop r24
+ 737 02b2 5F91      		pop r21
+ 738 02b4 4F91      		pop r20
+ 739 02b6 3F91      		pop r19
+ 740 02b8 2F91      		pop r18
+ 741 02ba 0F90      		pop r0
+ 742 02bc 0FBE      		out __SREG__,r0
+ 743 02be 0F90      		pop r0
+ 744 02c0 1F90      		pop r1
+ 745 02c2 1895      		reti
+ 746               		.cfi_endproc
+ 747               	.LFE25:
+ 749               		.section	.rodata.str1.1,"aMS",@progbits,1
+ 750               	.LC0:
+ 751 0000 414F 5320 		.string	"AOS 1"
+ 751      3100 
+ 752               	.LC1:
+ 753 0006 7665 7273 		.string	"version: 0.1"
+ 753      696F 6E3A 
+ 753      2030 2E31 
+ 753      00
+ 754               	.LC2:
+ 755 0013 4C2B 00   		.string	"L+"
+ 756               	.LC3:
+ 757 0016 4C2D 00   		.string	"L-"
+ 758               	.LC4:
+ 759 0019 502F 5300 		.string	"P/S"
+ 760               	.LC5:
+ 761 001d 532C 2045 		.string	"S, End-Stop"
+ 761      6E64 2D53 
+ 761      746F 7000 
+ 762               	.LC6:
+ 763 0029 3100      		.string	"1"
+ 764               	.LC7:
+ 765 002b 3200      		.string	"2"
+ 766               	.LC8:
+ 767 002d 3300      		.string	"3"
+ 768               	.LC9:
+ 769 002f 3400      		.string	"4"
+ 770               	.LC10:
+ 771 0031 3500      		.string	"5"
+ 772               	.LC11:
+ 773 0033 4D2C 2052 		.string	"M, Rc5"
+ 773      6335 00
+ 774               	.LC12:
+ 775 003a 2041 3A25 		.string	" A:%02d C:%02d T:%02d "
+ 775      3032 6420 
+ 775      433A 2530 
+ 775      3264 2054 
+ 775      3A25 3032 
+ 776               	.LC13:
+ 777 0051 5200      		.string	"R"
+ 778               	.LC14:
+ 779 0053 522D 00   		.string	"R-"
+ 780               	.LC15:
+ 781 0056 522B 00   		.string	"R+"
+ 782               		.section	.text.startup,"ax",@progbits
+ 783               	.global	main
+ 785               	main:
+ 786               	.LFB26:
+ 787               		.file 5 "main.c"
    1:main.c        **** //
    2:main.c        **** //  main.c
    3:main.c        **** //  AOS1
@@ -1309,84 +1313,84 @@
   27:main.c        **** // GÅ‚Ã³wna funkcja
   28:main.c        **** int main(void)
   29:main.c        **** {
- 784               		.loc 5 29 0
- 785               		.cfi_startproc
- 786 0000 CF93      		push r28
- 787               	.LCFI12:
- 788               		.cfi_def_cfa_offset 3
- 789               		.cfi_offset 28, -2
- 790 0002 DF93      		push r29
- 791               	.LCFI13:
- 792               		.cfi_def_cfa_offset 4
- 793               		.cfi_offset 29, -3
- 794 0004 CDB7      		in r28,__SP_L__
- 795 0006 DEB7      		in r29,__SP_H__
- 796               	.LCFI14:
- 797               		.cfi_def_cfa_register 28
- 798 0008 A497      		sbiw r28,36
- 799               	.LCFI15:
- 800               		.cfi_def_cfa_offset 40
- 801 000a 0FB6      		in __tmp_reg__,__SREG__
- 802 000c F894      		cli
- 803 000e DEBF      		out __SP_H__,r29
- 804 0010 0FBE      		out __SREG__,__tmp_reg__
- 805 0012 CDBF      		out __SP_L__,r28
- 806               	/* prologue: function */
- 807               	/* frame size = 36 */
- 808               	/* stack size = 38 */
- 809               	.L__stack_usage = 38
+ 788               		.loc 5 29 0
+ 789               		.cfi_startproc
+ 790 0000 CF93      		push r28
+ 791               	.LCFI12:
+ 792               		.cfi_def_cfa_offset 3
+ 793               		.cfi_offset 28, -2
+ 794 0002 DF93      		push r29
+ 795               	.LCFI13:
+ 796               		.cfi_def_cfa_offset 4
+ 797               		.cfi_offset 29, -3
+ 798 0004 CDB7      		in r28,__SP_L__
+ 799 0006 DEB7      		in r29,__SP_H__
+ 800               	.LCFI14:
+ 801               		.cfi_def_cfa_register 28
+ 802 0008 A497      		sbiw r28,36
+ 803               	.LCFI15:
+ 804               		.cfi_def_cfa_offset 40
+ 805 000a 0FB6      		in __tmp_reg__,__SREG__
+ 806 000c F894      		cli
+ 807 000e DEBF      		out __SP_H__,r29
+ 808 0010 0FBE      		out __SREG__,__tmp_reg__
+ 809 0012 CDBF      		out __SP_L__,r28
+ 810               	/* prologue: function */
+ 811               	/* frame size = 36 */
+ 812               	/* stack size = 38 */
+ 813               	.L__stack_usage = 38
   30:main.c        **** // Konfiguracja portÃ³w
   31:main.c        ****     //Przyciski
   32:main.c        ****     Btn_DIR = 0x00;
- 810               		.loc 5 32 0
- 811 0014 11BA      		out 0x11,__zero_reg__
+ 814               		.loc 5 32 0
+ 815 0014 11BA      		out 0x11,__zero_reg__
   33:main.c        ****     Btn_PORT = 0xff;
- 812               		.loc 5 33 0
- 813 0016 8FEF      		ldi r24,lo8(-1)
- 814 0018 82BB      		out 0x12,r24
+ 816               		.loc 5 33 0
+ 817 0016 8FEF      		ldi r24,lo8(-1)
+ 818 0018 82BB      		out 0x12,r24
   34:main.c        ****     //Czerowny workLED
   35:main.c        ****     wLED_DIR     |= (1<<wLED);
- 815               		.loc 5 35 0
- 816 001a A79A      		sbi 0x14,7
+ 819               		.loc 5 35 0
+ 820 001a A79A      		sbi 0x14,7
   36:main.c        ****     wLED_PORT    |= (1<<wLED);
- 817               		.loc 5 36 0
- 818 001c AF9A      		sbi 0x15,7
+ 821               		.loc 5 36 0
+ 822 001c AF9A      		sbi 0x15,7
   37:main.c        ****     //Port B, End-stopy(1-5), Czujnik temperatury, przycisk L-
   38:main.c        ****     DDRB = 0x00;
- 819               		.loc 5 38 0
- 820 001e 17BA      		out 0x17,__zero_reg__
+ 823               		.loc 5 38 0
+ 824 001e 17BA      		out 0x17,__zero_reg__
   39:main.c        ****     PORTB = 0x9f;
- 821               		.loc 5 39 0
- 822 0020 8FE9      		ldi r24,lo8(-97)
- 823 0022 88BB      		out 0x18,r24
+ 825               		.loc 5 39 0
+ 826 0020 8FE9      		ldi r24,lo8(-97)
+ 827 0022 88BB      		out 0x18,r24
   40:main.c        ****     
   41:main.c        ****     
   42:main.c        **** // Inicjalizacje modÃ³Å‚Ã³w
   43:main.c        ****     LCD_Initalize(); // Inicjalizacja LCD
- 824               		.loc 5 43 0
- 825 0024 0E94 0000 		call LCD_Initalize
- 826               	.LVL50:
+ 828               		.loc 5 43 0
+ 829 0024 0E94 0000 		call LCD_Initalize
+ 830               	.LVL51:
   44:main.c        ****     RC5_init(); // Inizjalizacja RC5
- 827               		.loc 5 44 0
- 828 0028 0E94 0000 		call RC5_init
- 829               	.LVL51:
+ 831               		.loc 5 44 0
+ 832 0028 0E94 0000 		call RC5_init
+ 833               	.LVL52:
   45:main.c        ****     sei(); // Przerwania
- 830               		.loc 5 45 0
- 831               	/* #APP */
- 832               	 ;  45 "main.c" 1
- 833 002c 7894      		sei
- 834               	 ;  0 "" 2
- 835               	.LVL52:
- 836               	/* #NOAPP */
- 837               	.LBB74:
- 838               	.LBB75:
+ 834               		.loc 5 45 0
+ 835               	/* #APP */
+ 836               	 ;  45 "main.c" 1
+ 837 002c 7894      		sei
+ 838               	 ;  0 "" 2
+ 839               	.LVL53:
+ 840               	/* #NOAPP */
+ 841               	.LBB82:
+ 842               	.LBB83:
   93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
- 839               		.loc 1 93 0
- 840 002e 80E8      		ldi r24,lo8(-128)
- 841 0030 0E94 0000 		call LCD_WriteCommand
- 842               	.LVL53:
- 843               	.LBE75:
- 844               	.LBE74:
+ 843               		.loc 1 93 0
+ 844 002e 80E8      		ldi r24,lo8(-128)
+ 845 0030 0E94 0000 		call LCD_WriteCommand
+ 846               	.LVL54:
+ 847               	.LBE83:
+ 848               	.LBE82:
   46:main.c        ****     
   47:main.c        **** // Zmienne
   48:main.c        ****     // RC5
@@ -1398,583 +1402,589 @@
   54:main.c        **** // Ekran startowy
   55:main.c        ****     LCD_GoTo(0,0); // Kursor w pierwszyej kolumnie pierwszego wiersza.
   56:main.c        ****     LCD_WriteText("AOS 1");
- 845               		.loc 5 56 0
- 846 0034 80E0      		ldi r24,lo8(.LC0)
- 847 0036 90E0      		ldi r25,hi8(.LC0)
- 848 0038 0E94 0000 		call LCD_WriteText
- 849               	.LVL54:
- 850               	.LBB76:
- 851               	.LBB77:
+ 849               		.loc 5 56 0
+ 850 0034 80E0      		ldi r24,lo8(.LC0)
+ 851 0036 90E0      		ldi r25,hi8(.LC0)
+ 852 0038 0E94 0000 		call LCD_WriteText
+ 853               	.LVL55:
+ 854               	.LBB84:
+ 855               	.LBB85:
   93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
- 852               		.loc 1 93 0
- 853 003c 80EC      		ldi r24,lo8(-64)
- 854 003e 0E94 0000 		call LCD_WriteCommand
- 855               	.LVL55:
- 856               	.LBE77:
- 857               	.LBE76:
+ 856               		.loc 1 93 0
+ 857 003c 80EC      		ldi r24,lo8(-64)
+ 858 003e 0E94 0000 		call LCD_WriteCommand
+ 859               	.LVL56:
+ 860               	.LBE85:
+ 861               	.LBE84:
   57:main.c        ****     
   58:main.c        ****     LCD_GoTo(0,1); // Kursor w pierwszej kolumnie drugiego wiersza.
   59:main.c        ****     LCD_WriteText("version: 0.1");
- 858               		.loc 5 59 0
- 859 0042 80E0      		ldi r24,lo8(.LC1)
- 860 0044 90E0      		ldi r25,hi8(.LC1)
- 861 0046 0E94 0000 		call LCD_WriteText
- 862               	.LVL56:
+ 862               		.loc 5 59 0
+ 863 0042 80E0      		ldi r24,lo8(.LC1)
+ 864 0044 90E0      		ldi r25,hi8(.LC1)
+ 865 0046 0E94 0000 		call LCD_WriteText
+ 866               	.LVL57:
+ 867               	.L61:
   60:main.c        ****  
   61:main.c        ****     
   62:main.c        **** //GÅ‚Ã³wna pÄ™tla
   63:main.c        ****     while(1)
   64:main.c        ****     {
   65:main.c        **** // MENU
-  66:main.c        ****       if (Btn_LeftPlus)  // L+
+  66:main.c        ****         if (Btn_LeftPlus || comm == 1)  // L+
+ 868               		.loc 5 66 0
+ 869 004a 879B      		sbis 0x10,7
+ 870 004c 00C0      		rjmp .L43
+ 871               		.loc 5 66 0 is_stmt 0 discriminator 1
+ 872 004e 8BA1      		ldd r24,Y+35
+ 873 0050 8130      		cpi r24,lo8(1)
+ 874 0052 01F4      		brne .L44
+ 875               	.L43:
   67:main.c        ****         {
   68:main.c        ****             PORTC &= (~(1<<7));
+ 876               		.loc 5 68 0 is_stmt 1
+ 877 0054 AF98      		cbi 0x15,7
   69:main.c        ****             LCD_Clear();
+ 878               		.loc 5 69 0
+ 879 0056 0E94 0000 		call LCD_Clear
+ 880               	.LVL58:
+ 881               	.LBB86:
+ 882               	.LBB87:
+  93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
+ 883               		.loc 1 93 0
+ 884 005a 80E8      		ldi r24,lo8(-128)
+ 885 005c 0E94 0000 		call LCD_WriteCommand
+ 886               	.LVL59:
+ 887               	.LBE87:
+ 888               	.LBE86:
   70:main.c        ****             LCD_GoTo(0,0);
   71:main.c        ****             LCD_WriteText("L+");
+ 889               		.loc 5 71 0
+ 890 0060 80E0      		ldi r24,lo8(.LC2)
+ 891 0062 90E0      		ldi r25,hi8(.LC2)
+ 892 0064 00C0      		rjmp .L69
+ 893               	.LVL60:
+ 894               	.L44:
   72:main.c        ****         }
-  73:main.c        ****       else if (Btn_LeftMinus)// L-
+  73:main.c        ****       else if (Btn_LeftMinus || comm == 2)// L-
+ 895               		.loc 5 73 0
+ 896 0066 B09B      		sbis 0x16,0
+ 897 0068 00C0      		rjmp .L46
+ 898               		.loc 5 73 0 is_stmt 0 discriminator 1
+ 899 006a 8230      		cpi r24,lo8(2)
+ 900 006c 01F4      		brne .L47
+ 901               	.L46:
   74:main.c        ****         {
   75:main.c        ****             PORTC |= (1<<7);
+ 902               		.loc 5 75 0 is_stmt 1
+ 903 006e AF9A      		sbi 0x15,7
   76:main.c        ****             LCD_Clear();
+ 904               		.loc 5 76 0
+ 905 0070 0E94 0000 		call LCD_Clear
+ 906               	.LVL61:
+ 907               	.LBB88:
+ 908               	.LBB89:
+  93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
+ 909               		.loc 1 93 0
+ 910 0074 80E8      		ldi r24,lo8(-128)
+ 911 0076 0E94 0000 		call LCD_WriteCommand
+ 912               	.LVL62:
+ 913               	.LBE89:
+ 914               	.LBE88:
   77:main.c        ****             LCD_GoTo(0,0);
   78:main.c        ****             LCD_WriteText("L-");
+ 915               		.loc 5 78 0
+ 916 007a 80E0      		ldi r24,lo8(.LC3)
+ 917 007c 90E0      		ldi r25,hi8(.LC3)
+ 918 007e 00C0      		rjmp .L69
+ 919               	.LVL63:
+ 920               	.L47:
   79:main.c        ****         }
   80:main.c        ****       else if (Btn_PS) // P/S
+ 921               		.loc 5 80 0
+ 922 0080 8599      		sbic 0x10,5
+ 923 0082 00C0      		rjmp .L48
   81:main.c        ****         {
   82:main.c        ****             LCD_Clear();
+ 924               		.loc 5 82 0
+ 925 0084 0E94 0000 		call LCD_Clear
+ 926               	.LVL64:
+ 927               	.LBB90:
+ 928               	.LBB91:
+  93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
+ 929               		.loc 1 93 0
+ 930 0088 80E8      		ldi r24,lo8(-128)
+ 931 008a 0E94 0000 		call LCD_WriteCommand
+ 932               	.LVL65:
+ 933               	.LBE91:
+ 934               	.LBE90:
   83:main.c        ****             LCD_GoTo(0,0);
   84:main.c        ****             LCD_WriteText("P/S");
+ 935               		.loc 5 84 0
+ 936 008e 80E0      		ldi r24,lo8(.LC4)
+ 937 0090 90E0      		ldi r25,hi8(.LC4)
+ 938 0092 00C0      		rjmp .L69
+ 939               	.LVL66:
+ 940               	.L48:
   85:main.c        ****         }
   86:main.c        ****       else if (Btn_S) // S
+ 941               		.loc 5 86 0
+ 942 0094 8499      		sbic 0x10,4
+ 943 0096 00C0      		rjmp .L49
   87:main.c        ****         {
   88:main.c        ****             LCD_Clear();
+ 944               		.loc 5 88 0
+ 945 0098 0E94 0000 		call LCD_Clear
+ 946               	.LVL67:
+ 947               	.LBB92:
+ 948               	.LBB93:
+  93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
+ 949               		.loc 1 93 0
+ 950 009c 80E8      		ldi r24,lo8(-128)
+ 951 009e 0E94 0000 		call LCD_WriteCommand
+ 952               	.LVL68:
+ 953               	.LBE93:
+ 954               	.LBE92:
   89:main.c        ****             LCD_GoTo(0,0);
   90:main.c        ****             LCD_WriteText("S, End-Stop");
+ 955               		.loc 5 90 0
+ 956 00a2 80E0      		ldi r24,lo8(.LC5)
+ 957 00a4 90E0      		ldi r25,hi8(.LC5)
+ 958 00a6 0E94 0000 		call LCD_WriteText
+ 959               	.LVL69:
+ 960               	.L55:
   91:main.c        ****             while (1)
   92:main.c        ****             {
   93:main.c        ****                 if (!End_stop_1)
+ 961               		.loc 5 93 0
+ 962 00aa B39B      		sbis 0x16,3
+ 963 00ac 00C0      		rjmp .L50
   94:main.c        ****                 {
   95:main.c        ****                     LCD_Clear();
+ 964               		.loc 5 95 0
+ 965 00ae 0E94 0000 		call LCD_Clear
+ 966               	.LVL70:
+ 967               	.LBB94:
+ 968               	.LBB95:
+  93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
+ 969               		.loc 1 93 0
+ 970 00b2 80E8      		ldi r24,lo8(-128)
+ 971 00b4 0E94 0000 		call LCD_WriteCommand
+ 972               	.LVL71:
+ 973               	.LBE95:
+ 974               	.LBE94:
   96:main.c        ****                     LCD_GoTo(0,0);
   97:main.c        ****                     LCD_WriteText("1");
+ 975               		.loc 5 97 0
+ 976 00b8 80E0      		ldi r24,lo8(.LC6)
+ 977 00ba 90E0      		ldi r25,hi8(.LC6)
+ 978 00bc 00C0      		rjmp .L68
+ 979               	.LVL72:
+ 980               	.L50:
   98:main.c        ****                 }
   99:main.c        ****                 else if (!End_stop_2)
+ 981               		.loc 5 99 0
+ 982 00be B49B      		sbis 0x16,4
+ 983 00c0 00C0      		rjmp .L52
  100:main.c        ****                 {
  101:main.c        ****                     LCD_Clear();
+ 984               		.loc 5 101 0
+ 985 00c2 0E94 0000 		call LCD_Clear
+ 986               	.LVL73:
+ 987               	.LBB96:
+ 988               	.LBB97:
+  93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
+ 989               		.loc 1 93 0
+ 990 00c6 80E8      		ldi r24,lo8(-128)
+ 991 00c8 0E94 0000 		call LCD_WriteCommand
+ 992               	.LVL74:
+ 993               	.LBE97:
+ 994               	.LBE96:
  102:main.c        ****                     LCD_GoTo(0,0);
  103:main.c        ****                     LCD_WriteText("2");
+ 995               		.loc 5 103 0
+ 996 00cc 80E0      		ldi r24,lo8(.LC7)
+ 997 00ce 90E0      		ldi r25,hi8(.LC7)
+ 998 00d0 00C0      		rjmp .L68
+ 999               	.LVL75:
+ 1000               	.L52:
  104:main.c        ****                 }
  105:main.c        ****                 else if (!End_stop_3)
+ 1001               		.loc 5 105 0
+ 1002 00d2 B59B      		sbis 0x16,5
+ 1003 00d4 00C0      		rjmp .L53
  106:main.c        ****                 {
  107:main.c        ****                     LCD_Clear();
+ 1004               		.loc 5 107 0
+ 1005 00d6 0E94 0000 		call LCD_Clear
+ 1006               	.LVL76:
+ 1007               	.LBB98:
+ 1008               	.LBB99:
+  93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
+ 1009               		.loc 1 93 0
+ 1010 00da 80E8      		ldi r24,lo8(-128)
+ 1011 00dc 0E94 0000 		call LCD_WriteCommand
+ 1012               	.LVL77:
+ 1013               	.LBE99:
+ 1014               	.LBE98:
  108:main.c        ****                     LCD_GoTo(0,0);
  109:main.c        ****                     LCD_WriteText("3");
+ 1015               		.loc 5 109 0
+ 1016 00e0 80E0      		ldi r24,lo8(.LC8)
+ 1017 00e2 90E0      		ldi r25,hi8(.LC8)
+ 1018 00e4 00C0      		rjmp .L68
+ 1019               	.LVL78:
+ 1020               	.L53:
  110:main.c        ****                 }
  111:main.c        ****                 else if (!End_stop_4)
+ 1021               		.loc 5 111 0
+ 1022 00e6 B69B      		sbis 0x16,6
+ 1023 00e8 00C0      		rjmp .L54
  112:main.c        ****                 {
  113:main.c        ****                     LCD_Clear();
+ 1024               		.loc 5 113 0
+ 1025 00ea 0E94 0000 		call LCD_Clear
+ 1026               	.LVL79:
+ 1027               	.LBB100:
+ 1028               	.LBB101:
+  93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
+ 1029               		.loc 1 93 0
+ 1030 00ee 80E8      		ldi r24,lo8(-128)
+ 1031 00f0 0E94 0000 		call LCD_WriteCommand
+ 1032               	.LVL80:
+ 1033               	.LBE101:
+ 1034               	.LBE100:
  114:main.c        ****                     LCD_GoTo(0,0);
  115:main.c        ****                     LCD_WriteText("4");
+ 1035               		.loc 5 115 0
+ 1036 00f4 80E0      		ldi r24,lo8(.LC9)
+ 1037 00f6 90E0      		ldi r25,hi8(.LC9)
+ 1038 00f8 00C0      		rjmp .L68
+ 1039               	.LVL81:
+ 1040               	.L54:
  116:main.c        ****                 }
  117:main.c        ****                 else if (!End_stop_5)
+ 1041               		.loc 5 117 0
+ 1042 00fa B79B      		sbis 0x16,7
+ 1043 00fc 00C0      		rjmp .L51
  118:main.c        ****                 {
  119:main.c        ****                     LCD_Clear();
+ 1044               		.loc 5 119 0
+ 1045 00fe 0E94 0000 		call LCD_Clear
+ 1046               	.LVL82:
+ 1047               	.LBB102:
+ 1048               	.LBB103:
+  93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
+ 1049               		.loc 1 93 0
+ 1050 0102 80E8      		ldi r24,lo8(-128)
+ 1051 0104 0E94 0000 		call LCD_WriteCommand
+ 1052               	.LVL83:
+ 1053               	.LBE103:
+ 1054               	.LBE102:
  120:main.c        ****                     LCD_GoTo(0,0);
  121:main.c        ****                     LCD_WriteText("5");
+ 1055               		.loc 5 121 0
+ 1056 0108 80E0      		ldi r24,lo8(.LC10)
+ 1057 010a 90E0      		ldi r25,hi8(.LC10)
+ 1058               	.LVL84:
+ 1059               	.L68:
+ 1060 010c 0E94 0000 		call LCD_WriteText
+ 1061               	.LVL85:
+ 1062               	.L51:
+ 1063               	.LBB104:
+ 1064               	.LBB105:
+ 163:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h **** 	__builtin_avr_delay_cycles(__ticks_dc);
+ 1065               		.loc 2 163 0
+ 1066 0110 8FE9      		ldi r24,lo8(3999)
+ 1067 0112 9FE0      		ldi r25,hi8(3999)
+ 1068 0114 0197      		1: sbiw r24,1
+ 1069 0116 01F4      		brne 1b
+ 1070 0118 00C0      		rjmp .
+ 1071 011a 0000      		nop
+ 1072 011c 00C0      		rjmp .L55
+ 1073               	.LVL86:
+ 1074               	.L49:
+ 1075               	.LBE105:
+ 1076               	.LBE104:
  122:main.c        ****                 }
- 123:main.c        ****             }
- 124:main.c        ****         }
- 125:main.c        ****       else if (Btn_M) // M
- 126:main.c        ****         {
- 127:main.c        ****             LCD_Clear();
- 128:main.c        ****             LCD_GoTo(0,0);
- 129:main.c        ****             LCD_WriteText("M, Rc5");
- 130:main.c        ****             while(((PIND&(1<<PD3))))
- 131:main.c        ****             {
- 132:main.c        ****                 if(RC5_get(&addr,&comm,&tog))
- 133:main.c        ****                 {  // sprawdzanie, czy system odbiera sygnaÅ‚y rc5, jeÅ›li tak to wyÅ›wietlamy
- 134:main.c        ****                     sprintf(buffer," A:%02d C:%02d T:%02d ",addr,comm,tog);
- 863               		.loc 5 134 0
- 864 004a 60E0      		ldi r22,lo8(.LC12)
- 865 004c E62E      		mov r14,r22
- 866 004e 60E0      		ldi r22,hi8(.LC12)
- 867 0050 F62E      		mov r15,r22
- 868 0052 8E01      		movw r16,r28
- 869 0054 0F5F      		subi r16,-1
- 870 0056 1F4F      		sbci r17,-1
- 871               	.L61:
-  66:main.c        ****       if (Btn_LeftPlus)  // L+
- 872               		.loc 5 66 0
- 873 0058 8799      		sbic 0x10,7
- 874 005a 00C0      		rjmp .L43
-  68:main.c        ****             PORTC &= (~(1<<7));
- 875               		.loc 5 68 0
- 876 005c AF98      		cbi 0x15,7
-  69:main.c        ****             LCD_Clear();
- 877               		.loc 5 69 0
- 878 005e 0E94 0000 		call LCD_Clear
- 879               	.LVL57:
- 880               	.LBB78:
- 881               	.LBB79:
+ 123:main.c        ****                 _delay_ms(1); // Eliminacja migotania stykÃ³w
+ 124:main.c        ****             }
+ 125:main.c        ****         }
+ 126:main.c        ****       else if (Btn_M) // M
+ 1077               		.loc 5 126 0
+ 1078 011e 8399      		sbic 0x10,3
+ 1079 0120 00C0      		rjmp .L56
+ 127:main.c        ****         {
+ 128:main.c        ****             LCD_Clear();
+ 1080               		.loc 5 128 0
+ 1081 0122 0E94 0000 		call LCD_Clear
+ 1082               	.LVL87:
+ 1083               	.LBB106:
+ 1084               	.LBB107:
   93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
- 882               		.loc 1 93 0
- 883 0062 80E8      		ldi r24,lo8(-128)
- 884 0064 0E94 0000 		call LCD_WriteCommand
- 885               	.LVL58:
- 886               	.LBE79:
- 887               	.LBE78:
-  71:main.c        ****             LCD_WriteText("L+");
- 888               		.loc 5 71 0
- 889 0068 80E0      		ldi r24,lo8(.LC2)
- 890 006a 90E0      		ldi r25,hi8(.LC2)
- 891 006c 00C0      		rjmp .L66
- 892               	.LVL59:
- 893               	.L43:
-  73:main.c        ****       else if (Btn_LeftMinus)// L-
- 894               		.loc 5 73 0
- 895 006e B099      		sbic 0x16,0
- 896 0070 00C0      		rjmp .L45
-  75:main.c        ****             PORTC |= (1<<7);
- 897               		.loc 5 75 0
- 898 0072 AF9A      		sbi 0x15,7
-  76:main.c        ****             LCD_Clear();
- 899               		.loc 5 76 0
- 900 0074 0E94 0000 		call LCD_Clear
- 901               	.LVL60:
- 902               	.LBB80:
- 903               	.LBB81:
+ 1085               		.loc 1 93 0
+ 1086 0126 80E8      		ldi r24,lo8(-128)
+ 1087 0128 0E94 0000 		call LCD_WriteCommand
+ 1088               	.LVL88:
+ 1089               	.LBE107:
+ 1090               	.LBE106:
+ 129:main.c        ****             LCD_GoTo(0,0);
+ 130:main.c        ****             LCD_WriteText("M, Rc5");
+ 1091               		.loc 5 130 0
+ 1092 012c 80E0      		ldi r24,lo8(.LC11)
+ 1093 012e 90E0      		ldi r25,hi8(.LC11)
+ 1094 0130 0E94 0000 		call LCD_WriteText
+ 1095               	.LVL89:
+ 131:main.c        ****             while(1)
+ 132:main.c        ****             {
+ 133:main.c        ****                 if(RC5_get(&addr,&comm,&tog))
+ 134:main.c        ****                 {  // sprawdzanie, czy system odbiera sygnaÅ‚y rc5, jeÅ›li tak to wyÅ›wietlamy
+ 135:main.c        ****                     sprintf(buffer," A:%02d C:%02d T:%02d ",addr,comm,tog);
+ 1096               		.loc 5 135 0
+ 1097 0134 60E0      		ldi r22,lo8(.LC12)
+ 1098 0136 E62E      		mov r14,r22
+ 1099 0138 60E0      		ldi r22,hi8(.LC12)
+ 1100 013a F62E      		mov r15,r22
+ 1101 013c 8E01      		movw r16,r28
+ 1102 013e 0F5F      		subi r16,-1
+ 1103 0140 1F4F      		sbci r17,-1
+ 1104               	.L58:
+ 133:main.c        ****                 if(RC5_get(&addr,&comm,&tog))
+ 1105               		.loc 5 133 0
+ 1106 0142 AE01      		movw r20,r28
+ 1107 0144 4E5D      		subi r20,-34
+ 1108 0146 5F4F      		sbci r21,-1
+ 1109 0148 BE01      		movw r22,r28
+ 1110 014a 6D5D      		subi r22,-35
+ 1111 014c 7F4F      		sbci r23,-1
+ 1112 014e CE01      		movw r24,r28
+ 1113 0150 8496      		adiw r24,36
+ 1114 0152 0E94 0000 		call RC5_get
+ 1115               	.LVL90:
+ 1116 0156 8823      		tst r24
+ 1117 0158 01F0      		breq .L57
+ 1118               		.loc 5 135 0
+ 1119 015a 8AA1      		ldd r24,Y+34
+ 1120 015c 1F92      		push __zero_reg__
+ 1121 015e 8F93      		push r24
+ 1122 0160 8BA1      		ldd r24,Y+35
+ 1123 0162 1F92      		push __zero_reg__
+ 1124 0164 8F93      		push r24
+ 1125 0166 8CA1      		ldd r24,Y+36
+ 1126 0168 1F92      		push __zero_reg__
+ 1127 016a 8F93      		push r24
+ 1128 016c FF92      		push r15
+ 1129 016e EF92      		push r14
+ 1130 0170 1F93      		push r17
+ 1131 0172 0F93      		push r16
+ 1132 0174 0E94 0000 		call sprintf
+ 1133               	.LVL91:
+ 1134               	.LBB108:
+ 1135               	.LBB109:
   93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
- 904               		.loc 1 93 0
- 905 0078 80E8      		ldi r24,lo8(-128)
- 906 007a 0E94 0000 		call LCD_WriteCommand
- 907               	.LVL61:
- 908               	.LBE81:
- 909               	.LBE80:
-  78:main.c        ****             LCD_WriteText("L-");
- 910               		.loc 5 78 0
- 911 007e 80E0      		ldi r24,lo8(.LC3)
- 912 0080 90E0      		ldi r25,hi8(.LC3)
- 913 0082 00C0      		rjmp .L66
- 914               	.LVL62:
- 915               	.L45:
-  80:main.c        ****       else if (Btn_PS) // P/S
- 916               		.loc 5 80 0
- 917 0084 8599      		sbic 0x10,5
- 918 0086 00C0      		rjmp .L46
-  82:main.c        ****             LCD_Clear();
- 919               		.loc 5 82 0
- 920 0088 0E94 0000 		call LCD_Clear
- 921               	.LVL63:
- 922               	.LBB82:
- 923               	.LBB83:
-  93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
- 924               		.loc 1 93 0
- 925 008c 80E8      		ldi r24,lo8(-128)
- 926 008e 0E94 0000 		call LCD_WriteCommand
- 927               	.LVL64:
- 928               	.LBE83:
- 929               	.LBE82:
-  84:main.c        ****             LCD_WriteText("P/S");
- 930               		.loc 5 84 0
- 931 0092 80E0      		ldi r24,lo8(.LC4)
- 932 0094 90E0      		ldi r25,hi8(.LC4)
- 933 0096 00C0      		rjmp .L66
- 934               	.LVL65:
- 935               	.L46:
-  86:main.c        ****       else if (Btn_S) // S
- 936               		.loc 5 86 0
- 937 0098 8499      		sbic 0x10,4
- 938 009a 00C0      		rjmp .L47
-  88:main.c        ****             LCD_Clear();
- 939               		.loc 5 88 0
- 940 009c 0E94 0000 		call LCD_Clear
- 941               	.LVL66:
- 942               	.LBB84:
- 943               	.LBB85:
-  93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
- 944               		.loc 1 93 0
- 945 00a0 80E8      		ldi r24,lo8(-128)
- 946 00a2 0E94 0000 		call LCD_WriteCommand
- 947               	.LVL67:
- 948               	.LBE85:
- 949               	.LBE84:
-  90:main.c        ****             LCD_WriteText("S, End-Stop");
- 950               		.loc 5 90 0
- 951 00a6 80E0      		ldi r24,lo8(.LC5)
- 952 00a8 90E0      		ldi r25,hi8(.LC5)
- 953               	.L65:
- 954 00aa 0E94 0000 		call LCD_WriteText
- 955               	.LVL68:
- 956               	.L48:
-  93:main.c        ****                 if (!End_stop_1)
- 957               		.loc 5 93 0
- 958 00ae B39B      		sbis 0x16,3
- 959 00b0 00C0      		rjmp .L49
-  95:main.c        ****                     LCD_Clear();
- 960               		.loc 5 95 0
- 961 00b2 0E94 0000 		call LCD_Clear
- 962               	.LVL69:
- 963               	.LBB86:
- 964               	.LBB87:
-  93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
- 965               		.loc 1 93 0
- 966 00b6 80E8      		ldi r24,lo8(-128)
- 967 00b8 0E94 0000 		call LCD_WriteCommand
- 968               	.LVL70:
- 969               	.LBE87:
- 970               	.LBE86:
-  97:main.c        ****                     LCD_WriteText("1");
- 971               		.loc 5 97 0
- 972 00bc 80E0      		ldi r24,lo8(.LC6)
- 973 00be 90E0      		ldi r25,hi8(.LC6)
- 974 00c0 00C0      		rjmp .L65
- 975               	.LVL71:
- 976               	.L49:
-  99:main.c        ****                 else if (!End_stop_2)
- 977               		.loc 5 99 0
- 978 00c2 B49B      		sbis 0x16,4
- 979 00c4 00C0      		rjmp .L51
- 101:main.c        ****                     LCD_Clear();
- 980               		.loc 5 101 0
- 981 00c6 0E94 0000 		call LCD_Clear
- 982               	.LVL72:
- 983               	.LBB88:
- 984               	.LBB89:
-  93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
- 985               		.loc 1 93 0
- 986 00ca 80E8      		ldi r24,lo8(-128)
- 987 00cc 0E94 0000 		call LCD_WriteCommand
- 988               	.LVL73:
- 989               	.LBE89:
- 990               	.LBE88:
- 103:main.c        ****                     LCD_WriteText("2");
- 991               		.loc 5 103 0
- 992 00d0 80E0      		ldi r24,lo8(.LC7)
- 993 00d2 90E0      		ldi r25,hi8(.LC7)
- 994 00d4 00C0      		rjmp .L65
- 995               	.LVL74:
- 996               	.L51:
- 105:main.c        ****                 else if (!End_stop_3)
- 997               		.loc 5 105 0
- 998 00d6 B59B      		sbis 0x16,5
- 999 00d8 00C0      		rjmp .L52
- 107:main.c        ****                     LCD_Clear();
- 1000               		.loc 5 107 0
- 1001 00da 0E94 0000 		call LCD_Clear
- 1002               	.LVL75:
- 1003               	.LBB90:
- 1004               	.LBB91:
-  93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
- 1005               		.loc 1 93 0
- 1006 00de 80E8      		ldi r24,lo8(-128)
- 1007 00e0 0E94 0000 		call LCD_WriteCommand
- 1008               	.LVL76:
- 1009               	.LBE91:
- 1010               	.LBE90:
- 109:main.c        ****                     LCD_WriteText("3");
- 1011               		.loc 5 109 0
- 1012 00e4 80E0      		ldi r24,lo8(.LC8)
- 1013 00e6 90E0      		ldi r25,hi8(.LC8)
- 1014 00e8 00C0      		rjmp .L65
- 1015               	.LVL77:
- 1016               	.L52:
- 111:main.c        ****                 else if (!End_stop_4)
- 1017               		.loc 5 111 0
- 1018 00ea B69B      		sbis 0x16,6
- 1019 00ec 00C0      		rjmp .L53
- 113:main.c        ****                     LCD_Clear();
- 1020               		.loc 5 113 0
- 1021 00ee 0E94 0000 		call LCD_Clear
- 1022               	.LVL78:
- 1023               	.LBB92:
- 1024               	.LBB93:
-  93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
- 1025               		.loc 1 93 0
- 1026 00f2 80E8      		ldi r24,lo8(-128)
- 1027 00f4 0E94 0000 		call LCD_WriteCommand
- 1028               	.LVL79:
- 1029               	.LBE93:
- 1030               	.LBE92:
- 115:main.c        ****                     LCD_WriteText("4");
- 1031               		.loc 5 115 0
- 1032 00f8 80E0      		ldi r24,lo8(.LC9)
- 1033 00fa 90E0      		ldi r25,hi8(.LC9)
- 1034 00fc 00C0      		rjmp .L65
- 1035               	.LVL80:
- 1036               	.L53:
- 117:main.c        ****                 else if (!End_stop_5)
- 1037               		.loc 5 117 0
- 1038 00fe B79B      		sbis 0x16,7
- 1039 0100 00C0      		rjmp .L48
- 119:main.c        ****                     LCD_Clear();
- 1040               		.loc 5 119 0
- 1041 0102 0E94 0000 		call LCD_Clear
- 1042               	.LVL81:
- 1043               	.LBB94:
- 1044               	.LBB95:
-  93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
- 1045               		.loc 1 93 0
- 1046 0106 80E8      		ldi r24,lo8(-128)
- 1047 0108 0E94 0000 		call LCD_WriteCommand
- 1048               	.LVL82:
- 1049               	.LBE95:
- 1050               	.LBE94:
- 121:main.c        ****                     LCD_WriteText("5");
- 1051               		.loc 5 121 0
- 1052 010c 80E0      		ldi r24,lo8(.LC10)
- 1053 010e 90E0      		ldi r25,hi8(.LC10)
- 1054 0110 00C0      		rjmp .L65
- 1055               	.LVL83:
- 1056               	.L47:
- 125:main.c        ****       else if (Btn_M) // M
- 1057               		.loc 5 125 0
- 1058 0112 8399      		sbic 0x10,3
- 1059 0114 00C0      		rjmp .L54
- 127:main.c        ****             LCD_Clear();
- 1060               		.loc 5 127 0
- 1061 0116 0E94 0000 		call LCD_Clear
- 1062               	.LVL84:
- 1063               	.LBB96:
- 1064               	.LBB97:
-  93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
- 1065               		.loc 1 93 0
- 1066 011a 80E8      		ldi r24,lo8(-128)
- 1067 011c 0E94 0000 		call LCD_WriteCommand
- 1068               	.LVL85:
- 1069               	.LBE97:
- 1070               	.LBE96:
- 129:main.c        ****             LCD_WriteText("M, Rc5");
- 1071               		.loc 5 129 0
- 1072 0120 80E0      		ldi r24,lo8(.LC11)
- 1073 0122 90E0      		ldi r25,hi8(.LC11)
- 1074 0124 0E94 0000 		call LCD_WriteText
- 1075               	.LVL86:
- 1076               	.L55:
- 130:main.c        ****             while(((PIND&(1<<PD3))))
- 1077               		.loc 5 130 0 discriminator 1
- 1078 0128 839B      		sbis 0x10,3
- 1079 012a 00C0      		rjmp .L44
- 132:main.c        ****                 if(RC5_get(&addr,&comm,&tog))
- 1080               		.loc 5 132 0
- 1081 012c AE01      		movw r20,r28
- 1082 012e 4E5D      		subi r20,-34
- 1083 0130 5F4F      		sbci r21,-1
- 1084 0132 BE01      		movw r22,r28
- 1085 0134 6D5D      		subi r22,-35
- 1086 0136 7F4F      		sbci r23,-1
- 1087 0138 CE01      		movw r24,r28
- 1088 013a 8496      		adiw r24,36
- 1089 013c 0E94 0000 		call RC5_get
- 1090               	.LVL87:
- 1091 0140 8823      		tst r24
- 1092 0142 01F0      		breq .L56
- 1093               		.loc 5 134 0
- 1094 0144 8AA1      		ldd r24,Y+34
- 1095 0146 1F92      		push __zero_reg__
- 1096 0148 8F93      		push r24
- 1097 014a 8BA1      		ldd r24,Y+35
- 1098 014c 1F92      		push __zero_reg__
- 1099 014e 8F93      		push r24
- 1100 0150 8CA1      		ldd r24,Y+36
- 1101 0152 1F92      		push __zero_reg__
- 1102 0154 8F93      		push r24
- 1103 0156 FF92      		push r15
- 1104 0158 EF92      		push r14
- 1105 015a 1F93      		push r17
- 1106 015c 0F93      		push r16
- 1107 015e 0E94 0000 		call sprintf
- 1108               	.LVL88:
- 1109               	.LBB98:
- 1110               	.LBB99:
-  93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
- 1111               		.loc 1 93 0
- 1112 0162 80EC      		ldi r24,lo8(-64)
- 1113 0164 0E94 0000 		call LCD_WriteCommand
- 1114               	.LVL89:
- 1115               	.LBE99:
- 1116               	.LBE98:
- 135:main.c        ****                     LCD_GoTo(0,1);
- 136:main.c        ****                     LCD_WriteText(buffer);
- 1117               		.loc 5 136 0
- 1118 0168 C801      		movw r24,r16
- 1119 016a 0E94 0000 		call LCD_WriteText
- 1120               	.LVL90:
- 1121 016e 0FB6      		in __tmp_reg__,__SREG__
- 1122 0170 F894      		cli
- 1123 0172 DEBF      		out __SP_H__,r29
- 1124 0174 0FBE      		out __SREG__,__tmp_reg__
- 1125 0176 CDBF      		out __SP_L__,r28
- 1126               	.LVL91:
- 1127               	.L56:
- 1128               	.LBB100:
- 1129               	.LBB101:
+ 1136               		.loc 1 93 0
+ 1137 0178 80EC      		ldi r24,lo8(-64)
+ 1138 017a 0E94 0000 		call LCD_WriteCommand
+ 1139               	.LVL92:
+ 1140               	.LBE109:
+ 1141               	.LBE108:
+ 136:main.c        ****                     LCD_GoTo(0,1);
+ 137:main.c        ****                     LCD_WriteText(buffer);
+ 1142               		.loc 5 137 0
+ 1143 017e C801      		movw r24,r16
+ 1144 0180 0E94 0000 		call LCD_WriteText
+ 1145               	.LVL93:
+ 1146 0184 0FB6      		in __tmp_reg__,__SREG__
+ 1147 0186 F894      		cli
+ 1148 0188 DEBF      		out __SP_H__,r29
+ 1149 018a 0FBE      		out __SREG__,__tmp_reg__
+ 1150 018c CDBF      		out __SP_L__,r28
+ 1151               	.LVL94:
+ 1152               	.L57:
+ 1153               	.LBB110:
+ 1154               	.LBB111:
  163:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h **** 	__builtin_avr_delay_cycles(__ticks_dc);
- 1130               		.loc 2 163 0
- 1131 0178 8FE9      		ldi r24,lo8(3999)
- 1132 017a 9FE0      		ldi r25,hi8(3999)
- 1133 017c 0197      		1: sbiw r24,1
- 1134 017e 01F4      		brne 1b
- 1135 0180 00C0      		rjmp .
- 1136 0182 0000      		nop
- 1137 0184 00C0      		rjmp .L55
- 1138               	.LVL92:
- 1139               	.L54:
- 1140               	.LBE101:
- 1141               	.LBE100:
- 137:main.c        ****                 }
- 138:main.c        ****                 _delay_ms(1);
- 139:main.c        ****             }
- 140:main.c        ****         }
- 141:main.c        ****       else if (Btn_Remote) // R
- 1142               		.loc 5 141 0
- 1143 0186 8299      		sbic 0x10,2
- 1144 0188 00C0      		rjmp .L58
- 142:main.c        ****         {
- 143:main.c        ****             LCD_Clear();
- 1145               		.loc 5 143 0
- 1146 018a 0E94 0000 		call LCD_Clear
- 1147               	.LVL93:
- 1148               	.LBB102:
- 1149               	.LBB103:
+ 1155               		.loc 2 163 0
+ 1156 018e 8FE9      		ldi r24,lo8(3999)
+ 1157 0190 9FE0      		ldi r25,hi8(3999)
+ 1158 0192 0197      		1: sbiw r24,1
+ 1159 0194 01F4      		brne 1b
+ 1160 0196 00C0      		rjmp .
+ 1161 0198 0000      		nop
+ 1162 019a 00C0      		rjmp .L58
+ 1163               	.LVL95:
+ 1164               	.L56:
+ 1165               	.LBE111:
+ 1166               	.LBE110:
+ 138:main.c        ****                 }
+ 139:main.c        ****                 _delay_ms(1);
+ 140:main.c        ****             }
+ 141:main.c        ****         }
+ 142:main.c        ****       else if (Btn_Remote) // R
+ 1167               		.loc 5 142 0
+ 1168 019c 8299      		sbic 0x10,2
+ 1169 019e 00C0      		rjmp .L59
+ 143:main.c        ****         {
+ 144:main.c        ****             LCD_Clear();
+ 1170               		.loc 5 144 0
+ 1171 01a0 0E94 0000 		call LCD_Clear
+ 1172               	.LVL96:
+ 1173               	.LBB112:
+ 1174               	.LBB113:
   93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
- 1150               		.loc 1 93 0
- 1151 018e 80E8      		ldi r24,lo8(-128)
- 1152 0190 0E94 0000 		call LCD_WriteCommand
- 1153               	.LVL94:
- 1154               	.LBE103:
- 1155               	.LBE102:
- 144:main.c        ****             LCD_GoTo(0,0);
- 145:main.c        ****             LCD_WriteText("R");
- 1156               		.loc 5 145 0
- 1157 0194 80E0      		ldi r24,lo8(.LC13)
- 1158 0196 90E0      		ldi r25,hi8(.LC13)
- 1159 0198 00C0      		rjmp .L66
- 1160               	.LVL95:
- 1161               	.L58:
- 146:main.c        ****         }
- 147:main.c        ****       else if (Btn_RightMinus) // R-
- 1162               		.loc 5 147 0
- 1163 019a 8199      		sbic 0x10,1
- 1164 019c 00C0      		rjmp .L59
- 148:main.c        ****         {
- 149:main.c        ****             LCD_Clear();
- 1165               		.loc 5 149 0
- 1166 019e 0E94 0000 		call LCD_Clear
- 1167               	.LVL96:
- 1168               	.LBB104:
- 1169               	.LBB105:
+ 1175               		.loc 1 93 0
+ 1176 01a4 80E8      		ldi r24,lo8(-128)
+ 1177 01a6 0E94 0000 		call LCD_WriteCommand
+ 1178               	.LVL97:
+ 1179               	.LBE113:
+ 1180               	.LBE112:
+ 145:main.c        ****             LCD_GoTo(0,0);
+ 146:main.c        ****             LCD_WriteText("R");
+ 1181               		.loc 5 146 0
+ 1182 01aa 80E0      		ldi r24,lo8(.LC13)
+ 1183 01ac 90E0      		ldi r25,hi8(.LC13)
+ 1184 01ae 00C0      		rjmp .L69
+ 1185               	.LVL98:
+ 1186               	.L59:
+ 147:main.c        ****         }
+ 148:main.c        ****       else if (Btn_RightMinus) // R-
+ 1187               		.loc 5 148 0
+ 1188 01b0 8199      		sbic 0x10,1
+ 1189 01b2 00C0      		rjmp .L60
+ 149:main.c        ****         {
+ 150:main.c        ****             LCD_Clear();
+ 1190               		.loc 5 150 0
+ 1191 01b4 0E94 0000 		call LCD_Clear
+ 1192               	.LVL99:
+ 1193               	.LBB114:
+ 1194               	.LBB115:
   93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
- 1170               		.loc 1 93 0
- 1171 01a2 80E8      		ldi r24,lo8(-128)
- 1172 01a4 0E94 0000 		call LCD_WriteCommand
- 1173               	.LVL97:
- 1174               	.LBE105:
- 1175               	.LBE104:
- 150:main.c        ****             LCD_GoTo(0,0);
- 151:main.c        ****             LCD_WriteText("R-");
- 1176               		.loc 5 151 0
- 1177 01a8 80E0      		ldi r24,lo8(.LC14)
- 1178 01aa 90E0      		ldi r25,hi8(.LC14)
- 1179 01ac 00C0      		rjmp .L66
- 1180               	.LVL98:
- 1181               	.L59:
- 152:main.c        ****         }
- 153:main.c        ****       else if (Btn_RightPlus) // R+
- 1182               		.loc 5 153 0
- 1183 01ae 8099      		sbic 0x10,0
- 1184 01b0 00C0      		rjmp .L44
- 154:main.c        ****         {
- 155:main.c        ****             LCD_Clear();
- 1185               		.loc 5 155 0
- 1186 01b2 0E94 0000 		call LCD_Clear
- 1187               	.LVL99:
- 1188               	.LBB106:
- 1189               	.LBB107:
+ 1195               		.loc 1 93 0
+ 1196 01b8 80E8      		ldi r24,lo8(-128)
+ 1197 01ba 0E94 0000 		call LCD_WriteCommand
+ 1198               	.LVL100:
+ 1199               	.LBE115:
+ 1200               	.LBE114:
+ 151:main.c        ****             LCD_GoTo(0,0);
+ 152:main.c        ****             LCD_WriteText("R-");
+ 1201               		.loc 5 152 0
+ 1202 01be 80E0      		ldi r24,lo8(.LC14)
+ 1203 01c0 90E0      		ldi r25,hi8(.LC14)
+ 1204 01c2 00C0      		rjmp .L69
+ 1205               	.LVL101:
+ 1206               	.L60:
+ 153:main.c        ****         }
+ 154:main.c        ****       else if (Btn_RightPlus) // R+
+ 1207               		.loc 5 154 0
+ 1208 01c4 8099      		sbic 0x10,0
+ 1209 01c6 00C0      		rjmp .L45
+ 155:main.c        ****         {
+ 156:main.c        ****             LCD_Clear();
+ 1210               		.loc 5 156 0
+ 1211 01c8 0E94 0000 		call LCD_Clear
+ 1212               	.LVL102:
+ 1213               	.LBB116:
+ 1214               	.LBB117:
   93:lib/HD44780.c **** LCD_WriteCommand(HD44780_DDRAM_SET | (x + (0x40 * y)));
- 1190               		.loc 1 93 0
- 1191 01b6 80E8      		ldi r24,lo8(-128)
- 1192 01b8 0E94 0000 		call LCD_WriteCommand
- 1193               	.LVL100:
- 1194               	.LBE107:
- 1195               	.LBE106:
- 156:main.c        ****             LCD_GoTo(0,0);
- 157:main.c        ****             LCD_WriteText("R+");
- 1196               		.loc 5 157 0
- 1197 01bc 80E0      		ldi r24,lo8(.LC15)
- 1198 01be 90E0      		ldi r25,hi8(.LC15)
- 1199               	.LVL101:
- 1200               	.L66:
- 1201 01c0 0E94 0000 		call LCD_WriteText
- 1202               	.LVL102:
- 1203               	.L44:
- 1204               	.LBB108:
- 1205               	.LBB109:
+ 1215               		.loc 1 93 0
+ 1216 01cc 80E8      		ldi r24,lo8(-128)
+ 1217 01ce 0E94 0000 		call LCD_WriteCommand
+ 1218               	.LVL103:
+ 1219               	.LBE117:
+ 1220               	.LBE116:
+ 157:main.c        ****             LCD_GoTo(0,0);
+ 158:main.c        ****             LCD_WriteText("R+");
+ 1221               		.loc 5 158 0
+ 1222 01d2 80E0      		ldi r24,lo8(.LC15)
+ 1223 01d4 90E0      		ldi r25,hi8(.LC15)
+ 1224               	.LVL104:
+ 1225               	.L69:
+ 1226 01d6 0E94 0000 		call LCD_WriteText
+ 1227               	.LVL105:
+ 1228               	.L45:
+ 159:main.c        ****         }
+ 160:main.c        ****        comm=0;
+ 1229               		.loc 5 160 0
+ 1230 01da 1BA2      		std Y+35,__zero_reg__
+ 161:main.c        ****         RC5_get(&addr,&comm,&tog);
+ 1231               		.loc 5 161 0
+ 1232 01dc AE01      		movw r20,r28
+ 1233 01de 4E5D      		subi r20,-34
+ 1234 01e0 5F4F      		sbci r21,-1
+ 1235 01e2 BE01      		movw r22,r28
+ 1236 01e4 6D5D      		subi r22,-35
+ 1237 01e6 7F4F      		sbci r23,-1
+ 1238 01e8 CE01      		movw r24,r28
+ 1239 01ea 8496      		adiw r24,36
+ 1240 01ec 0E94 0000 		call RC5_get
+ 1241               	.LVL106:
+ 1242               	.LBB118:
+ 1243               	.LBB119:
  163:/usr/local/CrossPack-AVR-20131216/avr/include/util/delay.h **** 	__builtin_avr_delay_cycles(__ticks_dc);
- 1206               		.loc 2 163 0
- 1207 01c4 8FE9      		ldi r24,lo8(3999)
- 1208 01c6 9FE0      		ldi r25,hi8(3999)
- 1209 01c8 0197      		1: sbiw r24,1
- 1210 01ca 01F4      		brne 1b
- 1211 01cc 00C0      		rjmp .
- 1212 01ce 0000      		nop
- 1213 01d0 00C0      		rjmp .L61
- 1214               	.LBE109:
- 1215               	.LBE108:
- 1216               		.cfi_endproc
- 1217               	.LFE26:
- 1219               		.local	RC5_tmp.2159
- 1220               		.comm	RC5_tmp.2159,2,1
- 1221               		.local	BitVal.2158
- 1222               		.comm	BitVal.2158,1,1
- 1223               		.local	BitCt.2157
- 1224               		.comm	BitCt.2157,1,1
- 1225               		.local	EdgeCt.2156
- 1226               		.comm	EdgeCt.2156,1,1
- 1227               		.local	LastICR.2154
- 1228               		.comm	LastICR.2154,2,1
- 1229               		.comm	toggle,1,1
- 1230               		.comm	address,1,1
- 1231               		.comm	command,1,1
- 1232               	.global	RC5_decoded_flag
- 1233               		.section .bss
- 1236               	RC5_decoded_flag:
- 1237 0000 00        		.zero	1
- 1238               		.text
- 1239               	.Letext0:
- 1240               		.file 6 "/usr/local/CrossPack-AVR-20131216/avr/include/stdint.h"
- 1241               		.file 7 "/usr/local/CrossPack-AVR-20131216/avr/include/stdio.h"
+ 1244               		.loc 2 163 0
+ 1245 01f0 8FE9      		ldi r24,lo8(3999)
+ 1246 01f2 9FE0      		ldi r25,hi8(3999)
+ 1247 01f4 0197      		1: sbiw r24,1
+ 1248 01f6 01F4      		brne 1b
+ 1249 01f8 00C0      		rjmp .
+ 1250 01fa 0000      		nop
+ 1251 01fc 00C0      		rjmp .L61
+ 1252               	.LBE119:
+ 1253               	.LBE118:
+ 1254               		.cfi_endproc
+ 1255               	.LFE26:
+ 1257               		.local	RC5_tmp.2159
+ 1258               		.comm	RC5_tmp.2159,2,1
+ 1259               		.local	BitVal.2158
+ 1260               		.comm	BitVal.2158,1,1
+ 1261               		.local	BitCt.2157
+ 1262               		.comm	BitCt.2157,1,1
+ 1263               		.local	EdgeCt.2156
+ 1264               		.comm	EdgeCt.2156,1,1
+ 1265               		.local	LastICR.2154
+ 1266               		.comm	LastICR.2154,2,1
+ 1267               		.comm	toggle,1,1
+ 1268               		.comm	address,1,1
+ 1269               		.comm	command,1,1
+ 1270               	.global	RC5_decoded_flag
+ 1271               		.section .bss
+ 1274               	RC5_decoded_flag:
+ 1275 0000 00        		.zero	1
+ 1276               		.text
+ 1277               	.Letext0:
+ 1278               		.file 6 "/usr/local/CrossPack-AVR-20131216/avr/include/stdint.h"
+ 1279               		.file 7 "/usr/local/CrossPack-AVR-20131216/avr/include/stdio.h"
 DEFINED SYMBOLS
                             *ABS*:00000000 main.c
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:2      *ABS*:0000003e __SP_H__
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:3      *ABS*:0000003d __SP_L__
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:4      *ABS*:0000003f __SREG__
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:5      *ABS*:00000000 __tmp_reg__
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:6      *ABS*:00000001 __zero_reg__
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:12     .text:00000000 _LCD_OutNibble
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:73     .text:0000002a _LCD_Write
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:128    .text:00000054 LCD_WriteCommand
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:147    .text:0000005a LCD_WriteData
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:166    .text:00000060 LCD_WriteText
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:209    .text:00000078 LCD_GoTo
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:232    .text:00000086 LCD_Clear
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:261    .text:0000009a LCD_Home
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:290    .text:000000ae LCD_Initalize
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:420    .text:0000012a ADC_init
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:443    .text:00000136 ADC_get
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:475    .text:0000014c RC5_get
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:1236   .bss:00000000 RC5_decoded_flag
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccQLfTiT.s:2      *ABS*:0000003e __SP_H__
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccQLfTiT.s:3      *ABS*:0000003d __SP_L__
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccQLfTiT.s:4      *ABS*:0000003f __SREG__
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccQLfTiT.s:5      *ABS*:00000000 __tmp_reg__
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccQLfTiT.s:6      *ABS*:00000001 __zero_reg__
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccQLfTiT.s:12     .text:00000000 _LCD_OutNibble
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccQLfTiT.s:73     .text:0000002a _LCD_Write
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccQLfTiT.s:128    .text:00000054 LCD_WriteCommand
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccQLfTiT.s:147    .text:0000005a LCD_WriteData
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccQLfTiT.s:166    .text:00000060 LCD_WriteText
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccQLfTiT.s:209    .text:00000078 LCD_GoTo
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccQLfTiT.s:232    .text:00000086 LCD_Clear
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccQLfTiT.s:261    .text:0000009a LCD_Home
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccQLfTiT.s:290    .text:000000ae LCD_Initalize
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccQLfTiT.s:420    .text:0000012a ADC_init
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccQLfTiT.s:443    .text:00000136 ADC_get
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccQLfTiT.s:475    .text:0000014c RC5_get
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccQLfTiT.s:1274   .bss:00000000 RC5_decoded_flag
                             *COM*:00000001 address
                             *COM*:00000001 command
                             *COM*:00000001 toggle
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:520    .text:00000178 RC5_init
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:548    .text:00000190 __vector_6
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:1226   .bss:00000006 LastICR.2154
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:1224   .bss:00000005 EdgeCt.2156
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:1222   .bss:00000004 BitCt.2157
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:1220   .bss:00000003 BitVal.2158
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccQLfTiT.s:524    .text:00000178 RC5_init
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccQLfTiT.s:552    .text:00000190 __vector_6
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccQLfTiT.s:1264   .bss:00000006 LastICR.2154
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccQLfTiT.s:1262   .bss:00000005 EdgeCt.2156
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccQLfTiT.s:1260   .bss:00000004 BitCt.2157
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccQLfTiT.s:1258   .bss:00000003 BitVal.2158
                              .bss:00000001 RC5_tmp.2159
-/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccCSEy5D.s:781    .text.startup:00000000 main
+/var/folders/81/7plh_tys5lqfyddsvzkdfmtr0000gp/T//ccQLfTiT.s:785    .text.startup:00000000 main
 
 UNDEFINED SYMBOLS
 sprintf
